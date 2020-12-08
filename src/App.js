@@ -10,6 +10,9 @@ import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
+import Profile from "./pages/Profile/Profile";
+import Button from "./components/Button/Button";
+
 
 class App extends React.Component {
   state = {
@@ -82,6 +85,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
+        <Profile />
+        <Button />
         <Switch>
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute
