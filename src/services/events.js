@@ -1,13 +1,12 @@
 import axios from "axios";
 
 const eventService = axios.create({
-  baseURL: "http://localhost:5005/event",
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/event`,
 });
 
-
 export function getAllEvents() {
-    return eventService.get("/").then((res) => res.data);
-  }
+  return eventService.get("/").then((res) => res.data);
+}
 
 export function addNewEvent(event) {
   // const accessToken = localStorage.getItem("accessToken")
@@ -62,51 +61,48 @@ export function updateSingleEvent(id, info) {
     });
 }
 
-
+export function attendEvent(id, info) {
+  return eventService
+    .put(`/${id}/attend`, info, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then((response) => {
+      return {
+        status: true,
+        data: response.data,
+      };
+    })
+    .catch((err) => {
+      console.log("INSINDE THE CATCH");
+      console.log(err.response);
+      return {
+        status: false,
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
+}
 
 export function attendEvent(id, info) {
-    return eventService
-      .put(`/${id}/attend`, info, {
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      })
-      .then((response) => {
-        return {
-          status: true,
-          data: response.data,
-        };
-      })
-      .catch((err) => {
-        console.log("INSINDE THE CATCH");
-        console.log(err.response);
-        return {
-          status: false,
-          errorMessage: err.response.data.errorMessage,
-        };
-      });
-  }
-
-  export function attendEvent(id, info) {
-    return eventService
-      .put(`/${id}/unattend`, info, {
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      })
-      .then((response) => {
-        return {
-          status: true,
-          data: response.data,
-        };
-      })
-      .catch((err) => {
-        console.log("INSINDE THE CATCH");
-        console.log(err.response);
-        return {
-          status: false,
-          errorMessage: err.response.data.errorMessage,
-        };
-      });
-  }
-  
+  return eventService
+    .put(`/${id}/unattend`, info, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then((response) => {
+      return {
+        status: true,
+        data: response.data,
+      };
+    })
+    .catch((err) => {
+      console.log("INSINDE THE CATCH");
+      console.log(err.response);
+      return {
+        status: false,
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
+}
