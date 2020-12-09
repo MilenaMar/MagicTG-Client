@@ -3,7 +3,7 @@
 
 
 ## Description
-Web Applocation that allows the organizers of Magic the Gathering events, to post tournaments and players can 
+Web Application that allows the organizers of Magic the Gathering events to post tournaments and players can 
 confirm their participation on these events. 
 
 
