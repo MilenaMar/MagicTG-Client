@@ -82,7 +82,7 @@ Player model
 - email - String // required & unique
 - password - String // required
 - avatar: String
-- location: String
+- location: Strin
 
 ```
 
@@ -100,28 +100,29 @@ Event model
 
 ```
 - location - String // required
-- date: String      // required
-- time: String      // required
+- date: Date      // required
 - completed: Boolean
 - maxPlayers: Number // requeried
-- organizer: Array of Objects -Organizer Schema
-- attendes:  Array of Objects -Player Schema
+- organizer:  Object.Id
+- players:  Array of Objects -Player Schema
 ```
 
 ### API Endpoints/Backend Routes
 
 - / - Homepage - (GET)
-- /auth/signup - (POST) - Signup form User can be a Player or Organizer
-- /auth/login - (POST) - Login form
+- /auth/signup/organizer - (POST) - Signup form User can be a Player or Organizer
+- /auth/login/organizer - (POST) - Login form
+- /auth/signup/player - (POST) - Signup form User can be a Player or Organizer
+- /auth/login/player - (POST) - Login form
 - /user/:username - (GET) - User profile can be Organizer or Player
 - /user/:username/edit-profile - (PUT) - User can edit his own profile
 - /user/:username/delete - (POST) - User can delete his own account
-- /user/event/new - (POST) - Organizer can create a new event
-- /user/event/:\_id/edit - (PUT) - Organizer can edit his own event
-- /events - (GET) see all the posted events
-- /events/:\_id - (GET) - see the details of the selected event
-- /events/:\_id/attend - (POST) - Player attends an event
-- /events/:\_id/unattend - (POST) - Player unattends an event
+- /event - (GET) see all the posted events
+- /event/new - (POST) - Organizer can create a new event
+- /event/:\_id - (GET) - see the details of the selected event
+- /event/:\_id/edit - (PUT) - Organizer can edit his own event
+- /event/:\_id/attend - (POST) - Player attends an event
+- /event/:\_id/unattend - (POST) - Player unattends an event
 
 ## Links
 

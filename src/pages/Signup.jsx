@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { signup } from "../services/auth";
+import { signup } from "../services/authPlayer";
 import "./auth.css";
 
 export default class Signup extends Component {
