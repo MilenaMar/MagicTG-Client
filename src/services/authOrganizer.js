@@ -41,13 +41,3 @@ export function signupOrg(credentials) {
     .catch(internalServerError);
 }
 
-export function logoutOrg() {
-  return authService
-    .delete("/logout/organizer", {
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-    .then(successStatus)
-    .catch(internalServerError);
-}
