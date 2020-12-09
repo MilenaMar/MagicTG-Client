@@ -29,7 +29,7 @@ const authService = axios.create({
 
 export function login(credentials) {
   return authService
-    .post("/login", credentials)
+    .post("/login/player", credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -47,14 +47,14 @@ export function getLoggedIn() {
 
 export function signup(credentials) {
   return authService
-    .post("/signup", credentials)
+    .post("/signup/player", credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
 
 export function logout() {
   return authService
-    .delete("/logout", {
+    .delete("/logout/player", {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },

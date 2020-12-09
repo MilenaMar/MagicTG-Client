@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { login } from "../services/auth";
+import { login } from "../services/authPlayer";
 import "./Signup";
 
 export default class Login extends Component {
