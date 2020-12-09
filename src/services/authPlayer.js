@@ -54,7 +54,7 @@ export function signup(credentials) {
 
 export function logout() {
   return authService
-    .delete("/logout/player", {
+    .delete("/logout", {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },
