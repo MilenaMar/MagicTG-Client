@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const userService = axios.create({
-  baseURL: "http://localhost:5005/user",
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/user`,
 });
 
 
