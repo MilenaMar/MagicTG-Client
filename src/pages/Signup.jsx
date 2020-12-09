@@ -10,18 +10,17 @@ export default class Signup extends Component {
     username: "",
     email: "",
     password: "",
-    usertype:"Player",
+    usertype: "Player",
     error: null,
   };
 
-
   handleClick = (event) => {
-    if(this.state.usertype === "Player"){
-      this.setState({usertype:"Organizer"})
+    if (this.state.usertype === "Player") {
+      this.setState({ usertype: "Organizer" });
     } else {
-      this.setState({usertype:"Player"})
+      this.setState({ usertype: "Player" });
     }
-  }
+  };
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -34,15 +33,15 @@ export default class Signup extends Component {
     event.preventDefault();
     const credentials = {
       username: this.state.username,
-      email: this.state.username,
+      email: this.state.email,
       password: this.state.password,
     };
     signup(credentials).then((res) => {
       console.log(res);
       if (!res.status) {
         //set state for the error message from the server
-        this.setState({error:res.errorMessage})
-        return <Redirect to={PATHS.SIGNUPPAGE}/>;
+        this.setState({ error: res.errorMessage });
+        return <Redirect to={PATHS.SIGNUPPAGE} />;
       }
       localStorage.setItem("accessToken", res.data.accessToken);
       this.props.authenticate(res.data.user);
@@ -52,19 +51,19 @@ export default class Signup extends Component {
 
   // If the state of Usertype is Organizer the form will be sumit here
 
-  handleFormSubmissionasOrganizer= (event) => {
+  handleFormSubmissionasOrganizer = (event) => {
     event.preventDefault();
     const credentials = {
       username: this.state.username,
-      email: this.state.username,
+      email: this.state.email,
       password: this.state.password,
     };
     signupOrg(credentials).then((res) => {
       console.log(res);
       if (!res.status) {
         //set state for the error message from the server
-        this.setState({error:res.errorMessage})
-        return <Redirect to={PATHS.SIGNUPPAGE}/>
+        this.setState({ error: res.errorMessage });
+        return <Redirect to={PATHS.SIGNUPPAGE} />;
       }
       localStorage.setItem("accessToken", res.data.accessToken);
       this.props.authenticate(res.data.user);
@@ -73,22 +72,22 @@ export default class Signup extends Component {
   };
 
   render() {
-    // Render the button for the Player or the Organizer with the OnSubmit Handler 
+    // Render the button for the Player or the Organizer with the OnSubmit Handler
     let button;
     let handler;
-    if (this.state.usertype === "Player"){
-     button = <button onClick={this.handleClick}>Sign as Organizer</button>;
-     handler = this.handleFormSubmissionasPlayer
+    if (this.state.usertype === "Player") {
+      button = <button onClick={this.handleClick}>Sign as Organizer</button>;
+      handler = this.handleFormSubmissionasPlayer;
     } else {
       button = <button onClick={this.handleClick}>Sign as Player</button>;
-      handler = this.handleFormSubmissionasOrganizer
+      handler = this.handleFormSubmissionasOrganizer;
     }
     return (
       <div>
         <h1>Sign Up</h1>
         {button}
         <h2>You are signig in as {this.state.usertype}</h2>
-       <form onSubmit={handler} className="auth__form">
+        <form onSubmit={handler} className="auth__form">
           <label htmlFor="input-username">Username</label>
           <input
             id="input-username"
