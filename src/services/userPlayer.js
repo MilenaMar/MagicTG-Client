@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const userService = axios.create({
+const playerService = axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_URL}/user`,
 });
 
@@ -9,14 +9,14 @@ const userService = axios.create({
 //    return eventService.get("/").then((res) => res.data);
 //  }
 
-export function getUserProfile(username) {
-  return userService.get(`/player/${username}`).then((res) => {
+export function getUserProfile(id) {
+  return playerService.get(`/player/${id}`).then((res) => {
     return res.data;
   });
 }
 
 export function updateUserProfile(username, info) {
-  return userService
+  return playerService
     .put(`/player/${username}/edit-profile`, info, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
@@ -40,7 +40,7 @@ export function updateUserProfile(username, info) {
 
 export function deleteUser(username) {
     // const accessToken = localStorage.getItem("accessToken")
-    return userService
+    return playerService
       .post(`/player/${username}/delete-profile`, {
         headers: {
           Authorization: localStorage.getItem("accessToken"),
