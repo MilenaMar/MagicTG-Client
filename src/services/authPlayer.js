@@ -58,6 +58,7 @@ export function logout() {
     .delete("/logout", {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
+        
       },
     })
     .then(successStatus)

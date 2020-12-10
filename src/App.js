@@ -63,8 +63,8 @@ class App extends React.Component {
             // deal with error here
             console.log("SOMETHING HAPPENED", res);
           }
-
           localStorage.removeItem("accessToken");
+          localStorage.removeItem("userType");
           return this.setState({
             isLoading: false,
             user: null,
