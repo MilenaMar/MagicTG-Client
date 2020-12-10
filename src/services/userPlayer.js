@@ -10,14 +10,14 @@ const userService = axios.create({
 //  }
 
 export function getUserProfile(username) {
-  return userService.get(`/${username}`).then((res) => {
+  return userService.get(`/player/${username}`).then((res) => {
     return res.data;
   });
 }
 
-export function updateUserProfile(id, info) {
+export function updateUserProfile(username, info) {
   return userService
-    .put(`/${username}/edit-profile`, info, {
+    .put(`/player/${username}/edit-profile`, info, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },
@@ -38,10 +38,10 @@ export function updateUserProfile(id, info) {
     });
 }
 
-export function deleteUser(event) {
+export function deleteUser(username) {
     // const accessToken = localStorage.getItem("accessToken")
     return userService
-      .post(`/${username}/delete-profile`, event, {
+      .post(`/player/${username}/delete-profile`, {
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
