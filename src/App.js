@@ -7,7 +7,7 @@ import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
 import PlayerProfile from "./pages/User/PlayerProfile";
-import EditPlayer from "./pages/User/EditPlayer"
+import EditPlayer from "./pages/User/EditPlayer";
 import OrganizerProfile from "./pages/User/OrganizerProfile";
 import NormalRoute from "./routing-components/NormalRoute";
 import NotFound from "./pages/NotFound";
@@ -93,7 +93,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
-         <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
+          <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute
             exact
@@ -134,7 +134,7 @@ class App extends React.Component {
 
           <ProtectedRoute
             exact
-            path={"/user/organizer/:id/edit-profile"}
+            path={"/user/organizer/:username/edit-profile"}
             component={EditProfileOrganizer}
             user={this.state.user}
           />
