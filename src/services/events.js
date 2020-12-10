@@ -14,6 +14,7 @@ export function addNewEvent(event) {
     .post("/new", event, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
+        userTyper: localStorage.getItem("userType"),
       },
     })
     .then((response) => {
@@ -64,29 +65,6 @@ export function updateSingleEvent(id, info) {
 export function attendEvent(id, info) {
   return eventService
     .put(`/${id}/attend`, info, {
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-    .then((response) => {
-      return {
-        status: true,
-        data: response.data,
-      };
-    })
-    .catch((err) => {
-      console.log("INSINDE THE CATCH");
-      console.log(err.response);
-      return {
-        status: false,
-        errorMessage: err.response.data.errorMessage,
-      };
-    });
-}
-
-export function attendEvent(id, info) {
-  return eventService
-    .put(`/${id}/unattend`, info, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },
