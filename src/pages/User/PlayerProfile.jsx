@@ -9,6 +9,9 @@ export default class PlayerProfile extends Component {
 
   componentDidMount = () => {
     getUserProfile(this.props.computedMatch.params.username).then((responseBack) => {
+     if (responseBack.user === null){
+       return  this.props.history.push('/page-no-found')
+    }
       console.log("responseBack:", responseBack);
       this.setState({ user: responseBack });
     });

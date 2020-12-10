@@ -10,6 +10,7 @@ import PlayerProfile from "./pages/User/PlayerProfile";
 import EditPlayer from "./pages/User/EditPlayer"
 import OrganizerProfile from "./pages/User/OrganizerProfile";
 import NormalRoute from "./routing-components/NormalRoute";
+import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/authPlayer";
 import * as PATHS from "./utils/paths";
@@ -92,6 +93,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
+         <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute
             exact
@@ -115,6 +117,12 @@ class App extends React.Component {
             exact
             path={PATHS.PROFILEPAGEPLAYER}
             component={PlayerProfile}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.EDITPAGEPLAYER}
+            component={EditPlayer}
             user={this.state.user}
           />
           <ProtectedRoute
