@@ -1,27 +1,53 @@
 import React from "react";
-import "./OrganizerPlayer.css";
+import "./OrganizerProfile.css";
+import { Link } from "react-router-dom";
 
-class OrganizerProfile extends React.Component {
-  state = {
-    user: this.props.user,
-    events: [1, 2, 3],
-  };
+const OrganizerProfile = (props) => {
+  const events = [1, 2, 3];
 
-  render() {
-    return (
+  console.log(props);
+  return (
+    <div>
       <div className="orgProfile">
-        <div>{this.state.user.username}</div>
+        <div>{props.user.username}</div>
+        {props.match.params.username === props.user.username ? (
+          <Link to={`/user/organizer/${props.user.username}/edit-profile`}>
+            <button>Edit profile</button>
+          </Link>
+        ) : (
+          <div></div>
+        )}
+
         <div className="eventsTable">
-          <div className="tableHeader"></div>
-          {this.state.events.map((event, i) => (
+          <div className="tableHeader">
+            <h2>My Events</h2>
+            {props.match.params.username === props.user.username ? (
+              <Link to={`/event/new`}>
+                <button>New Event</button>
+              </Link>
+            ) : (
+              <div></div>
+            )}
+          </div>
+          {events.map((event, i) => (
             <div key={i} className="eventRow">
-              {event}
+              {event}{" "}
+              {props.match.params.username === props.user.username ? (
+                <Link to="/event/:_id/edit">
+                  <button>Edit Event</button>
+                </Link>
+              ) : (
+                <div></div>
+              )}
+              <Link to="/event/_id">
+                <button>See Event</button>
+              </Link>
             </div>
           ))}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default OrganizerProfile;

@@ -114,9 +114,13 @@ Event model
 - /auth/login/organizer - (POST) - Login form
 - /auth/signup/player - (POST) - Signup form User can be a Player or Organizer
 - /auth/login/player - (POST) - Login form
-- /user/:username - (GET) - User profile can be Organizer or Player
+- /user/organizer/:username - (GET) - User profile can be Organizer or Player
 - /user/:username/edit-profile - (PUT) - User can edit his own profile
 - /user/:username/delete - (POST) - User can delete his own account
+
+- /user/organizer/:username/edit - (POST) - User can delete his own account
+- /user/organizer/:username/delete - (POST) - User can delete his own account
+
 - /event - (GET) see all the posted events
 - /event/new - (POST) - Organizer can create a new event
 - /event/:\_id - (GET) - see the details of the selected event

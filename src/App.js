@@ -12,6 +12,8 @@ import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/authPlayer";
 import * as PATHS from "./utils/paths";
+import EditProfileOrganizer from "./pages/User/EditProfileOrganizer";
+import NewEvent from "./pages/Event/NewEvent";
 
 class App extends React.Component {
   state = {
@@ -116,8 +118,22 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
-            path={PATHS.PROFILEPAGEORGANIZER}
+            path="/user/organizer/:username"
             component={OrganizerProfile}
+            user={this.state.user}
+          />
+
+          <ProtectedRoute
+            exact
+            path={"/user/organizer/:id/edit-profile"}
+            component={EditProfileOrganizer}
+            user={this.state.user}
+          />
+
+          <ProtectedRoute
+            exact
+            path={"/event/new"}
+            component={NewEvent}
             user={this.state.user}
           />
         </Switch>
