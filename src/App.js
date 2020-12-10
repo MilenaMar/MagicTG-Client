@@ -7,7 +7,7 @@ import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
 import PlayerProfile from "./pages/User/PlayerProfile";
-import EditPlayer from "./pages/User/EditPlayer"
+import EditPlayer from "./pages/User/EditPlayer";
 import OrganizerProfile from "./pages/User/OrganizerProfile";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
@@ -119,14 +119,24 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
+<<<<<<< HEAD
             path="/user/organizer/:username"
+=======
+            path={PATHS.EDITPAGEPLAYER}
+            component={EditPlayer}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={"/user/organizer/:username"}
+>>>>>>> xikz
             component={OrganizerProfile}
             user={this.state.user}
           />
 
           <ProtectedRoute
             exact
-            path={"/user/organizer/:id/edit-profile"}
+            path={"/user/organizer/:username/edit-profile"}
             component={EditProfileOrganizer}
             user={this.state.user}
           />

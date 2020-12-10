@@ -10,7 +10,7 @@ const OrganizerProfile = (props) => {
     <div>
       <div className="orgProfile">
         <div>{props.user.username}</div>
-        {props.match.params.username === props.user.username ? (
+        {props.computedMatch.params.username === props.user.username ? (
           <Link to={`/user/organizer/${props.user.username}/edit-profile`}>
             <button>Edit profile</button>
           </Link>
@@ -21,7 +21,7 @@ const OrganizerProfile = (props) => {
         <div className="eventsTable">
           <div className="tableHeader">
             <h2>My Events</h2>
-            {props.match.params.username === props.user.username ? (
+            {props.computedMatch.params.username === props.user.username ? (
               <Link to={`/event/new`}>
                 <button>New Event</button>
               </Link>
@@ -32,7 +32,7 @@ const OrganizerProfile = (props) => {
           {events.map((event, i) => (
             <div key={i} className="eventRow">
               {event}{" "}
-              {props.match.params.username === props.user.username ? (
+              {props.computedMatch.params.username === props.user.username ? (
                 <Link to="/event/:_id/edit">
                   <button>Edit Event</button>
                 </Link>
