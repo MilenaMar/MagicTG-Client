@@ -93,7 +93,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
-         <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
+          <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute
             exact
@@ -121,26 +121,13 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
             path={PATHS.EDITPAGEPLAYER}
             component={EditPlayer}
             user={this.state.user}
           />
           <ProtectedRoute
             exact
->>>>>>> 87bd28a21d14707656c278f06c2c0b577ee460ec
             path="/user/organizer/:username"
-=======
-            path={PATHS.EDITPAGEPLAYER}
-            component={EditPlayer}
-            user={this.state.user}
-          />
-          <ProtectedRoute
-            exact
-            path={"/user/organizer/:username"}
->>>>>>> xikz
             component={OrganizerProfile}
             user={this.state.user}
           />
