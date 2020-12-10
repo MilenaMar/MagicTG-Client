@@ -22,7 +22,7 @@ class App extends React.Component {
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
     const userType = localStorage.getItem("userType");
-    console.log(accessToken);
+
     if (!accessToken) {
       return this.setState({
         isLoading: false,
@@ -39,7 +39,7 @@ class App extends React.Component {
       }
       console.log("res:", res);
       this.setState({
-        user: res.data.user,
+        user: userType === "Organizer" ? res.data.organizer : res.data.player,
         isLoading: false,
       });
     });
