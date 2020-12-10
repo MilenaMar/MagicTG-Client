@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import './PlayerProfile.css'
 import { getUserProfile } from "../../services/userPlayer";
 
 export default class PlayerProfile extends Component {
@@ -20,8 +21,9 @@ export default class PlayerProfile extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
+      <div className="PlayerProfile">
         <div>Im a player {this.props.user.username}</div>
+        <img src={this.props.user.avatar} alt="avatar"></img>
         {this.props.user.username ===
           this.props.computedMatch.params.username && (
           <Link to={`/user/player/${this.props.user.username}/edit`}>

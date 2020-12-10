@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getUserProfile, updateUserProfile } from "../../services/userPlayer";
 
 export default class EditProfile extends Component {
@@ -39,7 +39,7 @@ export default class EditProfile extends Component {
         return;
       }
       console.log("res:", res);
-      this.props.history.push(`/user/player/${res.data.user.username}`);
+      this.props.history.push(`/user/player/${res.data.userUpdated.username}`);
       //  was successful
     });
   };
@@ -50,6 +50,33 @@ export default class EditProfile extends Component {
       <div>
         <div>Im a edit page {this.props.user.username}</div>
         {<Link to={`/user/player/${this.props.user.username}`}>GO BACK</Link>}
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={this.state.user.username}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={this.state.user.email}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="location">Location</label>
+          <input
+            type="location"
+            id="location"
+            name="location"
+            value={this.state.user.location}
+            onChange={this.handleChange}
+          />
+          <button type="submit">SUBMIT</button>
+        </form>
       </div>
     );
   }
