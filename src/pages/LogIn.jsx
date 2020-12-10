@@ -2,25 +2,25 @@ import React, { Component } from "react";
 import { login } from "../services/authPlayer";
 import { loginOrg } from "../services/authOrganizer";
 import { Redirect } from "react-router-dom";
-import * as PATHS from "../utils/paths"
+import * as PATHS from "../utils/paths";
 import "./Signup";
 
 export default class Login extends Component {
   state = {
     username: "",
     password: "",
-    usertype:"Player",
+    usertype: "Player",
     error: null,
   };
 
-// Section to Select the Kind of login in if Player or Organizer
+  // Section to Select the Kind of login in if Player or Organizer
   handleClick = (event) => {
-    if(this.state.usertype === "Player"){
-      this.setState({usertype:"Organizer"})
+    if (this.state.usertype === "Player") {
+      this.setState({ usertype: "Organizer" });
     } else {
-      this.setState({usertype:"Player"})
+      this.setState({ usertype: "Player" });
     }
-  }
+  };
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,7 +28,7 @@ export default class Login extends Component {
       [name]: value,
     });
   };
- 
+
   // If the state of Usertype is Player the form will be sumit here
   handleFormSubmissionasPlayer = (event) => {
     event.preventDefault();
@@ -40,8 +40,8 @@ export default class Login extends Component {
     login(credentials).then((res) => {
       if (!res.status) {
         //set state for the error message from the server
-        this.setState({error:res.errorMessage})
-        return <Redirect to={PATHS.LOGINPAGE}/>
+        this.setState({ error: res.errorMessage });
+        return <Redirect to={PATHS.LOGINPAGE} />;
       }
       localStorage.setItem("accessToken", res.data.accessToken);
       localStorage.setItem("userType", res.data.user.userType);
@@ -50,7 +50,7 @@ export default class Login extends Component {
     });
   };
 
-   // If the state of Usertype is Organizer the form will be sumit here
+  // If the state of Usertype is Organizer the form will be sumit here
   handleFormSubmissionasOrganizer = (event) => {
     event.preventDefault();
 
@@ -61,25 +61,27 @@ export default class Login extends Component {
     loginOrg(credentials).then((res) => {
       if (!res.status) {
         //set state for the error message from the server
-        this.setState({error:res.errorMessage})
-        return <Redirect to={PATHS.LOGINPAGE}/>
+        this.setState({ error: res.errorMessage });
+        return <Redirect to={PATHS.LOGINPAGE} />;
       }
       localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("userType", res.data.user.userType);
+
       this.props.authenticate(res.data.user);
-      this.props.history.push("/");
+      this.props.history.push(`/user/organizer/${res.data.user.username}`);
     });
   };
 
   render() {
-    // Render the button for the Player or the Organizer with the OnSubmit Handler 
+    // Render the button for the Player or the Organizer with the OnSubmit Handler
     let button;
     let handler;
-    if (this.state.usertype === "Player"){
-     button = <button onClick={this.handleClick}>Sign as Organizer</button>;
-     handler = this.handleFormSubmissionasPlayer
+    if (this.state.usertype === "Player") {
+      button = <button onClick={this.handleClick}>Sign as Organizer</button>;
+      handler = this.handleFormSubmissionasPlayer;
     } else {
       button = <button onClick={this.handleClick}>Sign as Player</button>;
-      handler = this.handleFormSubmissionasOrganizer
+      handler = this.handleFormSubmissionasOrganizer;
     }
 
     return (
