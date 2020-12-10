@@ -44,6 +44,7 @@ export default class Login extends Component {
         return <Redirect to={PATHS.LOGINPAGE}/>
       }
       localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("userType", res.data.user.userType);
       this.props.authenticate(res.data.user);
       this.props.history.push(`/user/player/${res.data.user.username}`);
     });
