@@ -44,6 +44,7 @@ export default class Signup extends Component {
         return <Redirect to={PATHS.SIGNUPPAGE} />;
       }
       localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("userType", res.data.user.userType);
       this.props.authenticate(res.data.user);
       this.props.history.push("/");
     });
