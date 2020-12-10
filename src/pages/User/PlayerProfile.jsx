@@ -8,7 +8,7 @@ export default class PlayerProfile extends Component {
   };
 
   componentDidMount = () => {
-    getUserProfile(this.props.match.params._id).then((responseBack) => {
+    getUserProfile(this.props.computedMatch.params.username).then((responseBack) => {
       console.log("responseBack:", responseBack);
       this.setState({ user: responseBack });
     });

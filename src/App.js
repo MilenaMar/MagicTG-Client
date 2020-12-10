@@ -119,17 +119,7 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
-<<<<<<< HEAD
-            path={PATHS.EDITPAGEPLAYER}
-            component={EditPlayer}
-            user={this.state.user}
-          />
-          <ProtectedRoute
-            exact
-            path={PATHS.PROFILEPAGEORGANIZER}
-=======
             path="/user/organizer/:username"
->>>>>>> dev
             component={OrganizerProfile}
             user={this.state.user}
           />

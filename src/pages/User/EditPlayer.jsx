@@ -8,7 +8,7 @@ export default class EditProfile extends Component {
       };
     
     componentDidMount = () => {
-      getUserProfile().then((responseBack) => {
+      getUserProfile(this.props.user._id).then((responseBack) => {
          console.log("responseBack:", responseBack);
         this.setState({ user: responseBack });
       });
