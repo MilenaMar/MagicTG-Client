@@ -34,11 +34,12 @@ export function login(credentials) {
     .catch(internalServerError);
 }
 
-export function getLoggedIn() {
+export function getLoggedIn(userType) {
   return authService
     .get(`session`, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
+        userType: userType,
       },
     })
     .then(successStatus)

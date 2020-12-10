@@ -13,7 +13,6 @@ import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/authPlayer";
 import * as PATHS from "./utils/paths";
 
-
 class App extends React.Component {
   state = {
     user: null,
@@ -22,12 +21,15 @@ class App extends React.Component {
 
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
+    const userType = localStorage.getItem("userType");
+    console.log(accessToken);
     if (!accessToken) {
       return this.setState({
         isLoading: false,
       });
     }
-    getLoggedIn(accessToken).then((res) => {
+
+    getLoggedIn(userType).then((res) => {
       if (!res.status) {
         console.log("RES IN CASE OF FAILURE", res);
         // deal with failed backend call
@@ -35,6 +37,7 @@ class App extends React.Component {
           isLoading: false,
         });
       }
+      console.log("res:", res);
       this.setState({
         user: res.data.user,
         isLoading: false,
