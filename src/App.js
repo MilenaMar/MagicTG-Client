@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
+import PlayerProfile from "./pages/User/PlayerProfile";
+import OrganizerProfile from "./pages/User/OrganizerProfile";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/authPlayer";
@@ -101,6 +103,18 @@ class App extends React.Component {
             exact
             path={PATHS.PROTECTEDPAGE}
             component={ProtectedPage}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROFILEPAGEPLAYER}
+            component={PlayerProfile}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROFILEPAGEORGANIZER}
+            component={OrganizerProfile}
             user={this.state.user}
           />
         </Switch>

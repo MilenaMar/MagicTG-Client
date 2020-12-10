@@ -45,7 +45,7 @@ export default class Login extends Component {
       }
       localStorage.setItem("accessToken", res.data.accessToken);
       this.props.authenticate(res.data.user);
-      this.props.history.push("/");
+      this.props.history.push(`/user/${res.data.user.username}`);
     });
   };
 
