@@ -17,8 +17,8 @@ export default class SingleEvent extends Component {
   render() {
     const event = this.state.eventInfo;
     if (this.state.loading) {
-        return <LoadingComponent/>;
-      }
+      return <LoadingComponent />;
+    }
 
     return (
       <div>

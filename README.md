@@ -118,7 +118,7 @@ Event model
 - /user/:username/edit-profile - (PUT) - User can edit his own profile
 - /user/:username/delete - (POST) - User can delete his own account
 
-- /user/organizer/:username/edit - (POST) - User can delete his own account
+- /user/organizer/:username/edit-profile - (POST) - User can delete his own account
 - /user/organizer/:username/delete - (POST) - User can delete his own account
 
 - /event - (GET) see all the posted events

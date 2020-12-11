@@ -162,7 +162,6 @@ class App extends React.Component {
             component={SingleEvent}
             user={this.state.user}
           />
-          
         </Switch>
       </div>
     );
