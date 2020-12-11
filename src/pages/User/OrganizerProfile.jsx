@@ -11,11 +11,10 @@ import { Redirect } from "react-router-dom";
 class OrganizerProfile extends React.Component {
   state = {
     profile: {},
-    events: [1, 2, 3],
+    events: [],
   };
 
   componentDidMount = () => {
-    console.log(this.props);
     getOrganizerProfile(this.props.match.params.username).then((resp) => {
       !resp.user
         ? this.props.history.push(`/page-no-found`)
@@ -27,7 +26,6 @@ class OrganizerProfile extends React.Component {
   };
 
   render() {
-    console.log(this.props.match.params.username, this.props.user.username);
     return (
       <div>
         <div className="orgProfile">
@@ -66,7 +64,7 @@ class OrganizerProfile extends React.Component {
                 ) : (
                   <div></div>
                 )}
-                <Link to="/event/_id">
+                <Link to={`/event/${event._id}`}>
                   <button>See Event</button>
                 </Link>
               </div>

@@ -8,10 +8,6 @@ export function getAllEvents() {
   return eventService.get("/").then((res) => res.data);
 }
 
-export function getAllOrganizerEvents() {
-  return eventService.get("/:_id/events").then((res) => res.data);
-}
-
 export function addNewEvent(event) {
   // const accessToken = localStorage.getItem("accessToken")
   return eventService
@@ -43,9 +39,32 @@ export function getSingleEvent(id) {
   });
 }
 
+export function deleteSingleEvent(id) {
+  return eventService
+    .delete(`/delete/${id}/`, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then((response) => {
+      return {
+        status: true,
+        data: response.data,
+      };
+    })
+    .catch((err) => {
+      console.log("INSINDE THE CATCH");
+      console.log(err.response);
+      return {
+        status: false,
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
+}
+
 export function updateSingleEvent(id, info) {
   return eventService
-    .put(`/${id}/edit`, info, {
+    .put(`/edit/_${id}/`, info, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },

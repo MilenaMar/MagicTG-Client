@@ -4,12 +4,19 @@ import {
   updateOrganizerProfile,
 } from "../../services/events";
 import { Link } from "react-router-dom";
-import { getSingleEvent, updateSingleEvent } from "../../services/events";
+import {
+  getSingleEvent,
+  updateSingleEvent,
+  deleteSingleEvent,
+} from "../../services/events";
 
 export default class EditEvent extends React.Component {
   state = {
-    user: this.props.user,
-    event: {},
+    name: "",
+    location: "",
+    date: "",
+    maxPlayers: "",
+    format: "Legacy",
   };
 
   componentDidMount = () => {
@@ -17,72 +24,119 @@ export default class EditEvent extends React.Component {
       if (responseBack.user === null) {
         return this.props.history.push("/page-no-found");
       }
-      this.setState({ event: responseBack });
+
+      this.setState({
+        name: responseBack.name,
+        location: responseBack.location,
+        date: new Date(responseBack.date).toISOString().substring(0, 16),
+        maxPlayers: responseBack.maxPlayers,
+        format: responseBack.format,
+      });
     });
   };
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
+  deleteEvent = (event) => {
+    event.preventDefault();
+    console.log(this.props.match.params._id);
+    deleteSingleEvent(this.props.match.params._id)
+      .then((deletedEvent) => {
+        this.props.history.push(`/user/organizer/${this.props.user.username}`);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  handleInputChange = (event) => {
+    event.preventDefault();
     this.setState({
-      user: {
-        [name]: value,
-      },
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  handleOption = (event) => {
+    event.preventDefault();
+    this.setState({
+      format: event.target.value,
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    updateSingleEvent(this.props.match.params.username, this.state.user).then(
-      (res) => {
-        if (!res.status) {
-          //  deal with the error
-          return;
-        }
-
-        this.setState({ user: res.data.userUpdated });
-        this.props.history.push(
-          `/user/organizer/${res.data.userUpdated.username}`
-        );
+    updateSingleEvent(this.props.match.params._id, this.state).then((res) => {
+      if (!res.status) {
+        //  deal with the error
+        return;
       }
-    );
+      this.setState({ user: res.data.userUpdated });
+      this.props.history.push(`/user/organizer/${this.props.user.username}`);
+    });
   };
 
   render() {
     return (
       <div>
-        <div>Im a edit page {this.props.user.username}</div>
+        <div>Im a edit event page {this.props.user.username}</div>
         {
           <Link to={`/user/organizer/${this.props.user.username}`}>
             GO BACK
           </Link>
         }
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.user.username}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={this.state.user.email}
-            onChange={this.handleChange}
-          />
+        <form onSubmit={this.handleSubmit} className="auth__form">
           <label htmlFor="location">Location</label>
           <input
-            type="location"
             id="location"
+            type="text"
             name="location"
-            value={this.state.user.location}
-            onChange={this.handleChange}
+            value={this.state.location}
+            onChange={this.handleInputChange}
+            required
           />
-          <button type="submit">SUBMIT</button>
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleInputChange}
+            required
+          />
+          <label htmlFor="date">date</label>
+          <input
+            id="date"
+            type="datetime-local"
+            name="date"
+            value={this.state.date}
+            onChange={this.handleInputChange}
+            required
+          />
+          <label htmlFor="maxPlayers">Max Players</label>
+          <input
+            id="maxPlayers"
+            type="Number"
+            name="maxPlayers"
+            value={this.state.maxPlayers}
+            onChange={this.handleInputChange}
+            required
+          />
+          <label htmlFor="format">Format</label>
+          <select
+            onChange={this.handleOption}
+            value={this.state.format}
+            name="fomat"
+            id="format"
+            form="carform"
+            required
+          >
+            <option value="Legacy">Legacy</option>
+            <option value="Modern">Modern</option>
+            <option value="Pioner">Pioner</option>
+            <option value="Standard">Standard</option>
+          </select>
+
+          <button className="submit" type="submit">
+            Submit
+          </button>
         </form>
+        <button onClick={this.deleteEvent}>DELETE EVENT</button>
       </div>
     );
   }
