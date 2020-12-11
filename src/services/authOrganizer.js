@@ -27,38 +27,17 @@ const authService = axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_URL}/auth`,
 });
 
-export function login(credentials) {
+export function loginOrg(credentials) {
   return authService
-    .post("/login", credentials)
+    .post("/login/organizer", credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
 
-export function getLoggedIn() {
+export function signupOrg(credentials) {
   return authService
-    .get(`session`, {
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
+    .post("/signup/organizer", credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
 
-export function signup(credentials) {
-  return authService
-    .post("/signup", credentials)
-    .then(successStatus)
-    .catch(internalServerError);
-}
-
-export function logout() {
-  return authService
-    .delete("/logout", {
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-    .then(successStatus)
-    .catch(internalServerError);
-}

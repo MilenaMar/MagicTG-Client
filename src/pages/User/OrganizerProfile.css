@@ -1,0 +1,17 @@
+.eventsTable {
+  width: 400px;
+
+  margin: 0px auto;
+}
+
+.tableHeader {
+  width: 100%;
+
+  background-color: green;
+}
+
+.eventRow {
+  width: 100%;
+  height: 50px;
+  background-color: red;
+}

@@ -6,11 +6,18 @@ import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
+import PlayerProfile from "./pages/User/PlayerProfile";
+import EditPlayer from "./pages/User/EditPlayer";
+import OrganizerProfile from "./pages/User/OrganizerProfile";
 import NormalRoute from "./routing-components/NormalRoute";
+import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
-import { getLoggedIn, logout } from "./services/auth";
+import { getLoggedIn, logout } from "./services/authPlayer";
 import * as PATHS from "./utils/paths";
-import Profile from "./pages/Profile/Profile";
+import EditProfileOrganizer from "./pages/User/EditProfileOrganizer";
+import NewEvent from "./pages/Event/NewEvent";
+import EditEvent from "./pages/Event/EditEvent.jsx";
+import SingleEvent from "./pages/Event/SingleEvent";
 
 class App extends React.Component {
   state = {
@@ -20,12 +27,15 @@ class App extends React.Component {
 
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
+    const userType = localStorage.getItem("userType");
+
     if (!accessToken) {
       return this.setState({
         isLoading: false,
       });
     }
-    getLoggedIn(accessToken).then((res) => {
+
+    getLoggedIn(userType).then((res) => {
       if (!res.status) {
         console.log("RES IN CASE OF FAILURE", res);
         // deal with failed backend call
@@ -33,8 +43,9 @@ class App extends React.Component {
           isLoading: false,
         });
       }
+      console.log("res:", res);
       this.setState({
-        user: res.data.user,
+        user: userType === "Organizer" ? res.data.organizer : res.data.player,
         isLoading: false,
       });
     });
@@ -58,8 +69,8 @@ class App extends React.Component {
             // deal with error here
             console.log("SOMETHING HAPPENED", res);
           }
-
           localStorage.removeItem("accessToken");
+          localStorage.removeItem("userType");
           return this.setState({
             isLoading: false,
             user: null,
@@ -83,8 +94,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
-        <Profile />
         <Switch>
+          <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute
             exact
@@ -102,6 +113,53 @@ class App extends React.Component {
             exact
             path={PATHS.PROTECTEDPAGE}
             component={ProtectedPage}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROFILEPAGEPLAYER}
+            component={PlayerProfile}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.EDITPAGEPLAYER}
+            component={EditPlayer}
+            user={this.state.user}
+            authenticate={this.authenticate}
+          />
+          <ProtectedRoute
+            exact
+            path="/user/organizer/:username"
+            component={OrganizerProfile}
+            user={this.state.user}
+          />
+
+          <ProtectedRoute
+            exact
+            path={"/user/organizer/:username/edit-profile"}
+            component={EditProfileOrganizer}
+            user={this.state.user}
+            authenticate={this.authenticate}
+          />
+
+          <ProtectedRoute
+            exact
+            path={"/event/new"}
+            component={NewEvent}
+            user={this.state.user}
+          />
+
+          <ProtectedRoute
+            exact
+            path={"/event/edit/:_id/"}
+            component={EditEvent}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.EVENTPAGE}
+            component={SingleEvent}
             user={this.state.user}
           />
         </Switch>

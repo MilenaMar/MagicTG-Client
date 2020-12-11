@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = props => {
+  let link;
+  if (props.user && props.user.userType === "Organizer"){
+    link = `/user/organizer/${props.user.username}`
+  } else if (props.user && props.user.userType === "Player"){
+   link = `/user/player/${props.user.username}`
+  }
   return (
     <nav>
       <Link to="/" className="nav__projectName">
@@ -12,8 +18,8 @@ const Navbar = props => {
       <div className="nav__authLinks">
         {props.user ? (
           <>
-            <Link to="/protected" className="authLink">
-              Protected Page
+            <Link to={link} className="authLink">
+              My profile
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout

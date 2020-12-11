@@ -1,14 +1,26 @@
 import React, { Component } from "react";
-import { signup } from "../services/auth";
+import { signup } from "../services/authPlayer";
+import { signupOrg } from "../services/authOrganizer";
 import "./auth.css";
+import { Redirect } from "react-router-dom";
+import * as PATHS from "../utils/paths";
 
 export default class Signup extends Component {
   state = {
     username: "",
+    email: "",
     password: "",
+    usertype: "Player",
     error: null,
   };
 
+  handleClick = (event) => {
+    if (this.state.usertype === "Player") {
+      this.setState({ usertype: "Organizer" });
+    } else {
+      this.setState({ usertype: "Player" });
+    }
+  };
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -16,29 +28,69 @@ export default class Signup extends Component {
     });
   };
 
-  handleFormSubmission = (event) => {
+  // If the state of Usertype is Player the form will be sumit here
+  handleFormSubmissionasPlayer = (event) => {
     event.preventDefault();
     const credentials = {
       username: this.state.username,
+      email: this.state.email,
       password: this.state.password,
     };
     signup(credentials).then((res) => {
-      // successful signup
       console.log(res);
       if (!res.status) {
-        // unsuccessful signup
+        //set state for the error message from the server
+        this.setState({ error: res.errorMessage });
+        return <Redirect to={PATHS.SIGNUPPAGE} />;
       }
       localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("userType", res.data.user.userType);
       this.props.authenticate(res.data.user);
-      this.props.history.push("/");
+      this.props.history.push(`/user/player/${res.data.user.username}`);
+    });
+  };
+
+  // If the state of Usertype is Organizer the form will be sumit here
+
+  handleFormSubmissionasOrganizer = (event) => {
+    event.preventDefault();
+    const credentials = {
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
+    };
+    signupOrg(credentials).then((res) => {
+      console.log(res);
+      if (!res.status) {
+        //set state for the error message from the server
+        this.setState({ error: res.errorMessage });
+        return <Redirect to={PATHS.SIGNUPPAGE} />;
+      }
+      localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("userType", res.data.user.userType);
+
+      this.props.authenticate(res.data.user);
+      this.props.history.push(`/user/organizer/${res.data.user.username}`);
     });
   };
 
   render() {
+    // Render the button for the Player or the Organizer with the OnSubmit Handler
+    let button;
+    let handler;
+    if (this.state.usertype === "Player") {
+      button = <button onClick={this.handleClick}>Sign as Organizer</button>;
+      handler = this.handleFormSubmissionasPlayer;
+    } else {
+      button = <button onClick={this.handleClick}>Sign as Player</button>;
+      handler = this.handleFormSubmissionasOrganizer;
+    }
     return (
       <div>
         <h1>Sign Up</h1>
-        <form onSubmit={this.handleFormSubmission} className="auth__form">
+        {button}
+        <h2>You are signig in as {this.state.usertype}</h2>
+        <form onSubmit={handler} className="auth__form">
           <label htmlFor="input-username">Username</label>
           <input
             id="input-username"
@@ -49,7 +101,16 @@ export default class Signup extends Component {
             onChange={this.handleInputChange}
             required
           />
-
+          <label htmlFor="input-email">Email</label>
+          <input
+            id="input-email"
+            type="email"
+            name="email"
+            placeholder="Text"
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            required
+          />
           <label htmlFor="input-password">Password</label>
           <input
             id="input-password"
@@ -64,8 +125,7 @@ export default class Signup extends Component {
 
           {this.state.error && (
             <div className="error-block">
-              <p>There was an error submiting the form:</p>
-              <p>{this.state.error.message}</p>
+              <p>{this.state.error}</p>
             </div>
           )}
 

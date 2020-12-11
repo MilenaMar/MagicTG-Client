@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# MagicTG Events
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Web Application that allows the organizers of Magic the Gathering events to post tournaments and players can
+confirm their participation on these events.
 
-In the project directory, you can run:
+## User Stories
 
-### `yarn start`
+User = Organizer || Player
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Signup: As a guest I can sign up in the platform I can choose to be and Organizer or a Player
+- Login: As a registered user I can login to the platform
+- My Profile: As a registered user I see and edit my own Profile.
+- Create New Event: As an Organizer I can create an event
+- Edit event: As an Organizer I can edit my own event
+  - As an Organizer I can set the winners of the event
+- List of Events: As a user I can see the events
+- Attend Event: As a player I can decide to attend and event.
+- Logout: As a user I can logout from the platform
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+\*\* Nice to have
 
-### `yarn test`
+- Event Map:
+- Event Notifications
+- Event Chat: As a User I can participate in the event chat
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Backlog
 
-### `yarn build`
+## Client
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Routes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- /- Homepage
+- /auth/signup - Signup form User can be a Player or Organizer
+- /auth/login - Login form
+- /user/:username - User profile can be Organizer or Player
+- /user/:username/edit-profile - User can edit his own profile
+- /user/event/new - Organizer can create an event
+- /user/event/:\_id/edit - Organizer can edit his own event
+- /events - see all the posted events
+- /events/:\_id - see the details of the selected event
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Pages
 
-### `yarn eject`
+- Home Page (public)
+- Sign in Page (public)
+- Log in Page (public)
+- My Profile Page (all logged Users)
+- My Settings (current user)
+- Delete my account (current user)
+- New Event (all logged organizer)
+- Edit Event (current organizer)
+- Events (public)
+- Event Detail Page (all logged users)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Components
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Pages
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Homepage.jsx
+- Signup.jsx
+- Login.jsx
+- Profile.jsx -> Conditional render Organizer/Player
+- EditProfile.jsx
+- CreateEvent.jsx
+- EditEvent.jsx
+- AllEvents.jsx
+  Components
+- Navbar.jsx
+- EventRow.jsx
+- SubmitButton.jsx
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Server
 
-## Learn More
+### Models
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Player model
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+- username - String //required & unique
+- email - String // required & unique
+- password - String // required
+- avatar: String
+- location: Strin
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Organizer model
 
-### Analyzing the Bundle Size
+```
+- username - String //required & unique
+- email - String // required & unique
+- password - String // required
+- avatar: String
+- location: String
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Event model
 
-### Making a Progressive Web App
+```
+- location - String // required
+- date: Date      // required
+- completed: Boolean
+- maxPlayers: Number // requeried
+- organizer:  Object.Id
+- players:  Array of Objects -Player Schema
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### API Endpoints/Backend Routes
 
-### Advanced Configuration
+- / - Homepage - (GET)
+- /auth/signup/organizer - (POST) - Signup form User can be a Player or Organizer
+- /auth/login/organizer - (POST) - Login form
+- /auth/signup/player - (POST) - Signup form User can be a Player or Organizer
+- /auth/login/player - (POST) - Login form
+- /user/organizer/:username - (GET) - User profile can be Organizer or Player
+- /user/:username/edit-profile - (PUT) - User can edit his own profile
+- /user/:username/delete - (POST) - User can delete his own account
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- /user/organizer/:username/edit-profile - (POST) - User can delete his own account
+- /user/organizer/:username/delete - (POST) - User can delete his own account
+
+- /event - (GET) see all the posted events
+- /event/new - (POST) - Organizer can create a new event
+- /event/:\_id - (GET) - see the details of the selected event
+- /event/:\_id/edit - (PUT) - Organizer can edit his own event
+- /event/:\_id/attend - (POST) - Player attends an event
+- /event/:\_id/unattend - (POST) - Player unattends an event
+
+## Links
+
+### Trello
+
+### Git
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Slides
