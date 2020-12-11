@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Event from "../../components/Event/EventR";
 import { Link } from "react-router-dom";
 import './PlayerProfile.css'
 import { getUserProfile } from "../../services/userPlayer";
@@ -20,8 +21,8 @@ export default class PlayerProfile extends Component {
 
     getAllEvents().then((responseBack) => {
        console.log("responseBack:", responseBack);
-     const mygames= responseBack.filter((e) => e.players._id === this.state.user._id)
-      this.setState({ events: mygames });
+    // const mygames= responseBack.filter((e) => e.players._id === this.state.user._id)
+      this.setState({ events: responseBack });
     });
 
   };
@@ -31,6 +32,8 @@ export default class PlayerProfile extends Component {
       <div className="PlayerProfile">
         <div>Im a player {this.props.user.username}</div>
         <img src={this.props.user.avatar} alt="avatar"></img>
+        <h2> Events I'm attending</h2>
+        {this.state.events.map((e) => <Event event={e} key={e._id} />)}
         {this.props.user.username ===
           this.props.computedMatch.params.username && (
           <Link to={`/user/player/${this.props.user.username}/edit`}>

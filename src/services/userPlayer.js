@@ -38,6 +38,25 @@ export function updateUserProfile(username, info) {
     });
 }
 
+export function updateUserPassword(username,newPassword) {
+  return playerService
+    .post(`/player/${username}/update-password`,newPassword)
+    .then((response) => {
+      return {
+        status: true,
+        data: response.data,
+      };
+    })
+    .catch((err) => {
+      console.log("INSINDE THE CATCH");
+      console.log(err.response);
+      return {
+        status: false,
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
+}
+
 export function deleteUser(username) {
     // const accessToken = localStorage.getItem("accessToken")
     return playerService

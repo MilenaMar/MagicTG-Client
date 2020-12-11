@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getUserProfile, updateUserProfile } from "../../services/userPlayer";
+import { getUserProfile, updateUserProfile,updateUserPassword } from "../../services/userPlayer";
 
 export default class EditProfile extends Component {
   state = {
     user: this.props.user,
+    newPassword:"",
   };
 
   componentDidMount = () => {
@@ -24,6 +25,7 @@ export default class EditProfile extends Component {
       user: {
         [name]: value,
       },
+      [name]:value,
     });
   };
 
@@ -37,9 +39,23 @@ export default class EditProfile extends Component {
         //  deal with the error
         return;
       }
+      this.props.authenticate=(res.data.userUpdated);
+      this.setState({ user: res.data.userUpdated });
       this.props.history.push(`/user/player/${res.data.userUpdated.username}`);
     });
   };
+
+  handleSubmitPassword = (event) => {
+    event.preventDefault();
+    const credentials= this.state.newPassword
+    updateUserPassword( this.props.user.username,credentials).then((res) => {
+        if (!res.status) {
+          //  deal with the error
+          return;
+        }
+        this.props.history.push(`/user/player/${res.data.userUpdated.username}`);
+      });
+  }
 
   render() {
     return (
@@ -69,6 +85,17 @@ export default class EditProfile extends Component {
             id="location"
             name="location"
             value={this.state.user.location}
+            onChange={this.handleChange}
+          />
+          <button type="submit">SUBMIT</button>
+        </form>
+
+        <form onSubmit={this.handleSubmitPassword}>
+          <label htmlFor="password"> NeW Password</label>
+          <input
+            type="password"
+            id="newPassword"
+            name="newPassword"
             onChange={this.handleChange}
           />
           <button type="submit">SUBMIT</button>

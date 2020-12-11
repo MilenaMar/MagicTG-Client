@@ -124,6 +124,7 @@ class App extends React.Component {
             path={PATHS.EDITPAGEPLAYER}
             component={EditPlayer}
             user={this.state.user}
+            authenticate={this.authenticate}
           />
           <ProtectedRoute
             exact
