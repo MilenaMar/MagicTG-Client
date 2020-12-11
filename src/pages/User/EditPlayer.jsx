@@ -9,14 +9,12 @@ export default class EditProfile extends Component {
   };
 
   componentDidMount = () => {
-    getUserProfile(this.props.computedMatch.params.username).then(
-      (responseBack) => {
-        if (responseBack.user === null) {
-          return this.props.history.push("/page-no-found");
-        }
-        this.setState({ user: responseBack });
+    getUserProfile(this.props.match.params.username).then((responseBack) => {
+      if (responseBack.user === null) {
+        return this.props.history.push("/page-no-found");
       }
-    );
+      this.setState({ user: responseBack });
+    });
   };
 
   handleChange = (event) => {
@@ -31,18 +29,17 @@ export default class EditProfile extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    updateUserProfile(
-      this.props.computedMatch.params.username,
-      this.state.user
-    ).then((res) => {
-      if (!res.status) {
-        //  deal with the error
-        return;
+    updateUserProfile(this.props.match.params.username, this.state.user).then(
+      (res) => {
+        if (!res.status) {
+          //  deal with the error
+          return;
+        }
+        this.props.history.push(
+          `/user/player/${res.data.userUpdated.username}`
+        );
       }
-      this.props.authenticate=(res.data.userUpdated);
-      this.setState({ user: res.data.userUpdated });
-      this.props.history.push(`/user/player/${res.data.userUpdated.username}`);
-    });
+    );
   };
 
   handleSubmitPassword = (event) => {

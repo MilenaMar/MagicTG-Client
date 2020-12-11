@@ -16,6 +16,7 @@ import { getLoggedIn, logout } from "./services/authPlayer";
 import * as PATHS from "./utils/paths";
 import EditProfileOrganizer from "./pages/User/EditProfileOrganizer";
 import NewEvent from "./pages/Event/NewEvent";
+import EditEvent from "./pages/Event/EditEvent.jsx";
 
 class App extends React.Component {
   state = {
@@ -138,12 +139,20 @@ class App extends React.Component {
             path={"/user/organizer/:username/edit-profile"}
             component={EditProfileOrganizer}
             user={this.state.user}
+            authenticate={this.authenticate}
           />
 
           <ProtectedRoute
             exact
             path={"/event/new"}
             component={NewEvent}
+            user={this.state.user}
+          />
+
+          <ProtectedRoute
+            exact
+            path={"/event/:_id/edit"}
+            component={EditEvent}
             user={this.state.user}
           />
         </Switch>
