@@ -6,7 +6,6 @@ import {
   getAllOrganizerEvents,
 } from "../../services/userOrganizer";
 
-import { Redirect } from "react-router-dom";
 
 class OrganizerProfile extends React.Component {
   state = {
