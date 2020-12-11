@@ -8,6 +8,10 @@ export function getAllEvents() {
   return eventService.get("/").then((res) => res.data);
 }
 
+export function getAllOrganizerEvents() {
+  return eventService.get("/:_id/events").then((res) => res.data);
+}
+
 export function addNewEvent(event) {
   // const accessToken = localStorage.getItem("accessToken")
   return eventService

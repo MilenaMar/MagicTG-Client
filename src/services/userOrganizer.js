@@ -14,6 +14,12 @@ export function getOrganizerProfile(username) {
   });
 }
 
+export function getAllOrganizerEvents(username) {
+  return playerService
+    .get(`/organizer/${username}/events`)
+    .then((res) => res.data);
+}
+
 export function updateOrganizerProfile(username, info) {
   return playerService
     .put(`/organizer/${username}/edit-profile`, info, {
