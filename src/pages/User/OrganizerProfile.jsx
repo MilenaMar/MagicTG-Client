@@ -11,22 +11,22 @@ class OrganizerProfile extends React.Component {
   };
 
   componentDidMount = () => {
-    getOrganizerProfile(this.props.computedMatch.params.username).then(
-      (resp) => {
-        !resp.user
-          ? this.props.history.push(`/`)
-          : this.setState({ profile: resp.user });
-      }
-    );
+    console.log(this.props);
+    getOrganizerProfile(this.props.match.params.username).then((resp) => {
+      console.log(resp);
+      !resp.user
+        ? this.props.history.push(`/page-no-found`)
+        : this.setState({ profile: resp.user });
+    });
   };
 
   render() {
+    console.log(this.props.match.params.username, this.props.user.username);
     return (
       <div>
         <div className="orgProfile">
           <div>{this.state.profile.username}</div>
-          {this.props.computedMatch.params.username ===
-          this.props.user.username ? (
+          {this.props.match.params.username === this.props.user.username ? (
             <Link
               to={`/user/organizer/${this.props.user.username}/edit-profile`}
             >
@@ -39,8 +39,7 @@ class OrganizerProfile extends React.Component {
           <div className="eventsTable">
             <div className="tableHeader">
               <h2>My Events</h2>
-              {this.props.computedMatch.params.username ===
-              this.props.user.username ? (
+              {this.props.match.params.username === this.props.user.username ? (
                 <Link to={`/event/new`}>
                   <button>New Event</button>
                 </Link>
@@ -51,7 +50,7 @@ class OrganizerProfile extends React.Component {
             {this.state.events.map((event, i) => (
               <div key={i} className="eventRow">
                 {event}{" "}
-                {this.props.computedMatch.params.username ===
+                {this.props.match.params.username ===
                 this.props.user.username ? (
                   <Link to="/event/:_id/edit">
                     <button>Edit Event</button>

@@ -22,6 +22,7 @@ export function updateOrganizerProfile(username, info) {
       },
     })
     .then((response) => {
+      console.log(response);
       return {
         status: true,
         data: response.data,

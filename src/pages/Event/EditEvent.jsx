@@ -2,23 +2,23 @@ import React from "react";
 import {
   getOrganizerProfile,
   updateOrganizerProfile,
-} from "../../services/userOrganizer";
+} from "../../services/events";
 import { Link } from "react-router-dom";
+import { getSingleEvent, updateSingleEvent } from "../../services/events";
 
-export default class EditProfileOrganizer extends React.Component {
+export default class EditEvent extends React.Component {
   state = {
     user: this.props.user,
+    event: {},
   };
 
   componentDidMount = () => {
-    getOrganizerProfile(this.props.match.params.username).then(
-      (responseBack) => {
-        if (responseBack.user === null) {
-          return this.props.history.push("/page-no-found");
-        }
-        this.setState({ user: responseBack });
+    getSingleEvent(this.props.match.params._id).then((responseBack) => {
+      if (responseBack.user === null) {
+        return this.props.history.push("/page-no-found");
       }
-    );
+      this.setState({ event: responseBack });
+    });
   };
 
   handleChange = (event) => {
@@ -32,21 +32,19 @@ export default class EditProfileOrganizer extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    updateOrganizerProfile(
-      this.props.match.params.username,
-      this.state.user
-    ).then((res) => {
-      if (!res.status) {
-        //  deal with the error
-        return;
-      }
+    updateSingleEvent(this.props.match.params.username, this.state.user).then(
+      (res) => {
+        if (!res.status) {
+          //  deal with the error
+          return;
+        }
 
-      this.props.authenticate(res.data.userUpdated);
-      this.setState({ user: res.data.userUpdated });
-      this.props.history.push(
-        `/user/organizer/${res.data.userUpdated.username}`
-      );
-    });
+        this.setState({ user: res.data.userUpdated });
+        this.props.history.push(
+          `/user/organizer/${res.data.userUpdated.username}`
+        );
+      }
+    );
   };
 
   render() {
