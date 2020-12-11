@@ -66,9 +66,9 @@ export function updateSingleEvent(id, info) {
     });
 }
 
-export function attendEvent(id, info) {
+export function attendEvent(id,userid) {
   return eventService
-    .put(`/${id}/attend`, info, {
+    .put(`/${id}/attend`,userid, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },
