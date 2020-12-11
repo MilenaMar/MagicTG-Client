@@ -17,6 +17,7 @@ import * as PATHS from "./utils/paths";
 import EditProfileOrganizer from "./pages/User/EditProfileOrganizer";
 import NewEvent from "./pages/Event/NewEvent";
 import EditEvent from "./pages/Event/EditEvent.jsx";
+import SingleEvent from "./pages/Event/SingleEvent";
 
 class App extends React.Component {
   state = {
@@ -155,6 +156,13 @@ class App extends React.Component {
             component={EditEvent}
             user={this.state.user}
           />
+          <ProtectedRoute
+            exact
+            path={PATHS.EVENTPAGE}
+            component={SingleEvent}
+            user={this.state.user}
+          />
+          
         </Switch>
       </div>
     );

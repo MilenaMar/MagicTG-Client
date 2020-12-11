@@ -35,6 +35,8 @@ export default class EditProfile extends Component {
           //  deal with the error
           return;
         }
+        this.props.authenticate(res.data.userUpdated);
+        this.setState({ user: res.data.userUpdated });
         this.props.history.push(
           `/user/player/${res.data.userUpdated.username}`
         );
