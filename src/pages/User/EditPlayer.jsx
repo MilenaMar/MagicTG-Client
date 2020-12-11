@@ -13,7 +13,6 @@ export default class EditProfile extends Component {
         if (responseBack.user === null) {
           return this.props.history.push("/page-no-found");
         }
-        console.log("responseBack:", responseBack);
         this.setState({ user: responseBack });
       }
     );
@@ -38,14 +37,11 @@ export default class EditProfile extends Component {
         //  deal with the error
         return;
       }
-      console.log("res:", res);
       this.props.history.push(`/user/player/${res.data.userUpdated.username}`);
-      //  was successful
     });
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div>Im a edit page {this.props.user.username}</div>
