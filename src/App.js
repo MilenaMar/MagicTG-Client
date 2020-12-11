@@ -151,7 +151,7 @@ class App extends React.Component {
 
           <ProtectedRoute
             exact
-            path={"/event/:_id/edit"}
+            path={"/event/edit/:_id/"}
             component={EditEvent}
             user={this.state.user}
           />
