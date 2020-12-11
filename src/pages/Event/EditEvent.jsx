@@ -1,8 +1,4 @@
 import React from "react";
-import {
-  getOrganizerProfile,
-  updateOrganizerProfile,
-} from "../../services/events";
 import { Link } from "react-router-dom";
 import {
   getSingleEvent,
