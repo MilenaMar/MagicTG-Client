@@ -87,7 +87,7 @@ export function updateSingleEvent(id, info) {
 
 export function attendEvent(id,userid) {
   return eventService
-    .put(`/${id}/attend`,userid, {
+    .post(`/${id}/attend`,userid, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },
@@ -107,3 +107,33 @@ export function attendEvent(id,userid) {
       };
     });
 }
+
+export function unattendEvent(id,userid) {
+  return eventService
+    .post(`/${id}/unattend`,userid, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then((response) => {
+      return {
+        status: true,
+        data: response.data,
+      };
+    })
+    .catch((err) => {
+      console.log("INSINDE THE CATCH");
+      console.log(err.response);
+      return {
+        status: false,
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
+}
+
+export function getAllPlayerEvents(username) {
+  return eventService
+    .get(`/${username}/events`)
+    .then((res) => res.data);
+}
+

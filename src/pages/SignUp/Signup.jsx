@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { signup } from "../services/authPlayer";
-import { signupOrg } from "../services/authOrganizer";
-import "./auth.css";
+import { signup } from "../../services/authPlayer";
+import { signupOrg } from "../../services/authOrganizer";
+import "./SignUp.css";
 import { Redirect } from "react-router-dom";
-import * as PATHS from "../utils/paths";
+import * as PATHS from "../../utils/paths";
 
 export default class Signup extends Component {
   state = {
@@ -86,7 +86,7 @@ export default class Signup extends Component {
       handler = this.handleFormSubmissionasOrganizer;
     }
     return (
-      <div>
+      <div className="Signup">
         <h1>Sign Up</h1>
         {button}
         <h2>You are signig in as {this.state.usertype}</h2>

@@ -3,7 +3,7 @@ import Event from "../../components/Event/EventR";
 import { Link } from "react-router-dom";
 import "./PlayerProfile.css";
 import { getUserProfile } from "../../services/userPlayer";
-import { getAllEvents } from "../../services/events";
+import { getAllPlayerEvents } from "../../services/events";
 import LoadingComponent from "../../components/Loading";
 
 export default class PlayerProfile extends Component {
@@ -20,13 +20,9 @@ export default class PlayerProfile extends Component {
       }
       this.setState({ user: responseBack,loading:false });
     });
-
-    getAllEvents().then((responseBack) => {
-      console.log("responseBack:", responseBack);
-     // const mygames = responseBack.filter(
-     //   (e) => e.players._id === this.state.user._id
-     // );
-      this.setState({ events: responseBack});
+      
+    getAllPlayerEvents(this.props.user.username).then((events) => {
+      this.setState({ events: events });
     });
   };
 

@@ -1,0 +1,41 @@
+.attending {
+  background: #ff6000;
+  border: 2px solid white;
+  color: white;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-left: 0;
+  outline: none;
+  padding: 10px 20px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.attending:hover {
+  background-color: #CF3A28;
+  cursor: pointer;
+}
+
+
+
+
+
+.attend {
+    background: #0D1A1A;
+    border: 2px solid white;
+    color: white;
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-left: 0;
+    outline: none;
+    padding: 10px 20px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .attend:hover {
+    background-color: #ff6000;
+    cursor: pointer;
+  }

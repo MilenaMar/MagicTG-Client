@@ -11,11 +11,11 @@ const Navbar = props => {
   }
   return (
     <nav>
-      <Link to="/" className="nav__projectName">
-        Project Name
-      </Link>
-
+    <Link to="/" className="nav__projectName">
+    <img src={process.env.PUBLIC_URL + '/images/mtglogo.png'} alt="Logo" className="logo" /> 
+     </Link>
       <div className="nav__authLinks">
+      <Link to="/" className="nav__projectName"> Home Page </Link>
         {props.user ? (
           <>
             <Link to={link} className="authLink">
@@ -27,10 +27,10 @@ const Navbar = props => {
           </>
         ) : (
           <>
-            <Link to="/auth/signup" className="authLink">
+            <Link to="/auth/signup" className="nav-logoutbtn">
               Signup
             </Link>
-            <Link to="/auth/login" className="authLink">
+            <Link to="/auth/login" className="nav-logoutbtn">
               Log In
             </Link>
           </>

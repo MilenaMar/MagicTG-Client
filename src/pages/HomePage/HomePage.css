@@ -1,0 +1,17 @@
+.Home {
+  padding: 150px;
+  margin: 0;
+ box-sizing: border-box;
+  background-image: url("https://res.cloudinary.com/dwttlckdr/image/upload/v1607774656/anotherweb_witaab.jpg");
+  background-position:center;
+  position:absolute;
+  width:100%;
+  top:0;
+  z-index:-1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  height: 100vh;
+}
+
+

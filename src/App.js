@@ -2,10 +2,10 @@ import React from "react";
 import { Switch } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
-import Signup from "./pages/Signup";
+import Signup from "./pages/SignUp/Signup";
 import PlayerProfile from "./pages/User/PlayerProfile";
 import EditPlayer from "./pages/User/EditPlayer";
 import OrganizerProfile from "./pages/User/OrganizerProfile";
@@ -13,6 +13,7 @@ import NormalRoute from "./routing-components/NormalRoute";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/authPlayer";
+import { getAllEvents} from "./services/events";
 import * as PATHS from "./utils/paths";
 import EditProfileOrganizer from "./pages/User/EditProfileOrganizer";
 import NewEvent from "./pages/Event/NewEvent";
@@ -23,6 +24,7 @@ class App extends React.Component {
   state = {
     user: null,
     isLoading: true,
+    events:null,
   };
 
   componentDidMount = () => {
@@ -34,6 +36,11 @@ class App extends React.Component {
         isLoading: false,
       });
     }
+
+    getAllEvents().then((responseBack) => {
+      console.log("responseBack:", responseBack);
+      this.setState({ events: responseBack});
+    });
 
     getLoggedIn(userType).then((res) => {
       if (!res.status) {
@@ -86,17 +93,24 @@ class App extends React.Component {
     });
   };
 
+  update = (event) => {
+    this.setState({
+      event,
+    });
+  };
+
   render() {
     if (this.state.isLoading) {
       return <LoadingComponent />;
     }
 
     return (
+      <div>
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
+        <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
-          <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute
             exact
             path={PATHS.SIGNUPPAGE}
@@ -163,6 +177,7 @@ class App extends React.Component {
             user={this.state.user}
           />
         </Switch>
+      </div>
       </div>
     );
   }

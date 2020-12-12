@@ -3,7 +3,7 @@ import { login } from "../services/authPlayer";
 import { loginOrg } from "../services/authOrganizer";
 import { Redirect } from "react-router-dom";
 import * as PATHS from "../utils/paths";
-import "./Signup";
+import "./SignUp/Signup";
 
 export default class Login extends Component {
   state = {
