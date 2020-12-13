@@ -22,7 +22,6 @@ class NewEvent extends React.Component {
     };
 
     addNewEvent(newEvent).then((resp) => {
-      console.log(resp);
       this.setState({ eventAdded: true });
       this.props.history.push(`/user/organizer/${this.props.user.username}`);
     });

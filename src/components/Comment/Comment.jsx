@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
+import { addComment } from '../../services/comments';
 
-
-
-export default class AddComment extends Component {
+export default class Comment extends Component {
   state = {
           comment: '',
       }
     
-    
-    onChangeContent(e){
+    onChange(e){
         this.setState({
             comment : e.target.value
         });
@@ -19,7 +17,15 @@ export default class AddComment extends Component {
        const comment = {
            comment : this.state.comment,
        }
-     
+       addComment(comment,this.props.user.username,this.props.eventId).then(
+        (res) => {
+          if (!res.status) {
+            //  deal with the error
+            return;
+          }
+          console.log(res)
+        }
+       )
       }
      
     render() {
@@ -33,14 +39,9 @@ export default class AddComment extends Component {
                   className="form-control"
                   value={this.state.comment}
                   placeholder="Type a comment"
-                  onChange={this.onChangeContent}>
+                  onChange={this.onChange}>
               </textarea>
-            </div>
-            <div className="form-group" align="right">
-              <input type="submit"
-                  className="btn btn-dark"
-                  value="Post Comment">
-              </input>
+              <button>Submit Comment</button>
             </div>
         </form>
         </div>
