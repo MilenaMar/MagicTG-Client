@@ -177,7 +177,7 @@ class App extends React.Component {
             user={this.state.user}
           />
         </Switch>
-      </div>
+        </div>
       </div>
     );
   }

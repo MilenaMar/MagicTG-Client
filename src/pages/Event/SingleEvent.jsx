@@ -15,33 +15,38 @@ export default class SingleEvent extends Component {
     attending: false,
     state: false,
   };
-  componentDidMount = () => {
-    let going;
+
+  async loadEvent () {
     getSingleEvent(this.props.match.params.id).then((res) => {
-      this.setState({
-        eventInfo: res,
-        loading: false,
-      });
-      if(res.players.length !== 0){
-      going = res.players.find((e)=> e._id === this.props.user_id)
-      }
-      if (going){
-       return this.setState({attending:true})
-      } 
-        return this.setState({attending:false})
+    let going;
+    this.setState({
+      eventInfo: res,
+      loading: false,
     });
+    if(res.players.length !== 0){
+    going = res.players.find((e)=> e._id === this.props.user_id)
+    }
+    if (going){
+     return this.setState({attending:true})
+    } 
+      return this.setState({attending:false})
+  });
+}
+
+  componentDidMount = () => {
+    this.loadEvent();
   };
 
 
  hanleAttend = () => {
      attendEvent(this.props.match.params.id, this.props.user._id).then(
-       (res) => {this.componentDidMount() }
+       (res) => {this.loadEvent() }
      );
       }
 
 handleUnattended = () => {
   unattendEvent(this.props.match.params.id, this.props.user._id).then(
-    (res) => { this.componentDidMount() }
+    (res) => { this.loadEvent() }
   );
 }
 
