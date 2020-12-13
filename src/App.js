@@ -19,6 +19,7 @@ import EditProfileOrganizer from "./pages/User/EditProfileOrganizer";
 import NewEvent from "./pages/Event/NewEvent";
 import EditEvent from "./pages/Event/EditEvent.jsx";
 import SingleEvent from "./pages/Event/SingleEvent";
+import AllEvents from "./pages/Event/AllEvents";
 
 class App extends React.Component {
   state = {
@@ -148,7 +149,6 @@ class App extends React.Component {
             component={OrganizerProfile}
             user={this.state.user}
           />
-
           <ProtectedRoute
             exact
             path={"/user/organizer/:username/edit-profile"}
@@ -156,14 +156,12 @@ class App extends React.Component {
             user={this.state.user}
             authenticate={this.authenticate}
           />
-
           <ProtectedRoute
             exact
             path={"/event/new"}
             component={NewEvent}
             user={this.state.user}
           />
-
           <ProtectedRoute
             exact
             path={"/event/edit/:_id/"}
@@ -176,6 +174,8 @@ class App extends React.Component {
             component={SingleEvent}
             user={this.state.user}
           />
+          <NormalRoute exact path={"/events"} component={AllEvents} />
+          AllEvents
         </Switch>
         </div>
       </div>

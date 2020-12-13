@@ -1,0 +1,10 @@
+.eventCard {
+  height: 100px;
+  background-color: cornsilk;
+  margin: 10px;
+  width: 200px;
+}
+
+.cardRow {
+  display: flex;
+}

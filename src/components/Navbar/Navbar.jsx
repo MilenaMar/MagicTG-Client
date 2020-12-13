@@ -1,21 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
-const Navbar = props => {
+const Navbar = (props) => {
   let link;
-  if (props.user && props.user.userType === "Organizer"){
-    link = `/user/organizer/${props.user.username}`
-  } else if (props.user && props.user.userType === "Player"){
-   link = `/user/player/${props.user.username}`
+  if (props.user && props.user.userType === "Organizer") {
+    link = `/user/organizer/${props.user.username}`;
+  } else if (props.user && props.user.userType === "Player") {
+    link = `/user/player/${props.user.username}`;
   }
   return (
     <nav>
+<<<<<<< HEAD
     <Link to="/" className="nav__projectName">
     <img src={process.env.PUBLIC_URL + '/images/mtglogo.png'} alt="Logo" className="logo" /> 
      </Link>
       <div className="nav__authLinks">
       <Link to="/" className="nav__projectName"> Home Page </Link>
+=======
+      <Link to="/" className="nav__projectName">
+        Magic The Real Gathering
+      </Link>
+
+      <div className="nav__authLinks">
+        <Link to={"/events"} className="authLink">
+          Events
+        </Link>
+>>>>>>> xikz
         {props.user ? (
           <>
             <Link to={link} className="authLink">
