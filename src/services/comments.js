@@ -5,13 +5,9 @@ const commentService = axios.create({
 });
 
 
-export function addComment(comment, username, eventId) {
+export function addComment(comment) {
     return commentService
-      .post(`/addcomment`,comment,username, eventId, {
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      })
+      .post(`/addcomment`,comment)
       .then((response) => {
         return {
           status: true,
@@ -29,13 +25,8 @@ export function addComment(comment, username, eventId) {
   }
   
 
-export function getComments(id, info) {
-  return commentService
-    .get(`/allcomments`,id, info, {
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
+export function getComments(id) {
+  return commentService.get("/allcomments",id)
     .then((response) => {
       return {
         status: true,

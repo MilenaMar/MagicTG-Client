@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AttendButton from "../../components/attendButton/Attend.jsx";
 import Comment from "../../components/Comment/Comment.jsx";
+import ListComments from "../../components/ListComments/ListComments.jsx";
 import LoadingComponent from "../../components/Loading/index.jsx";
 import {
   getSingleEvent,
@@ -83,7 +84,8 @@ handleUnattended = () => {
           <AttendButton  handler={handler} event={message}/>
           </div>
         )}
-        <Comment user={this.props.user} eventid={this.props.match.params.id}/>
+        <ListComments eventid={this.props.match.params.id} />
+        <Comment user={this.props.user} eventInfo={this.state.eventInfo} />
       </div>
     );
   }

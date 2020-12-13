@@ -11,22 +11,11 @@ const Navbar = (props) => {
   }
   return (
     <nav>
-<<<<<<< HEAD
     <Link to="/" className="nav__projectName">
     <img src={process.env.PUBLIC_URL + '/images/mtglogo.png'} alt="Logo" className="logo" /> 
      </Link>
       <div className="nav__authLinks">
       <Link to="/" className="nav__projectName"> Home Page </Link>
-=======
-      <Link to="/" className="nav__projectName">
-        Magic The Real Gathering
-      </Link>
-
-      <div className="nav__authLinks">
-        <Link to={"/events"} className="authLink">
-          Events
-        </Link>
->>>>>>> xikz
         {props.user ? (
           <>
             <Link to={link} className="authLink">
