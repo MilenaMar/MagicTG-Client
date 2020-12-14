@@ -4,6 +4,7 @@ import { loginOrg } from "../services/authOrganizer";
 import { Redirect } from "react-router-dom";
 import * as PATHS from "../utils/paths";
 import "./SignUp/Signup";
+import "./auth.css"
 
 export default class Login extends Component {
   state = {
@@ -85,7 +86,7 @@ export default class Login extends Component {
     }
 
     return (
-      <div>
+      <div className="Auth">
         <h1>Log In</h1>
         {button}
         <form onSubmit={handler} className="signup__form">

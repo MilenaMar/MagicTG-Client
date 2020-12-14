@@ -6,6 +6,9 @@ form.auth__form {
   max-width: 300px;
   margin: 0 auto;
 }
+.Auth{
+  padding-top:350px;
+  }
 
 button.button__submit {
   max-width: 100px;

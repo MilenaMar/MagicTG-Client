@@ -1,17 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom"
 import "./Navbar.css";
+import {CgProfile} from  'react-icons/cg';
 
-const Navbar = (props) => {
+class  Navbar extends Component {
+  changeTitle = () => {
+    if(window.location.pathname === "/"){
+        return 'Homenav';
+    }
+    return 'generalNav'
+  }
+ render () {
+   let title = this.changeTitle();
   let link;
-  if (props.user && props.user.userType === "Organizer") {
-    link = `/user/organizer/${props.user.username}`;
-  } else if (props.user && props.user.userType === "Player") {
-    link = `/user/player/${props.user.username}`;
+  if (this.props.user && this.props.user.userType === "Organizer") {
+    link = `/user/organizer/${this.props.user.username}`;
+  } else if (this.props.user && this.props.user.userType === "Player") {
+    link = `/user/player/${this.props.user.username}`;
   }
   return (
-    <nav>
-      <Link to="/" className="nav__projectName">
+    <div>
+    <nav className={title}>
+      <Link to="/" className='nav__projectName'>
         <img
           src={process.env.PUBLIC_URL + "/images/mtglogo.png"}
           alt="Logo"
@@ -20,18 +31,18 @@ const Navbar = (props) => {
       </Link>
 
       <div className="nav__authLinks">
+      <Link to="/" className="authLink">
+          Home Page
+        </Link>
         <Link to="/events" className="authLink">
           Events
         </Link>
-        <Link to="/" className="authLink">
-          Home Page
-        </Link>
-        {props.user ? (
+        {this.props.user ? (
           <>
             <Link to={link} className="authLink">
-              My profile
+              <CgProfile size={30} />
             </Link>
-            <button className="nav-logoutbtn" onClick={props.handleLogout}>
+            <button className="nav-logoutbtn" onClick={this.props.handleLogout}>
               Logout
             </button>
           </>
@@ -47,7 +58,10 @@ const Navbar = (props) => {
         )}
       </div>
     </nav>
-  );
+    </div>
+  )
+}
+
 };
 
-export default Navbar;
+export default withRouter(Navbar);

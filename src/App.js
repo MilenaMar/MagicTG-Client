@@ -51,7 +51,6 @@ class App extends React.Component {
           isLoading: false,
         });
       }
-      console.log("res:", res);
       this.setState({
         user: userType === "Organizer" ? res.data.organizer : res.data.player,
         isLoading: false,
@@ -106,7 +105,6 @@ class App extends React.Component {
     }
 
     return (
-      <div>
         <div className="App">
           <Navbar handleLogout={this.handleLogout} user={this.state.user} />
           <Switch>
@@ -178,7 +176,6 @@ class App extends React.Component {
             AllEvents
           </Switch>
         </div>
-      </div>
     );
   }
 }

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { signup } from "../../services/authPlayer";
 import { signupOrg } from "../../services/authOrganizer";
-import "./SignUp.css";
+//import "./SignUp.css";
 import { Redirect } from "react-router-dom";
 import * as PATHS from "../../utils/paths";
-
+import "./SignUp.css"
 export default class Signup extends Component {
   state = {
     username: "",

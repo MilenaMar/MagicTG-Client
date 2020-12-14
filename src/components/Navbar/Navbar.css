@@ -1,4 +1,4 @@
-nav {
+.Homenav {
   display: flex;
   flex-direction: column;
   padding: 1em 3em;
@@ -54,4 +54,31 @@ nav {
 .nav-logoutbtn:hover {
   transform: scale(1.1);
   background-color: #b23326;
+}
+
+.generalNav {
+  display: flex;
+  padding: 1em 1em;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  box-shadow: 0px 3px 12px white;
+  position: relative;
+  z-index: 10;
+}
+
+.generalNav .logo {
+  width: 200px;
+}
+
+.generalNav .authLink {
+  color: #e4f9ff;
+  padding-top: 3em;
+  text-decoration: none;
+}
+
+.Profile-icon {
+  width: 30px;
 }

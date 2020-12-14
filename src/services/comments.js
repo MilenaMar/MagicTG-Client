@@ -26,7 +26,7 @@ export function addComment(comment) {
   
 
 export function getComments(id) {
-  return commentService.get("/allcomments",id)
+  return commentService.get(`/allcomments/${id}`)
     .then((response) => {
       return {
         status: true,

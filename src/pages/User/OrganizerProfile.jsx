@@ -1,6 +1,8 @@
 import React from "react";
 import "./OrganizerProfile.css";
 import { Link } from "react-router-dom";
+import {FaUserEdit} from 'react-icons/fa'
+import {BiNews} from 'react-icons/bi'
 import {
   getOrganizerProfile,
   getAllOrganizerEvents,
@@ -26,30 +28,35 @@ class OrganizerProfile extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="orgProfile">
-          <div>{this.state.profile.username}</div>
-          {this.props.match.params.username === this.props.user.username ? (
+      <div className = "OrganizerProfile">
+      <div className="buttons-org">
+      {this.props.match.params.username === this.props.user.username ? (
             <Link
               to={`/user/organizer/${this.props.user.username}/edit-profile`}
             >
-              <button>Edit profile</button>
+              <button> <FaUserEdit size={30} /> Edit profile </button>
             </Link>
           ) : (
             <div></div>
           )}
-
-          <div className="eventsTable">
-            <div className="tableHeader">
-              <h2>My Events</h2>
+      </div>
+<div className="OrgCard">
+<div className="organizer-information"> 
+<img src={this.state.profile.avatar}/>
+<div><h1>{this.state.profile.username}</h1>
+<p>{this.state.profile.userType}</p>
+</div>
+</div>
+<div className="events">
+<h2>My Events</h2>
               {this.props.match.params.username === this.props.user.username ? (
                 <Link to={`/event/new`}>
-                  <button>New Event</button>
+                  <button> <BiNews size={30} />New Event </button>
                 </Link>
               ) : (
                 <div></div>
               )}
-            </div>
+</div>
             {this.state.events.map((event, i) => (
               <div key={i} className="eventRow">
                 {event.name}
@@ -69,8 +76,7 @@ class OrganizerProfile extends React.Component {
               </div>
             ))}
           </div>
-        </div>
-      </div>
+          </div>
     );
   }
 }
