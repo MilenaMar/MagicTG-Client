@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getUserProfile, updateUserProfile,updateUserPassword } from "../../services/userPlayer";
+import {
+  getUserProfile,
+  updateUserProfile,
+  updateUserPassword,
+} from "../../services/userPlayer";
+import "./EditPlayer.css";
 
 export default class EditProfile extends Component {
   state = {
     user: this.props.user,
-    newPassword:"",
+    newPassword: "",
   };
 
   componentDidMount = () => {
@@ -23,7 +28,7 @@ export default class EditProfile extends Component {
       user: {
         [name]: value,
       },
-      [name]:value,
+      [name]: value,
     });
   };
 
@@ -46,22 +51,20 @@ export default class EditProfile extends Component {
 
   handleSubmitPassword = (event) => {
     event.preventDefault();
-    const credentials= this.state.newPassword
-    updateUserPassword( this.props.user.username,credentials).then((res) => {
-        if (!res.status) {
-          //  deal with the error
-          return;
-        }
-        this.props.history.push(`/user/player/${res.data.userUpdated.username}`);
-      });
-  }
+    const credentials = this.state.newPassword;
+    updateUserPassword(this.props.user.username, credentials).then((res) => {
+      if (!res.status) {
+        //  deal with the error
+        return;
+      }
+      this.props.history.push(`/user/player/${res.data.userUpdated.username}`);
+    });
+  };
 
   render() {
     return (
       <div>
-        <div>Im a edit page {this.props.user.username}</div>
-        {<Link to={`/user/player/${this.props.user.username}`}>GO BACK</Link>}
-        <form onSubmit={this.handleSubmit}>
+        <form className="profileForm" onSubmit={this.handleSubmit}>
           <label htmlFor="username">Username</label>
           <input
             type="text"
