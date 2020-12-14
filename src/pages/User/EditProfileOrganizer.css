@@ -1,14 +1,106 @@
-padding: 270px;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: #0C0F11;
-    background-position:center;
-    position:absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    z-index:-1;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-    height: 100vh;
+.editOrganizerPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.profileForm {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+.titleForm {
+  position: relative;
+  top: -50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 90%;
+  height: 120px;
+  background: linear-gradient(60deg, #ff6000, #e95900);
+  margin: auto;
+  border-radius: 3px;
+  box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.bodyForm {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inputDiv {
+  width: 100%;
+}
+
+.inputDiv > input {
+  color: #666;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid grey;
+  transform: scaleX(1);
+}
+
+.inputDiv input:focus {
+  border-bottom: solid 3px #019fb6;
+}
+
+.inputDiv > label {
+  margin: 3px;
+  display: inline-block;
+  font-size: 0.7em;
+}
+
+.submitButton {
+  background-color: white;
+  border: none;
+  color: orangered;
+  outline: none;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+}
+
+/* .profileForm > input:focus {
+  border-bottom: solid 3px #019fb6;
+  transform: scaleX(1);
+} */
+
+.profileForm > span:hover:after {
+  transform: scaleX(1);
+}
+
+h1 {
+  color: #666;
+  display: inline-block;
+  margin: 0;
+  text-transform: uppercase;
+}
+h1:after {
+  display: block;
+  content: "";
+  border-bottom: solid 10px #019fb6;
+  transform: scaleX(0);
+  transition: transform 1000ms ease-in-out;
+}
+h1:hover:after {
+  transform: scaleX(1);
+}

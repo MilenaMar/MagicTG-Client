@@ -4,6 +4,8 @@ import {
   updateOrganizerProfile,
 } from "../../services/userOrganizer";
 import { Link } from "react-router-dom";
+import "./EditProfileOrganizer.css";
+import TextField from "@material-ui/core/TextField";
 
 export default class EditProfileOrganizer extends React.Component {
   state = {
@@ -50,40 +52,50 @@ export default class EditProfileOrganizer extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
-      <div>
-        <div>Im a edit page {this.props.user.username}</div>
-        {
-          <Link to={`/user/organizer/${this.props.user.username}`}>
-            GO BACK
-          </Link>
-        }
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.user.username}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={this.state.user.email}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="location">Location</label>
-          <input
-            type="location"
-            id="location"
-            name="location"
-            value={this.state.user.location}
-            onChange={this.handleChange}
-          />
-          <button type="submit">SUBMIT</button>
+      <div className="editOrganizerPage">
+        <form className="profileForm" onSubmit={this.handleSubmit}>
+          <div className="titleForm">Edit Profile</div>
+          <div className="bodyForm">
+            <label htmlFor="username">Username</label>
+            {/* <TextField
+              id="filled-multiline-flexible"
+              label="Multiline"
+              multiline
+              rowsMax={4}
+              // value={value}
+              // onChange={handleChange}
+              variant="filled"
+            /> */}
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={this.state.user.username}
+              onChange={this.handleChange}
+            />
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={this.state.user.email}
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="location">Location</label>
+            <input
+              type="location"
+              id="location"
+              name="location"
+              value={this.state.user.location}
+              onChange={this.handleChange}
+            />
+            <button className="submitButton" type="submit">
+              SUBMIT
+            </button>
+          </div>
         </form>
       </div>
     );
