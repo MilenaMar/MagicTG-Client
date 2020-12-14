@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import PropTypes from "prop-types";
-import Axios from "axios";
 import { getAllEvents } from "../../services/events";
 import "./Allevents.css";
 import { Link } from "react-router-dom";
@@ -9,7 +7,6 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./Allevents.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import turf from "turf";
 
 const AllEvents = (props) => {
@@ -155,7 +152,7 @@ const AllEvents = (props) => {
                 offsetTop={0}
               >
                 <div className="eventImage">
-                  <img src="../../../images/eventicon.png" />
+                  <img src="../../../images/eventicon.png" alt="event icon" />
                 </div>
               </Marker>
             ))}

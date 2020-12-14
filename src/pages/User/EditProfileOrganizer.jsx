@@ -3,9 +3,8 @@ import {
   getOrganizerProfile,
   updateOrganizerProfile,
 } from "../../services/userOrganizer";
-import { Link } from "react-router-dom";
 import "./EditProfileOrganizer.css";
-import TextField from "@material-ui/core/TextField";
+//import TextField from "@material-ui/core/TextField";
 
 export default class EditProfileOrganizer extends React.Component {
   state = {

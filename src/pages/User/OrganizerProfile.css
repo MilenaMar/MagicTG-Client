@@ -32,16 +32,18 @@
   margin-left: 1em;
   margin-bottom: 5px;
   background-color: #ff6000;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   color: #e3f2ff;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
   top: 0;
 }
 .OrgCard{
   margin: 0 auto;
   margin-top: 20px;
   padding-top:20px;
+  padding-bottom: 30px;
   margin: 100px;
   background-color: #040405;
   border-radius: 10px;
@@ -51,6 +53,10 @@
 .organizer-information{
   display: flex;
   justify-content: flex-start;
+
+}
+.organizer-information h1 {
+color:#e3f2ff;
 }
 
 .organizer-information img {
@@ -61,6 +67,7 @@
   display: flex;
   justify-content: space-between;
   margin: 30px;
+  padding-bottom: 20px;
 }
 .events h2 {
 padding-left: 80px;
@@ -72,6 +79,7 @@ align-items: flex-end;
 background-color: #ff6000;
 color: #e3f2ff;
 border: none;
+transition: all 0.1s ease-in-out;
 border-radius: 2px;
 }
 .eventscard {
@@ -80,6 +88,7 @@ border-radius: 2px;
   padding-top:20px;
   background-color: #0C0F11;
   border-radius: 10px;
+  transition: all 0.1s ease-in-out;
   font-weight: 500;
 }
 
@@ -90,17 +99,48 @@ border-radius: 2px;
 .eventRow {
   display: flex;
   margin: 1em 2em;
-  padding: 1em 1em;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
   background-color: #0C0F11;
   border-radius: 2px;
   font-weight: 500;
-  box-shadow: 0px 3px 12px white;
+  box-shadow: 3px 2px 3px #e3f2ff;
 }
-
+.eventRow button{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #e3f2ff;
+  color: #ff6000;
+  font-weight:bold;
+  border: none;
+  border-radius: 2px;
+}
 .edit-event a {
   justify-content: space-between;
   margin: 10px;
 }
+
+.buttons-org button:hover {
+  transform: scale(1.1);
+  background-color: #e3f2ff;
+  color:#ff6000;
+  align-items: center;
+}
+
+.events button:hover{
+  transform: scale(1.1);
+  background-color: #e3f2ff;
+  color:#ff6000;
+  align-items: center;
+  cursor: pointer;
+}
+
+.eventRow button:hover{
+  transform: scale(1.1);
+  background-color: #ff6000;
+  color:#e3f2ff;
+  cursor: pointer;
+}
+

@@ -14,7 +14,9 @@ class OrganizerProfile extends React.Component {
     profile: {},
     events: [],
   };
+  
 
+ 
   componentDidMount = () => {
     getOrganizerProfile(this.props.match.params.username).then((resp) => {
       !resp.user
@@ -42,7 +44,7 @@ class OrganizerProfile extends React.Component {
       </div>
 <div className="OrgCard">
 <div className="organizer-information"> 
-<img src={this.state.profile.avatar}/>
+<img src={this.state.profile.avatar} alt="avatar"/>
 <div><h1>{this.state.profile.username}</h1>
 <p>{this.state.profile.userType}</p>
 </div>
@@ -60,9 +62,11 @@ class OrganizerProfile extends React.Component {
             {this.state.events.map((event, i) => (
               <div key={i} className="eventRow">
               <div>
-                <p>{event.name}</p>
-                <p>{event.location}</p>
-                <p>{event.date}</p>
+                <h3>{event.name}</h3>
+                <p>Location: {event.location}</p>
+                <p>Format: {event.format}</p>
+                <p>Date: {event.date.toString().slice(0,10)}</p>
+                <p>Time: {event.date.toString().slice(11,16)}</p>
                 </div>
                 <div className="edit-event">
                 {this.props.match.params.username ===

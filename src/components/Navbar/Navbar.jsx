@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom"
 import "./Navbar.css";
-import {CgProfile} from  'react-icons/cg';
+import {FaRegUser} from  'react-icons/fa';
+
 
 class  Navbar extends Component {
   changeTitle = () => {
@@ -40,7 +41,7 @@ class  Navbar extends Component {
         {this.props.user ? (
           <>
             <Link to={link} className="authLink">
-              <CgProfile size={30} />
+            <FaRegUser size={30} />
             </Link>
             <button className="nav-logoutbtn" onClick={this.props.handleLogout}>
               Logout

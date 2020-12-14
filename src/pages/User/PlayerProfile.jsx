@@ -5,6 +5,7 @@ import "./PlayerProfile.css";
 import { getUserProfile } from "../../services/userPlayer";
 import { getAllPlayerEvents } from "../../services/events";
 import LoadingComponent from "../../components/Loading";
+import {FaUserEdit} from 'react-icons/fa'
 
 export default class PlayerProfile extends Component {
   state = {
@@ -32,15 +33,22 @@ export default class PlayerProfile extends Component {
     }
     return (
       <div className="PlayerProfile">
-        <div>Im a player {this.props.user.username}</div>
-        <img src={this.props.user.avatar} alt="avatar"></img>
-        <h1>This is a list of events I am attending</h1>
-        {this.state.events.map((e)=> <Event event={e} key={e._id}/>)}
-        {this.props.user.username === this.props.match.params.username && (
+      <div className="buttons-player">
+      {this.props.user.username === this.props.match.params.username && (
           <Link to={`/user/player/${this.props.user.username}/edit`}>
-            Edit My Profile
+           <button> <FaUserEdit size={30} /> Edit My Profile</button> 
           </Link>
         )}
+      </div>
+      <div className="playerCard">
+      <div className="player-information">
+      <img src={this.props.user.avatar} alt="avatar"></img>
+      <h2> {this.props.user.username}</h2>
+      <p> {this.props.user.userType}</p>
+      </div>
+        <h1>This is a list of events I am attending</h1>
+        {this.state.events.map((e)=> <Event event={e} key={e._id}/>)}
+        </div>
       </div>
     );
   }

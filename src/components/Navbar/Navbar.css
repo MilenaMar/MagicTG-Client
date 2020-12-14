@@ -1,7 +1,7 @@
 .Homenav {
   display: flex;
   flex-direction: column;
-  padding: 1em 3em;
+  padding: 0em 3em;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -39,16 +39,14 @@
   font-family: inherit;
   text-decoration: none;
   font-weight: inherit;
-  padding: 0.5em 1em;
-  margin-left: 1em;
+  padding: 0.5em;
+  text-align: center;
   background-color: #ff6000;
   border: none;
   border-radius: 2px;
   cursor: pointer;
   color: #e3f2ff;
   transition: all 0.2s ease-in-out;
-  position: sticky;
-  top: 0;
 }
 
 .nav-logoutbtn:hover {

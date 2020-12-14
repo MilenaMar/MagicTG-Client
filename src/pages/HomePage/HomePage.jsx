@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import "./HomePage.css";
 import "../../App.css"
-import ListComments from '../../components/ListComments/ListComments';
 
 export default class HomePage extends Component {
   render (){
