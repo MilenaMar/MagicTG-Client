@@ -59,9 +59,12 @@ class OrganizerProfile extends React.Component {
 </div>
             {this.state.events.map((event, i) => (
               <div key={i} className="eventRow">
-                {event.name}
-                {event.location}
-                {event.date}
+              <div>
+                <p>{event.name}</p>
+                <p>{event.location}</p>
+                <p>{event.date}</p>
+                </div>
+                <div className="edit-event">
                 {this.props.match.params.username ===
                 this.props.user.username ? (
                   <Link to={`/event/edit/${event._id}`}>
@@ -74,7 +77,8 @@ class OrganizerProfile extends React.Component {
                   <button>See Event</button>
                 </Link>
               </div>
-            ))}
+              </div>
+            ))} 
           </div>
           </div>
     );
