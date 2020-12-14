@@ -1,10 +1,11 @@
 nav {
   display: flex;
+  flex-direction: column;
   padding: 1em 3em;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background-color:  rgba(1, 0, 0, 0.7);  
+  background-color: rgba(0, 0, 0, 0.7);
   font-weight: 600;
 }
 
@@ -14,6 +15,7 @@ nav {
 }
 .logo {
   width: 350px;
+  margin: 10px;
 }
 .authLink {
   color: #e4f9ff;
@@ -22,6 +24,9 @@ nav {
   transition: color 0.2s ease-in-out;
 }
 
+.nav__authLinks {
+  padding: 20px;
+}
 .authLink + .authLink {
   padding: 3em;
 }
@@ -47,7 +52,6 @@ nav {
 }
 
 .nav-logoutbtn:hover {
-  transform: scale(1.05);
-  background-color: #B23326;
+  transform: scale(1.1);
+  background-color: #b23326;
 }
-

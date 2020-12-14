@@ -5,9 +5,11 @@ import {
   updateSingleEvent,
   deleteSingleEvent,
 } from "../../services/events";
+import MapboxAutocomplete from "react-mapbox-autocomplete";
 
 export default class EditEvent extends React.Component {
   state = {
+    id: "",
     name: "",
     location: "",
     date: "",
@@ -17,7 +19,8 @@ export default class EditEvent extends React.Component {
 
   componentDidMount = () => {
     getSingleEvent(this.props.match.params._id).then((responseBack) => {
-      if (responseBack.user === null) {
+      console.log(responseBack);
+      if (responseBack === null) {
         return this.props.history.push("/page-no-found");
       }
 
@@ -27,6 +30,8 @@ export default class EditEvent extends React.Component {
         date: new Date(responseBack.date).toISOString().substring(0, 16),
         maxPlayers: responseBack.maxPlayers,
         format: responseBack.format,
+        lat: responseBack.lat,
+        long: responseBack.long,
       });
     });
   };
@@ -62,12 +67,17 @@ export default class EditEvent extends React.Component {
         //  deal with the error
         return;
       }
-      this.setState({ user: res.data.userUpdated });
+
       this.props.history.push(`/user/organizer/${this.props.user.username}`);
     });
   };
 
+  _suggestionSelect = (result, lat, lng, text) => {
+    this.setState({ location: result, lat: lat, long: lng });
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div>
         <div>Im a edit event page {this.props.user.username}</div>
@@ -78,8 +88,19 @@ export default class EditEvent extends React.Component {
         }
         <form onSubmit={this.handleSubmit} className="auth__form">
           <label htmlFor="location">Location</label>
+          {this.state.location && (
+            <MapboxAutocomplete
+              publicKey="pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
+              inputClass="form-control search"
+              onSuggestionSelect={this._suggestionSelect}
+              country=""
+              resetSearch={false}
+              query={this.state.location}
+            />
+          )}
           <input
             id="location"
+            style={{ display: "none" }}
             type="text"
             name="location"
             value={this.state.location}
