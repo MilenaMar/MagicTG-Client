@@ -4,7 +4,16 @@ import { signupOrg } from "../../services/authOrganizer";
 //import "./SignUp.css";
 import { Redirect } from "react-router-dom";
 import * as PATHS from "../../utils/paths";
-import "./SignUp.css"
+import "./SignUp.css";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import { AccountCircle, Email, LockOpen } from "@material-ui/icons";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import IconButton from "@material-ui/core/IconButton";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+
 export default class Signup extends Component {
   state = {
     username: "",
@@ -12,6 +21,7 @@ export default class Signup extends Component {
     password: "",
     usertype: "Player",
     error: null,
+    showPassword: false,
   };
 
   handleClick = (event) => {
@@ -74,53 +84,127 @@ export default class Signup extends Component {
     });
   };
 
+  handleClickShowPassword = () => {
+    this.setState({ showPassword: !this.state.showPassword });
+  };
+
+  handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   render() {
     // Render the button for the Player or the Organizer with the OnSubmit Handler
     let button;
     let handler;
     if (this.state.usertype === "Player") {
-      button = <button onClick={this.handleClick}>Sign as Organizer</button>;
+      button = (
+        <>
+          <div>
+            <img
+              src="../../../images/goblin2.png"
+              style={{ height: "100px" }}
+            />
+          </div>
+          <button className="userControllerButton" onClick={this.handleClick}>
+            Join as an Organizer?
+          </button>
+        </>
+      );
       handler = this.handleFormSubmissionasPlayer;
     } else {
-      button = <button onClick={this.handleClick}>Sign as Player</button>;
+      button = (
+        <>
+          <div>
+            <img
+              src="../../../images/goblin3.png"
+              style={{ height: "100px" }}
+            />
+          </div>
+          <button className="userControllerButton" onClick={this.handleClick}>
+            Join as a Player?
+          </button>
+        </>
+      );
       handler = this.handleFormSubmissionasOrganizer;
     }
     return (
       <div className="Signup">
-        <h1>Sign Up</h1>
-        {button}
-        <h2>You are signig in as {this.state.usertype}</h2>
         <form onSubmit={handler} className="auth__form">
-          <label htmlFor="input-username">Username</label>
-          <input
-            id="input-username"
-            type="text"
+          <h1 style={{ margin: "0px" }}>Sign Up</h1>
+
+          {this.state.usertype === "Player" ? (
+            <h3>... as a Player!</h3>
+          ) : (
+            <h3>... as an Organizer!</h3>
+          )}
+
+          {button}
+
+          <TextField
+            style={{ margin: "10px 0px" }}
+            id="filled-multiline-flexible"
             name="username"
-            placeholder="Text"
+            placeholder="Userame"
+            multiline
+            required
             value={this.state.username}
             onChange={this.handleInputChange}
-            required
+            InputLabelProps={{ shrink: true }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              ),
+            }}
           />
-          <label htmlFor="input-email">Email</label>
-          <input
-            id="input-email"
-            type="email"
+          <TextField
+            style={{ margin: "10px 0px" }}
+            id="filled-multiline-flexible"
             name="email"
-            placeholder="Text"
+            placeholder="Email"
+            multiline
+            required
             value={this.state.email}
             onChange={this.handleInputChange}
-            required
+            InputLabelProps={{ shrink: true }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Email />
+                </InputAdornment>
+              ),
+            }}
           />
-          <label htmlFor="input-password">Password</label>
-          <input
-            id="input-password"
-            type="password"
-            name="password"
+          {/* <InputLabel required shrink htmlFor="standard-adornment-password">
+            Password
+          </InputLabel> */}
+          <Input
+            style={{ margin: "10px 0px" }}
             placeholder="Password"
+            required
+            name="password"
+            label="With normal TextField"
+            id="standard-adornment-password"
+            type={this.state.showPassword ? "text" : "password"}
             value={this.state.password}
             onChange={this.handleInputChange}
-            required
-            minLength="8"
+            startAdornment={
+              <InputAdornment position="start">
+                <LockOpen />
+              </InputAdornment>
+            }
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={this.handleClickShowPassword}
+                  onMouseDown={this.handleMouseDownPassword}
+                >
+                  {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
           />
 
           {this.state.error && (
@@ -129,8 +213,8 @@ export default class Signup extends Component {
             </div>
           )}
 
-          <button className="button__submit" type="submit">
-            Submit
+          <button className="submitButton" type="submit">
+            SIGN UP
           </button>
         </form>
       </div>
