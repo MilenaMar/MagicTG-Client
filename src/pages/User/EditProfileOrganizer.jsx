@@ -4,7 +4,11 @@ import {
   updateOrganizerProfile,
 } from "../../services/userOrganizer";
 import "./EditProfileOrganizer.css";
-//import TextField from "@material-ui/core/TextField";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import { AccountCircle, Email, LocationOn } from "@material-ui/icons";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
 
 export default class EditProfileOrganizer extends React.Component {
   state = {
@@ -55,41 +59,57 @@ export default class EditProfileOrganizer extends React.Component {
     return (
       <div className="editOrganizerPage">
         <form className="profileForm" onSubmit={this.handleSubmit}>
-          <div className="titleForm">Edit Profile</div>
+          <div className="titleForm">
+            <p>Edit Profile</p>
+          </div>
           <div className="bodyForm">
-            <label htmlFor="username">Username</label>
-            {/* <TextField
+            <TextField
               id="filled-multiline-flexible"
-              label="Multiline"
-              multiline
-              rowsMax={4}
-              // value={value}
-              // onChange={handleChange}
-              variant="filled"
-            /> */}
-            <input
-              type="text"
-              id="username"
+              label="Username"
               name="username"
+              multiline
               value={this.state.user.username}
               onChange={this.handleChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
             />
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
+            <TextField
+              id="filled-multiline-flexible"
+              label="email"
               name="email"
+              multiline
               value={this.state.user.email}
               onChange={this.handleChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Email />
+                  </InputAdornment>
+                ),
+              }}
             />
-
-            <label htmlFor="location">Location</label>
-            <input
-              type="location"
-              id="location"
+            <TextField
+              id="filled-multiline-flexible"
+              label="location"
               name="location"
+              multiline
               value={this.state.user.location}
               onChange={this.handleChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LocationOn />
+                  </InputAdornment>
+                ),
+              }}
             />
             <button className="submitButton" type="submit">
               SUBMIT
