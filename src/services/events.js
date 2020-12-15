@@ -64,7 +64,7 @@ export function deleteSingleEvent(id) {
 
 export function updateSingleEvent(id, info) {
   return eventService
-    .put(`/edit/_${id}/`, info, {
+    .put(`/edit/${id}/`, info, {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },

@@ -46,7 +46,6 @@ export default class ListComments extends Component {
   }
 
 
-
   render() {
     let comments= this.state.comments
     if (this.state.loading) {
@@ -54,7 +53,11 @@ export default class ListComments extends Component {
       }
     return (
       <div>
-      {this.state.comments ? comments.map((e)=> <div key={e._id}><h1>{e.body}</h1></div>):<h2>No comments</h2>}
+      {this.state.comments ? comments.map((e)=> <div key={e._id}>
+      <p>{e.author}</p>
+      <p>{e.createdAt.toString().slice(0,10)}</p>
+      <p>{e.body}</p>
+      </div>):<h2>No comments</h2>}
       <div>
         <h3>Add a Comment</h3>
         <form onSubmit={this.handleSubmmit} >

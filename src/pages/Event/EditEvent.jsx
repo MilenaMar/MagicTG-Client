@@ -9,7 +9,6 @@ import MapboxAutocomplete from "react-mapbox-autocomplete";
 
 export default class EditEvent extends React.Component {
   state = {
-    id: "",
     name: "",
     location: "",
     date: "",
