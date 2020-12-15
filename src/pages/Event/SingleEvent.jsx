@@ -8,6 +8,7 @@ import {
   attendEvent,
   unattendEvent,
 } from "../../services/events.js";
+//import {getRandom} from "../../services/cardsService";
 
 export default class SingleEvent extends Component {
   state = {
@@ -15,6 +16,7 @@ export default class SingleEvent extends Component {
     loading: true,
     attending: true,
     state: false,
+    card:null
   };
 
   async loadEvent() {
@@ -36,6 +38,7 @@ export default class SingleEvent extends Component {
   }
 
   componentDidMount = () => {
+   // getRandom().then((response)=> {this.setState({ card: response.data.data })})
     this.loadEvent();
   };
 
@@ -54,6 +57,8 @@ export default class SingleEvent extends Component {
   };
 
   render() {
+  let img;
+    
     const event = this.state.eventInfo;
     let handler;
     let message;
@@ -67,6 +72,9 @@ export default class SingleEvent extends Component {
       handler = this.hanleAttend;
       message = "Attend Event";
     }
+  // if (this.state.card){
+  //  img = <img src={this.state.card.image_uris.normal} alt="random card"/>
+  // }
     return (
       <div>
         <h1>Single Event</h1>

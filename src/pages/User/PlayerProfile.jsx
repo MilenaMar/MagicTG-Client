@@ -31,6 +31,7 @@ export default class PlayerProfile extends Component {
     if (this.state.loading) {
       return <LoadingComponent/>;
     }
+    
     return (
       <div className="PlayerProfile">
       <div className="buttons-player">
@@ -41,15 +42,19 @@ export default class PlayerProfile extends Component {
         )}
       </div>
       <div className="playerCard">
+      <img src="../../../images/lotus.png" alt="lotus" className="lotus"/>
       <div className="player-information">
-      <img src={this.props.user.avatar} alt="avatar"></img>
+      <img src={this.props.user.avatar} alt="avatar" className="player-avatar"></img>
+      <div>
       <h2> {this.props.user.username}</h2>
       <p> {this.props.user.userType}</p>
       </div>
-        <h1>This is a list of events I am attending</h1>
+      </div>
+      
+        <h2>Uncomming events</h2>
         {this.state.events.map((e)=> <Event event={e} key={e._id}/>)}
         </div>
-      </div>
+        </div>
     );
   }
 }

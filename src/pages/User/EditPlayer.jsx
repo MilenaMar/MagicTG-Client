@@ -14,6 +14,7 @@ export default class EditProfile extends Component {
 
   componentDidMount = () => {
     getUserProfile(this.props.match.params.username).then((responseBack) => {
+      console.log(responseBack)
       if (responseBack.user === null) {
         return this.props.history.push("/page-no-found");
       }
@@ -35,6 +36,7 @@ export default class EditProfile extends Component {
     event.preventDefault();
     updateUserProfile(this.props.match.params.username, this.state.user).then(
       (res) => {
+        console.log(res)
         if (!res.status) {
           //  deal with the error
           return;

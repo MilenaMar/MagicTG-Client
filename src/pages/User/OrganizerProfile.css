@@ -1,27 +1,27 @@
-.OrganizerProfile{
-    padding-top: 130px;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: #0C0F11;
-    background-position:center;
-    position:absolute;
-    min-width:100%;
-    min-height:100vh;
-    top:0;
-    z-index:1;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #e4f9ff;
+.OrganizerProfile {
+  padding-top: 130px;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #0c0f11;
+  background-position: center;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100vh;
+  top: 0;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #e4f9ff;
 }
 
 .buttons-org {
   display: flex;
   justify-content: flex-end;
   padding-top: 20px;
-  padding-right: 50px;
+  padding-right: 250px;
 }
 
-.buttons-org button{
+.buttons-org button {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -39,24 +39,22 @@
   transition: all 0.1s ease-in-out;
   top: 0;
 }
-.OrgCard{
+.OrgCard {
   margin: 0 auto;
   margin-top: 20px;
-  padding-top:20px;
+  padding-top: 20px;
   padding-bottom: 30px;
   margin: 100px;
   background-color: #040405;
   border-radius: 10px;
   font-weight: 500;
-
 }
-.organizer-information{
+.organizer-information {
   display: flex;
   justify-content: flex-start;
-
 }
 .organizer-information h1 {
-color:#e3f2ff;
+  color: #e3f2ff;
 }
 
 .organizer-information img {
@@ -69,31 +67,29 @@ color:#e3f2ff;
   margin: 30px;
   padding-bottom: 20px;
 }
-.events h2 {
-padding-left: 80px;
-}
+
 .events button {
-display: flex;
-flex-direction: column;
-align-items: flex-end;
-background-color: #ff6000;
-color: #e3f2ff;
-border: none;
-transition: all 0.1s ease-in-out;
-border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #ff6000;
+  color: #e3f2ff;
+  border: none;
+  transition: all 0.1s ease-in-out;
+  border-radius: 2px;
 }
 .eventscard {
   width: 80%;
-  margin: 20px 0px;
-  padding-top:20px;
-  background-color: #0C0F11;
+  margin: 30px 0px;
+  padding-top: 20px;
+  background-color: #0c0f11;
   border-radius: 10px;
   transition: all 0.1s ease-in-out;
   font-weight: 500;
 }
 
-.edit-event{
-  margin:20px;
+.edit-event {
+  margin: 20px;
 }
 
 .eventRow {
@@ -102,18 +98,18 @@ border-radius: 2px;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: #0C0F11;
+  background-color: #0c0f11;
   border-radius: 2px;
   font-weight: 500;
   box-shadow: 3px 2px 3px #e3f2ff;
 }
-.eventRow button{
+.eventRow button {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   background-color: #e3f2ff;
   color: #ff6000;
-  font-weight:bold;
+  font-weight: bold;
   border: none;
   border-radius: 2px;
 }
@@ -125,22 +121,45 @@ border-radius: 2px;
 .buttons-org button:hover {
   transform: scale(1.1);
   background-color: #e3f2ff;
-  color:#ff6000;
+  color: #ff6000;
   align-items: center;
 }
 
-.events button:hover{
+.events button:hover {
   transform: scale(1.1);
   background-color: #e3f2ff;
-  color:#ff6000;
+  color: #ff6000;
   align-items: center;
   cursor: pointer;
 }
 
-.eventRow button:hover{
+.eventRow button:hover {
   transform: scale(1.1);
   background-color: #ff6000;
-  color:#e3f2ff;
+  color: #e3f2ff;
   cursor: pointer;
 }
 
+.Deck {
+  margin: 1em 1em;
+  padding: 1em;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #0c0f11;
+  border-radius: 2px;
+  font-weight: 500;
+  box-shadow: 3px 2px 3px #e3f2ff;
+}
+
+.OrganizerProfile h2 {
+  text-align: justify;
+  padding-left: 55px;
+}
+
+.Deck img {
+  transition: all 0.2s ease-in-out;
+}
+.Deck img:hover {
+  transform: scale(1.5);
+}

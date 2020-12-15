@@ -7,17 +7,22 @@ import {
   getOrganizerProfile,
   getAllOrganizerEvents,
 } from "../../services/userOrganizer";
+import {getCards} from "../../services/cardsService";
+import LoadingComponent from "../../components/Loading";
 
 
 class OrganizerProfile extends React.Component {
   state = {
     profile: {},
     events: [],
+    cards:[],
+    loading:true,
   };
   
 
  
   componentDidMount = () => {
+    getCards().then((response)=> {this.setState({ cards: response.data , loading:false })})
     getOrganizerProfile(this.props.match.params.username).then((resp) => {
       !resp.user
         ? this.props.history.push(`/page-no-found`)
@@ -26,6 +31,7 @@ class OrganizerProfile extends React.Component {
     getAllOrganizerEvents(this.props.user.username).then((events) => {
       this.setState({ events: events });
     });
+   
   };
 
   render() {
@@ -41,6 +47,13 @@ class OrganizerProfile extends React.Component {
           ) : (
             <div></div>
           )}
+          {this.props.match.params.username === this.props.user.username ? (
+                <Link to={`/event/new`}>
+                  <button> <BiNews size={30} />New Event </button>
+                </Link>
+              ) : (
+                <div></div>
+              )}
       </div>
 <div className="OrgCard">
 <div className="organizer-information"> 
@@ -49,16 +62,13 @@ class OrganizerProfile extends React.Component {
 <p>{this.state.profile.userType}</p>
 </div>
 </div>
-<div className="events">
-<h2>My Events</h2>
-              {this.props.match.params.username === this.props.user.username ? (
-                <Link to={`/event/new`}>
-                  <button> <BiNews size={30} />New Event </button>
-                </Link>
-              ) : (
-                <div></div>
-              )}
+<h2>My Deck</h2>
+  <div className="Deck">
+{this.state.loading ? <LoadingComponent /> :this.state.cards.map((e)=><img src={e.imageUrl} key={e.number} alt={e.name}></img>)}
 </div>
+
+<h2>My Events</h2>           
+
             {this.state.events.map((event, i) => (
               <div key={i} className="eventRow">
               <div>
@@ -83,6 +93,7 @@ class OrganizerProfile extends React.Component {
               </div>
               </div>
             ))} 
+ 
           </div>
           </div>
     );

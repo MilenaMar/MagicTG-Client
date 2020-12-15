@@ -18,7 +18,6 @@ export default class EditEvent extends React.Component {
 
   componentDidMount = () => {
     getSingleEvent(this.props.match.params._id).then((responseBack) => {
-      console.log(responseBack);
       if (responseBack === null) {
         return this.props.history.push("/page-no-found");
       }
@@ -37,7 +36,6 @@ export default class EditEvent extends React.Component {
 
   deleteEvent = (event) => {
     event.preventDefault();
-    console.log(this.props.match.params._id);
     deleteSingleEvent(this.props.match.params._id)
       .then((deletedEvent) => {
         this.props.history.push(`/user/organizer/${this.props.user.username}`);
@@ -76,7 +74,6 @@ export default class EditEvent extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <div>Im a edit event page {this.props.user.username}</div>

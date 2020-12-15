@@ -1,0 +1,38 @@
+.EventR {
+    background-color: #FFFFFF;
+    color:#0C0F11;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+.EventR button {
+    font-family: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+    padding: 0.5em 1em;
+    background-color: #ff6000;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: #e3f2ff;
+    transition: all 0.1s ease-in-out;
+}
+
+.event-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: flex-end;
+    line-height: 1%;
+}
+
+.EventR button:hover {
+    transform: scale(1.1);
+    background-color: #0C0F11;
+    color: white;
+    align-items: center;
+  }
+  
