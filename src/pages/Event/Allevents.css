@@ -1,8 +1,19 @@
 .eventsPage {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  background-color: white;
+  padding-top: 130px;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #0c0f11;
+  background-position: center;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100vh;
+  top: 0;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #e4f9ff;
 }
 
 .cardRow {
@@ -35,11 +46,27 @@ a {
 }
 
 .rightPannel {
-  padding: 30px 10px;
-  height: 70vh;
+  padding: 20px 10px;
+  height: 600px;
   width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 50vh;
+  position: sticky;
+  top: 0;
+}
+
+.rightPannel > h2 {
+  margin: 12px 0px 8px 0px;
 }
 
 .leftPannel > h2 {
   margin: 12px 0px 0px 0px;
+}
+
+.mapbox {
+  width: 90%;
+  height: 100%;
 }
