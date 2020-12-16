@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component,  useEffect, useRef  } from 'react';
 import { getComments } from '../../services/comments';
 import { addComment } from '../../services/comments';
 import LoadingComponent from '../Loading';
+import "./ListComments.css"
+
 
 export default class ListComments extends Component {
+
   state = {
     comments:null,
     loading: true,
@@ -15,8 +18,7 @@ export default class ListComments extends Component {
         this.setState({comments:res.data, loading: false,})
 })
     }
-  
-
+   
    componentDidMount = ()=>{
  this.loadComments()
    }
@@ -42,6 +44,7 @@ export default class ListComments extends Component {
   }
   this.setState({comment:''})
   this.loadComments();
+
 });
   }
 
@@ -52,26 +55,27 @@ export default class ListComments extends Component {
         return <LoadingComponent />;
       }
     return (
-      <div>
-      {this.state.comments ? comments.map((e)=> <div key={e._id}>
-      <p>{e.author}</p>
-      <p>{e.createdAt.toString().slice(0,10)}</p>
+      <div className="chat">
+      <div className="display">
+      {this.state.comments ? comments.map((e)=> <div key={e._id} className="comment">
+      <h4>{e.author}</h4>
       <p>{e.body}</p>
       </div>):<h2>No comments</h2>}
-      <div>
-        <h3>Add a Comment</h3>
-        <form onSubmit={this.handleSubmmit} >
-        <textarea rows="5"
+      </div>
+      <div >
+        <form onSubmit={this.handleSubmmit} className="new-comment" >
+        <textarea rows="5" cols="55"
+        maxLength='180'
           type="text"
           name="comment"
           value={this.state.comment}
           onChange={this.handleChange}
-          placeholder="Type your comment here"
+          placeholder="New comment"
         />
         <button>Submit Comment</button>
         </form>
         </div>
-     </div>
+        </div>
     );
   }
 }

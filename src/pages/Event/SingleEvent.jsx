@@ -8,7 +8,7 @@ import {
   attendEvent,
   unattendEvent,
 } from "../../services/events.js";
-//import {getRandom} from "../../services/cardsService";
+import "./SingleEvent.css"
 
 export default class SingleEvent extends Component {
   state = {
@@ -38,7 +38,7 @@ export default class SingleEvent extends Component {
   }
 
   componentDidMount = () => {
-   // getRandom().then((response)=> {this.setState({ card: response.data.data })})
+
     this.loadEvent();
   };
 
@@ -57,8 +57,6 @@ export default class SingleEvent extends Component {
   };
 
   render() {
-  let img;
-    
     const event = this.state.eventInfo;
     let handler;
     let message;
@@ -72,32 +70,49 @@ export default class SingleEvent extends Component {
       handler = this.hanleAttend;
       message = "Attend Event";
     }
-  // if (this.state.card){
-  //  img = <img src={this.state.card.image_uris.normal} alt="random card"/>
-  // }
     return (
-      <div>
-        <h1>Single Event</h1>
-        <h2>Name of the event: {event.name}</h2>
+      <div className="SingleEvent">
+      <div className="buttons-single event">
+      
+        </div>
+        <div className="body-event">
+        <div className="event-description" style={{backgroundImage: `url(${event.image})`,backgroundPosition: 'top',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat'}}>
+         <div className="event-detailsEvent">
+        <h1>{event.name}</h1>
         <h3>Organizer of the event: {event.organizer[0].username}</h3>
-        <img src={event.organizer[0].avatar} alt="organizer avatar"></img>
+        <h4>Location: {event.location}</h4>
+        <h4>Format: {event.format}</h4>
+        <h4>Date: {event.date.toString().slice(0,10)}</h4>
+        <h4>Time: {event.date.toString().slice(12,16)}</h4>
+        <p>Maximum number of Players: {event.maxPlayers} players</p>
+        <p>Description: see you there guys</p>
         {event.organizer[0]._id === this.props.user._id ? (
-          <Link to={`/event/edit/${event._id}`}> Edit Event </Link>
+          <Link to={`/event/edit/${event._id}`}> <button clasName="editEv">Edit Event</button> </Link>
         ) : (
           <div></div>
         )}
         {this.props.user.userType === "Organizer" ? (
           <div></div>
         ) : (
-          <div>
+          <div className ="atd">
             <AttendButton handler={handler} event={message} />
           </div>
         )}
+        </div>
+        </div>
+         </div>
+         <div>
+        <h2> Players attending this Event </h2>
+        </div>
+         <div className="chat-event">
         <ListComments 
         eventid={this.props.match.params.id} 
         user={this.props.user}
          eventInfo={this.state.eventInfo}
          />
+         </div>
       </div>
     );
   }

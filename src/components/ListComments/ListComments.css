@@ -1,0 +1,70 @@
+.chat {
+  background-color: white;
+  max-width: 400px;
+  color: #0c0f11;
+  margin-right: 200px;
+  border-radius: 5px;
+}
+.display {
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+  }
+.comment {
+  background-color: #ecf0f3;
+  max-width: 350px;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: justify;
+  padding-left: 5px;
+}
+.comment h4 {
+  margin: 0;
+}
+.comment p {
+  margin: 0;
+}
+
+.new-comment {
+  display: flex;
+  align-items: center;
+}
+.new-comment textarea {
+    margin: 10px 5px;
+     text-transform: capitalize;
+     font-family: inherit; 
+}
+
+.new-comment button {
+    font-family: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+    max-height: 100px;
+    margin-right: 10px;
+    background-color: #ff6000;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: #e3f2ff;
+    transition: all 0.1s ease-in-out;
+}
+
+    /* width */
+    .chat ::-webkit-scrollbar {
+    width: 15px;
+    border-radius: 5px;
+  }
+  /* Track */
+  .chat ::-webkit-scrollbar-track {
+    box-shadow: inset 1 0 5px #040405; 
+    border-radius: 10px; 
+  }
+  /* Handle */
+  .chat ::-webkit-scrollbar-thumb {
+    background: #ff6000; 
+    border-radius: 10px;
+  }
+  /* Handle on hover */
+  .chat ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

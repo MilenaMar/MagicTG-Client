@@ -1,0 +1,116 @@
+.SingleEvent {
+    padding-top: 150px;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #0C0F11;
+    background-position:center;
+    position:absolute;
+    min-width:100%;
+    min-height:100vh;
+    top:0;
+    z-index:1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #e4f9ff;
+}
+
+.body-event{
+    margin:0 auto;
+}
+.SingleEvent h1 {
+    color:#e4f9ff;
+}
+.event-description{
+    position: relative;
+    min-width: 900px;
+    min-height: 600px;
+    margin: 0 auto;
+}
+
+.event-detailsEvent{
+    max-width: 900px;
+    min-width: 900px;
+    min-height: 418px;
+    position: absolute;
+    left: 454px;
+    top: 120px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.event-details h1 {
+    display: block;
+    margin: 0 auto;
+    margin-top:50px;
+    justify-content: center;
+    margin-bottom:20px;
+}
+
+.event-details h3{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.event-details h4 {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.event-details p {
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+    min-height: 20px;
+}
+
+.event-details a {
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+    min-height: 20px;
+}
+
+.event-details a button  {
+  background-color: #ff6000;
+  padding: 5px;
+  color: #e3f2ff;
+  margin-top: ;
+  border: none;
+  transition: all 0.1s ease-in-out;
+  border-radius: 2px;
+}
+
+.event-details a button:hover {
+    transform: scale(1.1);
+    background-color: #e3f2ff;
+    color: #ff6000;
+    cursor: pointer;
+    align-items: center;
+  }
+
+  .atd {
+      display: block;
+      margin: 0 auto;
+  }
+
+@media (min-width: 958px) and (max-width: 1357px) {
+  
+    .event-details{
+        max-width: 740px;
+        min-width: 715px;
+        left: 240px;
+    }
+
+
+  }
+
+  @media (min-width: 400px) and (max-width: 957px) {
+ 
+    .event-details{
+        max-width: 480px;
+        min-width: 350px;
+        min-height: 208px;
+        left: 287px;
+         top: 120px;
+    }
+
+  }

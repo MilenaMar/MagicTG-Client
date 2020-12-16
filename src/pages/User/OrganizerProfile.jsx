@@ -62,11 +62,6 @@ class OrganizerProfile extends React.Component {
 <p>{this.state.profile.userType}</p>
 </div>
 </div>
-<h2>My Deck</h2>
-  <div className="Deck">
-{this.state.loading ? <LoadingComponent /> :this.state.cards.map((e)=><img src={e.imageUrl} key={e.number} alt={e.name}></img>)}
-</div>
-
 <h2>My Events</h2>           
 
             {this.state.events.map((event, i) => (
@@ -93,7 +88,10 @@ class OrganizerProfile extends React.Component {
               </div>
               </div>
             ))} 
- 
+            <h2>My Deck</h2>
+  <div className="Deck">
+{this.state.loading ? <LoadingComponent /> :this.state.cards.map((e)=><img src={e.imageUrl} key={e.number} alt={e.name}></img>)}
+</div>
           </div>
           </div>
     );
