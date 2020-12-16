@@ -129,7 +129,7 @@ export default class Signup extends Component {
     }
     return (
       <div className="Signup">
-        <form onSubmit={handler} className="auth__form">
+        <div className="auth__form">
           <h1 style={{ margin: "0px" }}>Sign Up</h1>
 
           {this.state.usertype === "Player" ? (
@@ -139,84 +139,89 @@ export default class Signup extends Component {
           )}
 
           {button}
-
-          <TextField
-            style={{ margin: "10px 0px" }}
-            id="filled-multiline-flexible"
-            name="username"
-            placeholder="Userame"
-            multiline
-            required
-            value={this.state.username}
-            onChange={this.handleInputChange}
-            InputLabelProps={{ shrink: true }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            style={{ margin: "10px 0px" }}
-            id="filled-multiline-flexible"
-            name="email"
-            placeholder="Email"
-            multiline
-            required
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            InputLabelProps={{ shrink: true }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Email />
-                </InputAdornment>
-              ),
-            }}
-          />
-          {/* <InputLabel required shrink htmlFor="standard-adornment-password">
+          <form onSubmit={handler} className="other">
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="filled-multiline-flexible"
+              name="username"
+              placeholder="Userame"
+              multiline
+              required
+              value={this.state.username}
+              onChange={this.handleInputChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="filled-multiline-flexible"
+              name="email"
+              placeholder="Email"
+              multiline
+              required
+              value={this.state.email}
+              onChange={this.handleInputChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Email />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            {/* <InputLabel required shrink htmlFor="standard-adornment-password">
             Password
           </InputLabel> */}
-          <Input
-            style={{ margin: "10px 0px" }}
-            placeholder="Password"
-            required
-            name="password"
-            label="With normal TextField"
-            id="standard-adornment-password"
-            type={this.state.showPassword ? "text" : "password"}
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            startAdornment={
-              <InputAdornment position="start">
-                <LockOpen />
-              </InputAdornment>
-            }
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={this.handleClickShowPassword}
-                  onMouseDown={this.handleMouseDownPassword}
-                >
-                  {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
+            <Input
+              style={{ margin: "10px 0px" }}
+              placeholder="Password"
+              required
+              name="password"
+              label="With normal TextField"
+              id="standard-adornment-password"
+              type={this.state.showPassword ? "text" : "password"}
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              startAdornment={
+                <InputAdornment position="start">
+                  <LockOpen />
+                </InputAdornment>
+              }
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={this.handleClickShowPassword}
+                    onMouseDown={this.handleMouseDownPassword}
+                  >
+                    {this.state.showPassword ? (
+                      <Visibility />
+                    ) : (
+                      <VisibilityOff />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
 
-          {this.state.error && (
-            <div className="error-block">
-              <p>{this.state.error}</p>
-            </div>
-          )}
+            {this.state.error && (
+              <div className="error-block">
+                <p>{this.state.error}</p>
+              </div>
+            )}
 
-          <button className="submitButton" type="submit">
-            SIGN UP
-          </button>
-        </form>
+            <button className="submitButton" type="submit">
+              SIGN UP
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
