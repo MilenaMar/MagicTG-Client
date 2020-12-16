@@ -19,12 +19,13 @@ export default class PlayerProfile extends Component {
       if (responseBack.user === null) {
         return this.props.history.push("/page-no-found");
       }
-      this.setState({ user: responseBack,loading:false });
+      this.setState({ user: responseBack.user,loading:false });
+      getAllPlayerEvents(responseBack.user.username).then((events) => {
+        this.setState({ events: events });
+      });
     });
-      
-    getAllPlayerEvents(this.props.user.username).then((events) => {
-      this.setState({ events: events });
-    });
+    
+    
   };
 
   render() {
@@ -44,10 +45,10 @@ export default class PlayerProfile extends Component {
       <div className="playerCard">
       <img src="../../../images/lotus.png" alt="lotus" className="lotus"/>
       <div className="player-information">
-      <img src={this.props.user.avatar} alt="avatar" className="player-avatar"></img>
+      <img src={this.state.user.avatar} alt="avatar" className="player-avatar"></img>
       <div>
-      <h2> {this.props.user.username}</h2>
-      <p> {this.props.user.userType}</p>
+      <h2> {this.state.user.username}</h2>
+      <p> {this.state.user.userType}</p>
       </div>
       </div>
       

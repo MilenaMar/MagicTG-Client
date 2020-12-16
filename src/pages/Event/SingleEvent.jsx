@@ -71,14 +71,9 @@ export default class SingleEvent extends Component {
       message = "Attend Event";
     }
     return (
-      <div className="SingleEvent">
-      <div className="buttons-single event">
-      
-        </div>
-        <div className="body-event">
-        <div className="event-description" style={{backgroundImage: `url(${event.image})`,backgroundPosition: 'top',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat'}}>
+      <div className="SingleEvent" style={{backgroundImage: `url(${event.image})`,backgroundPosition: 'top',}}>
+
+        <div className="event-description" >
          <div className="event-detailsEvent">
         <h1>{event.name}</h1>
         <h3>Organizer of the event: {event.organizer[0].username}</h3>
@@ -100,11 +95,11 @@ export default class SingleEvent extends Component {
             <AttendButton handler={handler} event={message} />
           </div>
         )}
-        </div>
-        </div>
-         </div>
-         <div>
+        </div> 
+        <div className="players-list">
         <h2> Players attending this Event </h2>
+         <div className="listplayers">
+        {event.players? event.players.map((e)=> <p key={e._id}><Link to={`/user/player/${e.username}`} className="links-to-userprofile">{e.username}</Link></p>):<div></div>}
         </div>
          <div className="chat-event">
         <ListComments 
@@ -112,6 +107,8 @@ export default class SingleEvent extends Component {
         user={this.props.user}
          eventInfo={this.state.eventInfo}
          />
+         </div>
+        </div>
          </div>
       </div>
     );

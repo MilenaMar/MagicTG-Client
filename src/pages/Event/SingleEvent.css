@@ -1,116 +1,162 @@
 .SingleEvent {
-    padding-top: 150px;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: #0C0F11;
-    background-position:center;
-    position:absolute;
-    min-width:100%;
-    min-height:100vh;
-    top:0;
-    z-index:1;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #e4f9ff;
+  padding-top: 200px;
+  margin: 0;
+  box-sizing: border-box;
+  background-position: center;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100vh;
+  top: 0;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #e4f9ff;
 }
 
-.body-event{
-    margin:0 auto;
+.event-description {
+  display: flex;
+  justify-content: center;
 }
 .SingleEvent h1 {
-    color:#e4f9ff;
-}
-.event-description{
-    position: relative;
-    min-width: 900px;
-    min-height: 600px;
-    margin: 0 auto;
+  color: #e4f9ff;
 }
 
-.event-detailsEvent{
-    max-width: 900px;
-    min-width: 900px;
-    min-height: 418px;
-    position: absolute;
-    left: 454px;
-    top: 120px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
+.event-detailsEvent {
+  margin-right: 100px;
+  padding-top: 100px;
+  max-width: 500px;
+  min-width: 500px;
+  min-height: 418px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .event-details h1 {
-    display: block;
-    margin: 0 auto;
-    margin-top:50px;
-    justify-content: center;
-    margin-bottom:20px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.event-details h3{
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
+.event-details h3 {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 .event-details h4 {
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 .event-details p {
-    display: block;
-    margin: 0 auto;
-    margin-top: 25px;
-    min-height: 20px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 25px;
+  min-height: 20px;
 }
 
 .event-details a {
-    display: block;
-    margin: 0 auto;
-    margin-top: 25px;
-    min-height: 20px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 25px;
+  min-height: 20px;
 }
 
-.event-details a button  {
+.event-details a button {
   background-color: #ff6000;
   padding: 5px;
   color: #e3f2ff;
-  margin-top: ;
+  margin-top: 10px;
   border: none;
   transition: all 0.1s ease-in-out;
   border-radius: 2px;
 }
 
 .event-details a button:hover {
-    transform: scale(1.1);
-    background-color: #e3f2ff;
-    color: #ff6000;
-    cursor: pointer;
-    align-items: center;
-  }
+  transform: scale(1.1);
+  background-color: #e3f2ff;
+  color: #ff6000;
+  cursor: pointer;
+  align-items: center;
+}
 
-  .atd {
-      display: block;
-      margin: 0 auto;
-  }
 
-@media (min-width: 958px) and (max-width: 1357px) {
+.atd {
+  display: block;
+  margin: 0 auto;
+}
+
+.second-section-singleEvent {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-around;
+}
+
+.links-to-userprofile {
+  text-decoration: none;
+  color: white;
+}
+
+.links-to-userprofile:hover {
+  border-bottom: solid 3px #019fb6;
+}
+.players-list {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.listplayers{
+    max-height: 150px;
+    min-height: 150px;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+}
+
+.chat {
+ display: block;
+ margin: 0 auto;
+}
+
+
+    /* width */
+    .listplayers::-webkit-scrollbar {
+      width: 15px;
+      border-radius: 5px;
+    }
+    /* Track */
+    .listplayers::-webkit-scrollbar-track {
+      box-shadow: inset 1 0 5px #040405; 
+      border-radius: 10px; 
+    }
+    /* Handle */
+    .listplayers::-webkit-scrollbar-thumb {
+      background: #ff6000; 
+      border-radius: 10px;
+    }
+    /* Handle on hover */
+    .listplayers::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+
+
+    @media (min-width: 400px) and (max-width: 1000px) {
   
-    .event-details{
-        max-width: 740px;
-        min-width: 715px;
-        left: 240px;
+      .event-description {
+        flex-direction: column;
+      }
+
+      .event-detailsEvent {
+        display: block;
+        margin: 0 auto;
+        margin-bottom:50px ;
+      }
+  
+      .players-list {
+        display: block;
+        margin: 0 auto;
+        padding-top: 100px;
+        max-width: auto;
+        min-width: 500px;
+      }
+
+      
     }
-
-
-  }
-
-  @media (min-width: 400px) and (max-width: 957px) {
- 
-    .event-details{
-        max-width: 480px;
-        min-width: 350px;
-        min-height: 208px;
-        left: 287px;
-         top: 120px;
-    }
-
-  }

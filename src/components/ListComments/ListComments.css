@@ -4,9 +4,11 @@
   color: #0c0f11;
   margin-right: 200px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 .display {
-    max-height: 400px;
+    max-height: 300px;
+    min-height: 300px;
     overflow-y: scroll;
     overflow-wrap: break-word;
   }
