@@ -11,31 +11,10 @@
   flex-direction: row;
   flex-wrap: nowrap;
   overflow: scroll;
-  padding: 20px 20px 7px;
-  border-radius: 3px;
+  padding: 10px 20px 20px;
+
   color: white;
-  box-shadow: 1px 1px 3px 0px BLACK inset;
-}
-
-.eventCard {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  flex-direction: column;
-  width: 120px;
-  height: 150px;
-  padding: 5px;
-  margin: 0 10px;
-  background-color: white;
-  border-radius: 3px;
-  border: 10px solid cornsilk;
-  box-shadow: 1px 2px 4px 0px rgb(39, 39, 39);
-}
-
-.eventCard > p {
-  color: black;
-  text-decoration: none;
-  margin: 1px;
+  border-right: 3px solid black;
 }
 
 Link {
@@ -59,4 +38,8 @@ a {
   padding: 30px 10px;
   height: 70vh;
   width: 50%;
+}
+
+.leftPannel > h2 {
+  margin: 12px 0px 0px 0px;
 }

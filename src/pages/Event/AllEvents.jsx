@@ -8,6 +8,7 @@ import Geocoder from "react-map-gl-geocoder";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./Allevents.css";
 import turf from "turf";
+import EventCard from "../../components/EventCard";
 
 const AllEvents = (props) => {
   const [userPosition, setUserPosition] = useState([]);
@@ -68,48 +69,66 @@ const AllEvents = (props) => {
           <LoadingComponent />
         ) : (
           <>
-            <h2>Closest to Me 🧞‍♂️</h2>
+            <h2>Closest to Me</h2>
             <div className="cardRow">
               {events
                 .sort((a, b) => a.distance - b.distance)
                 .map((el) => (
                   <Link to={`/event/${el._id}`}>
-                    <div className="eventCard">
-                      <p>{el.name}</p>
-                      <p>Going: {el.going}</p>
-                      <p>{el.format}</p>
-                      <p>{Math.round(el.distance)} Km</p>
-                    </div>
+                    <EventCard
+                      Distance={el.distance}
+                      Id={el._id}
+                      Name={el.name}
+                      Going={el.going}
+                      Format={el.format}
+                      DateHour={new Date(el.date)
+                        .toISOString()
+                        .substring(12, 16)}
+                      DateDay={new Date(el.date).toISOString().substring(0, 10)}
+                      Image="https://res.cloudinary.com/xikz/image/upload/v1608110708/eventtest_pnijsm.jpg"
+                    />
                   </Link>
                 ))}
             </div>
-            <h2>Trending 🌶</h2>
+            <h2>Trending</h2>
             <div className="cardRow">
               {events
                 .sort((a, b) => b.going - a.going)
                 .map((el) => (
                   <Link to={`/event/${el._id}`}>
-                    <div className="eventCard">
-                      <p>{el.name}</p>
-                      <p>Going: {el.going}</p>
-                      <p>{el.format}</p>
-                    </div>
+                    <EventCard
+                      Distance={el.distance}
+                      Id={el._id}
+                      Name={el.name}
+                      Going={el.going}
+                      Format={el.format}
+                      DateHour={new Date(el.date)
+                        .toISOString()
+                        .substring(12, 16)}
+                      DateDay={new Date(el.date).toISOString().substring(0, 10)}
+                      Image="https://res.cloudinary.com/xikz/image/upload/v1608110708/eventtest_pnijsm.jpg"
+                    />
                   </Link>
                 ))}
             </div>
-            <h2>Starting Soon 😱</h2>
+            <h2>Starting Soon</h2>
             <div className="cardRow">
               {events
                 .sort((a, b) => new Date(a.date) - new Date(b.date))
                 .map((el) => (
                   <Link to={`/event/${el._id}`}>
-                    <div className="eventCard">
-                      <p>{el.name}</p>
-                      <p>Going: {el.going}</p>
-                      <p>{el.format}</p>
-                      <p>{new Date(el.date).toISOString().substring(12, 16)}</p>
-                      <p>{new Date(el.date).toISOString().substring(0, 10)}</p>
-                    </div>
+                    <EventCard
+                      Distance={el.distance}
+                      Id={el._id}
+                      Name={el.name}
+                      Going={el.going}
+                      Format={el.format}
+                      DateHour={new Date(el.date)
+                        .toISOString()
+                        .substring(12, 16)}
+                      DateDay={new Date(el.date).toISOString().substring(0, 10)}
+                      Image="https://res.cloudinary.com/xikz/image/upload/v1608110708/eventtest_pnijsm.jpg"
+                    />
                   </Link>
                 ))}
             </div>
