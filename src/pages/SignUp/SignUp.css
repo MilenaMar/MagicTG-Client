@@ -1,14 +1,50 @@
-form.auth__form {
-  margin: 40px;
+.auth__form {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-content: center;
   max-width: 300px;
   margin: 0 auto;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
   padding: 20px;
   border-radius: 3px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+form.auth__form {
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  max-width: 300px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.other {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+}
+
+.userControllerButton {
+  box-sizing: border-box;
+  margin: 0px;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(60deg, #ff6000, #e95900);
+  border-radius: 3px;
+  color: white;
+}
+
+.userControllerButton:hover {
+  cursor: pointer;
 }
 
 .formInputs {

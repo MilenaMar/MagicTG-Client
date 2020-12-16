@@ -118,7 +118,7 @@ export default class Login extends Component {
     }
     return (
       <div className="Signup">
-        <form onSubmit={handler} className="auth__form">
+        <div className="auth__form">
           <h1 style={{ margin: "0px" }}>Loggin In</h1>
 
           {this.state.usertype === "Player" ? (
@@ -129,62 +129,66 @@ export default class Login extends Component {
 
           {button}
 
-          <TextField
-            style={{ margin: "10px 0px" }}
-            id="filled-multiline-flexible"
-            name="username"
-            placeholder="Userame"
-            multiline
-            required
-            value={this.state.username}
-            onChange={this.handleInputChange}
-            InputLabelProps={{ shrink: true }}
-            InputProps={{
-              startAdornment: (
+          <form onSubmit={handler} className="other">
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="filled-multiline-flexible"
+              name="username"
+              placeholder="Userame"
+              multiline
+              required
+              value={this.state.username}
+              onChange={this.handleInputChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Input
+              style={{ margin: "10px 0px" }}
+              placeholder="Password"
+              required
+              name="password"
+              label="With normal TextField"
+              id="standard-adornment-password"
+              type={this.state.showPassword ? "text" : "password"}
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              startAdornment={
                 <InputAdornment position="start">
-                  <AccountCircle />
+                  <LockOpen />
                 </InputAdornment>
-              ),
-            }}
-          />
-          <Input
-            style={{ margin: "10px 0px" }}
-            placeholder="Password"
-            required
-            name="password"
-            label="With normal TextField"
-            id="standard-adornment-password"
-            type={this.state.showPassword ? "text" : "password"}
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            startAdornment={
-              <InputAdornment position="start">
-                <LockOpen />
-              </InputAdornment>
-            }
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={this.handleClickShowPassword}
-                  onMouseDown={this.handleMouseDownPassword}
-                >
-                  {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-
-          {this.state.error && (
-            <div className="error-block">
-              <p>{this.state.error}</p>
-            </div>
-          )}
-
-          <button className="submitButton" type="submit">
-            LOG IN
-          </button>
-        </form>
+              }
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={this.handleClickShowPassword}
+                    onMouseDown={this.handleMouseDownPassword}
+                  >
+                    {this.state.showPassword ? (
+                      <Visibility />
+                    ) : (
+                      <VisibilityOff />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+            {this.state.error && (
+              <div className="error-block">
+                <p>{this.state.error}</p>
+              </div>
+            )}
+            <button className="submitButton" type="submit">
+              LOG IN
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
