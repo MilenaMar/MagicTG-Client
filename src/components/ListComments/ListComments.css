@@ -1,6 +1,6 @@
 .chat {
   background-color: white;
-  max-width: 400px;
+  max-width: 450px;
   color: #0c0f11;
   margin-right: 200px;
   border-radius: 5px;
@@ -14,7 +14,7 @@
   }
 .comment {
   background-color: #ecf0f3;
-  max-width: 350px;
+  max-width: 450px;
   margin: 10px;
   border-radius: 5px;
   text-align: justify;
@@ -33,7 +33,6 @@
 }
 .new-comment textarea {
     margin: 10px 5px;
-     text-transform: capitalize;
      font-family: inherit; 
 }
 
