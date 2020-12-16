@@ -1,0 +1,124 @@
+.eventCard {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 160px;
+  height: 170px;
+  margin: 0 10px;
+  background-color: white;
+  box-shadow: 5px 12px 20px -10px rgba(156, 39, 176, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.cardImage {
+  display: flex;
+  flex-direction: row;
+  height: 55%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.cardImage > .format {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 3px;
+  font-size: 0.7em;
+}
+
+.cardImage > .format > img {
+  width: 25px;
+}
+
+.cardImage > .format > p {
+  color: white;
+  margin: 1px 0px 0px;
+}
+
+.cardInfo {
+  box-sizing: border-box;
+  border: 2px solid black;
+  height: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardInfo > .cardName {
+  font-size: 0.9em;
+
+  position: relative;
+  text-transform: capitalize;
+  top: 5px;
+  color: black;
+  padding: 2px;
+  width: 90%;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.cardInfoBody {
+  font-size: 0.8em;
+  position: relative;
+  top: 5px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.cardInfoBody > .cardGoing {
+  width: 50%;
+  border-right: 2px solid black;
+  padding: 10px 3px;
+}
+
+.cardInfoBody > .cardDate {
+  width: 50%;
+
+  padding: 10px 3px;
+}
+
+.align-h {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.align-v {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.going {
+  margin: 1px;
+  font-size: 0.8em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.seeEventLink {
+  font-size: 0.9em;
+  position: relative;
+  top: -8px;
+  padding: 8px;
+  border-radius: 20px;
+  background-color: #ff6000;
+  color: white;
+  box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.seeEventLink:hover {
+  background-color: #d45100;
+}
