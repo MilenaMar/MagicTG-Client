@@ -1,0 +1,39 @@
+.react-mapbox-ac-menu {
+  width: auto;
+  position: absolute;
+  z-index: 9999;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: -1.3rem;
+}
+
+.react-mapbox-ac-suggestion {
+  font-size: 12px;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  background-color: orangered;
+  color: white;
+  text-align: left;
+}
+
+.react-mapbox-ac-suggestion:hover {
+  background-color: black;
+  color: white;
+}
+
+.react-mapbox-ac-input {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: white;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+}
+
+.search {
+  margin-bottom: 2rem;
+}

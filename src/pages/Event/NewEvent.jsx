@@ -1,6 +1,16 @@
 import React from "react";
 import { addNewEvent } from "../../services/events.js";
 import MapboxAutocomplete from "react-mapbox-autocomplete";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import { AccountCircle, Email, DateRange } from "@material-ui/icons";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import IconButton from "@material-ui/core/IconButton";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import "./NewEvent.css";
 
 class NewEvent extends React.Component {
   state = {
@@ -53,18 +63,21 @@ class NewEvent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="Signup">
         {this.state.eventAdded && <div>Event Added</div>}
 
         <form onSubmit={this.handleOnSubmit} className="auth__form">
-          <label htmlFor="location">Location</label>
+          <h1 style={{ margin: "0px" }}>Add Event</h1>
+
           <MapboxAutocomplete
             publicKey="pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
-            inputClass="form-control search"
+            inputClass="form-control helo"
             onSuggestionSelect={this._suggestionSelect}
             country=""
+            placeholder="Address"
             resetSearch={false}
           />
+
           <input
             id="location"
             style={{ display: "none" }}
@@ -74,50 +87,120 @@ class NewEvent extends React.Component {
             onChange={this.handleInputChange}
             required
           />
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
+
+          <TextField
+            style={{ margin: "10px 0px" }}
+            id="filled-multiline-flexible"
             name="name"
+            placeholder="Event Name"
+            multiline
+            required
             value={this.state.name}
             onChange={this.handleInputChange}
-            required
+            InputLabelProps={{ shrink: true }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              ),
+            }}
           />
-          <label htmlFor="date">date</label>
-          <input
-            id="date"
+          <TextField
+            style={{ margin: "10px 0px" }}
+            id="datetime-local"
             type="datetime-local"
             name="date"
+            placeholder="Date & Time"
+            required
             value={this.state.date}
             onChange={this.handleInputChange}
-            required
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <DateRange />
+                </InputAdornment>
+              ),
+            }}
           />
-          <label htmlFor="maxPlayers">Max Players</label>
-          <input
-            id="maxPlayers"
-            type="Number"
+          <TextField
+            style={{ margin: "10px 0px" }}
+            id="datetime-local"
+            type="number"
             name="maxPlayers"
+            placeholder="Max Players"
+            required
             value={this.state.maxPlayers}
             onChange={this.handleInputChange}
-            required
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <DateRange />
+                </InputAdornment>
+              ),
+            }}
           />
-          <label htmlFor="format">Format</label>
-          <select
-            onChange={this.handleOption}
-            value={this.state.format}
-            name="fomat"
-            id="format"
-            form="carform"
-            required
-          >
-            <option value="Legacy">Legacy</option>
-            <option value="Modern">Modern</option>
-            <option value="Pioner">Pioner</option>
-            <option value="Standard">Standard</option>
-          </select>
 
-          <button className="submit" type="submit">
-            Submit
+          <TextField
+            style={{ margin: "10px 0px" }}
+            id="select"
+            name="format"
+            value={this.state.format}
+            select
+            onChange={this.handleOption}
+            required
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <DateRange />
+                </InputAdornment>
+              ),
+            }}
+          >
+            <MenuItem value="Legacy">Legacy</MenuItem>
+            <MenuItem value="Modern">Modern</MenuItem>
+            <MenuItem value="Pioner">Pioner</MenuItem>
+            <MenuItem value="Standard">Standard</MenuItem>
+          </TextField>
+          {/* <InputLabel required shrink htmlFor="standard-adornment-password">
+            Password
+          </InputLabel> */}
+          {/* <Input
+            style={{ margin: "10px 0px" }}
+            placeholder="Password"
+            required
+            name="password"
+            label="With normal TextField"
+            id="standard-adornment-password"
+            type={this.state.showPassword ? "text" : "password"}
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            startAdornment={
+              <InputAdornment position="start">
+                <LockOpen />
+              </InputAdornment>
+            }
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={this.handleClickShowPassword}
+                  onMouseDown={this.handleMouseDownPassword}
+                >
+                  {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+          /> */}
+
+          {this.state.error && (
+            <div className="error-block">
+              <p>{this.state.error}</p>
+            </div>
+          )}
+
+          <button className="submitButton" type="submit">
+            ADD EVENT
           </button>
         </form>
       </div>

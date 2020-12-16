@@ -21,6 +21,7 @@ const AllEvents = (props) => {
     bearing: 0,
     pitch: 30,
   });
+  const [sticky, setSticky] = useState(false);
 
   const mapRef = useRef();
   const geocoderContainerRef = useRef();
@@ -35,7 +36,9 @@ const AllEvents = (props) => {
           position.coords.longitude,
         ];
         setUserPosition(userPosition);
+
         const eventsWithDistance = events.map((event) => {
+          console.log(event);
           let from = {
             type: "Feature",
             properties: {},
@@ -52,11 +55,12 @@ const AllEvents = (props) => {
               coordinates: [event.lat, event.long],
             },
           };
-
+          console.log("hello");
           let distance = turf.distance(from, to, "kilometers");
           return { ...event, distance: distance, going: event.players.length };
         });
         setEvents(eventsWithDistance);
+
         setLoading(false);
       });
     });
@@ -85,7 +89,7 @@ const AllEvents = (props) => {
                         .toISOString()
                         .substring(12, 16)}
                       DateDay={new Date(el.date).toISOString().substring(0, 10)}
-                      Image="https://res.cloudinary.com/xikz/image/upload/v1608110708/eventtest_pnijsm.jpg"
+                      Image={el.image}
                     />
                   </Link>
                 ))}
@@ -137,45 +141,53 @@ const AllEvents = (props) => {
       </div>
 
       <div className="rightPannel">
-        <div
-          ref={geocoderContainerRef}
-          style={{ position: "relative", top: 20, left: 0, zIndex: 0 }}
-        />
-        <ReactMapGL
-          {...viewport}
-          ref={mapRef}
-          onViewportChange={(nextViewport) => setViewport(nextViewport)}
-          width="100%"
-          height="100vh"
-          mapStyle={"mapbox://styles/mapbox/basic-v9"}
-          mapboxApiAccessToken={
-            "pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
-          }
-        >
-          <Geocoder
-            mapRef={mapRef}
-            // containerRef={geocoderContainerRef}
+        <h2>The Magic Map</h2>
+        <div className="mapbox">
+          <div
+            ref={geocoderContainerRef}
+            style={{
+              position: "relative",
+              top: 20,
+              left: 0,
+              zIndex: 0,
+            }}
+          />
+          <ReactMapGL
+            {...viewport}
+            ref={mapRef}
             onViewportChange={(nextViewport) => setViewport(nextViewport)}
+            width="100%"
+            height="400px"
+            mapStyle={"mapbox://styles/xikz/ckirobijq062z19mhitx2z914"}
             mapboxApiAccessToken={
               "pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
             }
-            position="top-left"
-          />
+          >
+            <Geocoder
+              mapRef={mapRef}
+              // containerRef={geocoderContainerRef}
+              onViewportChange={(nextViewport) => setViewport(nextViewport)}
+              mapboxApiAccessToken={
+                "pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
+              }
+              position="top-left"
+            />
 
-          {events &&
-            events.map((event) => (
-              <Marker
-                latitude={Number(event.lat)}
-                longitude={Number(event.long)}
-                offsetLeft={-20}
-                offsetTop={0}
-              >
-                <div className="eventImage">
-                  <img src="../../../images/eventicon.png" alt="event icon" />
-                </div>
-              </Marker>
-            ))}
-        </ReactMapGL>
+            {events &&
+              events.map((event) => (
+                <Marker
+                  latitude={Number(event.lat)}
+                  longitude={Number(event.long)}
+                  offsetLeft={-20}
+                  offsetTop={0}
+                >
+                  <div className="eventImage">
+                    <img src="../../../images/eventicon.png" alt="event icon" />
+                  </div>
+                </Marker>
+              ))}
+          </ReactMapGL>
+        </div>
       </div>
     </div>
   );
