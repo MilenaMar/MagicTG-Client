@@ -5,6 +5,14 @@ import {
   updateUserPassword,
 } from "../../services/userPlayer";
 import "./EditPlayer.css";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import { AccountCircle, Email, LocationOn } from "@material-ui/icons";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import IconButton from "@material-ui/core/IconButton";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
 
 export default class EditProfile extends Component {
   state = {
@@ -14,7 +22,7 @@ export default class EditProfile extends Component {
 
   componentDidMount = () => {
     getUserProfile(this.props.match.params.username).then((responseBack) => {
-      console.log(responseBack)
+      console.log(responseBack);
       if (responseBack.user === null) {
         return this.props.history.push("/page-no-found");
       }
@@ -36,7 +44,7 @@ export default class EditProfile extends Component {
     event.preventDefault();
     updateUserProfile(this.props.match.params.username, this.state.user).then(
       (res) => {
-        console.log(res)
+        console.log(res);
         if (!res.status) {
           //  deal with the error
           return;
@@ -64,45 +72,94 @@ export default class EditProfile extends Component {
 
   render() {
     return (
-      <div>
-        <form className="profileForm" onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.user.username}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={this.state.user.email}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="location">Location</label>
-          <input
-            type="location"
-            id="location"
-            name="location"
-            value={this.state.user.location}
-            onChange={this.handleChange}
-          />
-          <button type="submit">SUBMIT</button>
-        </form>
+      <div className="Signup">
+        <div className="auth__form">
+          <h1 style={{ margin: "0px" }}>Profile</h1>
+          <form className="other" onSubmit={this.handleSubmit}>
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="filled-multiline-flexible"
+              name="username"
+              placeholder="Userame"
+              multiline
+              required
+              value={this.state.user.username}
+              onChange={this.handleChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            {/* <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={this.state.user.username}
+              onChange={this.handleChange}
+            /> */}
 
-        <form onSubmit={this.handleSubmitPassword}>
-          <label htmlFor="password"> NeW Password</label>
-          <input
-            type="password"
-            id="newPassword"
-            name="newPassword"
-            onChange={this.handleChange}
-          />
-          <button type="submit">SUBMIT</button>
-        </form>
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="filled-multiline-flexible"
+              name="email"
+              placeholder="Email"
+              multiline
+              required
+              value={this.state.user.email}
+              onChange={this.handleChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Email />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            {/* <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={this.state.user.email}
+              onChange={this.handleChange}
+            /> */}
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="filled-multiline-flexible"
+              name="location"
+              placeholder="Location"
+              multiline
+              required
+              value={this.state.user.location}
+              onChange={this.handleChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LocationOn />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            {/* <label htmlFor="location">Location</label>
+            <input
+              type="location"
+              id="location"
+              name="location"
+              value={this.state.user.location}
+              onChange={this.handleChange}
+            /> */}
+            <button className="submitButton" type="submit">
+              SUBMIT
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

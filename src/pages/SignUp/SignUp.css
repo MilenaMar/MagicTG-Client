@@ -70,3 +70,57 @@ button.button__submit {
   color: black;
   min-height: 100vh;
 }
+
+.submitButton {
+  font-weight: 600;
+  margin: 20px auto 0px;
+  border: none;
+  color: orangered;
+  outline: none;
+  background-color: transparent;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+}
+
+.react-mapbox-ac-input {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+  font-family: "Roboto";
+}
+
+.search {
+  margin-bottom: 2rem;
+}
+
+.react-mapbox-ac-menu {
+  width: auto;
+  position: absolute;
+  z-index: 9999;
+  background-color: transparent;
+  /* border: 1px solid #ccc;
+  padding-top: 1rem;
+  padding-bottom: 1rem; */
+  margin-top: -1.3rem;
+}
+
+.react-mapbox-ac-suggestion {
+  font-size: 11px;
+  cursor: pointer;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+  background-color: orangered;
+  color: white;
+  text-align: left;
+}
+
+.react-mapbox-ac-suggestion:hover {
+  background-color: red;
+  color: red;
+}

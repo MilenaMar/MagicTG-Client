@@ -3,14 +3,9 @@ import { addNewEvent } from "../../services/events.js";
 import MapboxAutocomplete from "react-mapbox-autocomplete";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { AccountCircle, Email, DateRange } from "@material-ui/icons";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import IconButton from "@material-ui/core/IconButton";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
+import { AccountCircle, DateRange } from "@material-ui/icons";
 import MenuItem from "@material-ui/core/MenuItem";
-import "./NewEvent.css";
+import "../SignUp/SignUp.css";
 
 class NewEvent extends React.Component {
   state = {
@@ -64,108 +59,109 @@ class NewEvent extends React.Component {
   render() {
     return (
       <div className="Signup">
-        {this.state.eventAdded && <div>Event Added</div>}
+        <div className="auth__form">
+          <form onSubmit={this.handleOnSubmit} className="other">
+            <h2 style={{ margin: "0px" }}>New Event</h2>
 
-        <form onSubmit={this.handleOnSubmit} className="auth__form">
-          <h1 style={{ margin: "0px" }}>Add Event</h1>
+            <MapboxAutocomplete
+              publicKey="pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
+              inputClass="form-control helo"
+              onSuggestionSelect={this._suggestionSelect}
+              country=""
+              placeholder="Address"
+              resetSearch={false}
+            />
 
-          <MapboxAutocomplete
-            publicKey="pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
-            inputClass="form-control helo"
-            onSuggestionSelect={this._suggestionSelect}
-            country=""
-            placeholder="Address"
-            resetSearch={false}
-          />
+            <input
+              id="location"
+              style={{ display: "none" }}
+              type="text"
+              name="location"
+              value={this.state.location}
+              onChange={this.handleInputChange}
+              required
+            />
 
-          <input
-            id="location"
-            style={{ display: "none" }}
-            type="text"
-            name="location"
-            value={this.state.location}
-            onChange={this.handleInputChange}
-            required
-          />
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="filled-multiline-flexible"
+              name="name"
+              placeholder="Event Name"
+              multiline
+              required
+              value={this.state.name}
+              onChange={this.handleInputChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="datetime-local"
+              type="datetime-local"
+              name="date"
+              placeholder="Date & Time"
+              required
+              value={this.state.date}
+              onChange={this.handleInputChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <DateRange />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="datetime-local"
+              type="number"
+              name="maxPlayers"
+              placeholder="Max Players"
+              required
+              value={this.state.maxPlayers}
+              onChange={this.handleInputChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <DateRange />
+                  </InputAdornment>
+                ),
+              }}
+            />
 
-          <TextField
-            style={{ margin: "10px 0px" }}
-            id="filled-multiline-flexible"
-            name="name"
-            placeholder="Event Name"
-            multiline
-            required
-            value={this.state.name}
-            onChange={this.handleInputChange}
-            InputLabelProps={{ shrink: true }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            style={{ margin: "10px 0px" }}
-            id="datetime-local"
-            type="datetime-local"
-            name="date"
-            placeholder="Date & Time"
-            required
-            value={this.state.date}
-            onChange={this.handleInputChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <DateRange />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            style={{ margin: "10px 0px" }}
-            id="datetime-local"
-            type="number"
-            name="maxPlayers"
-            placeholder="Max Players"
-            required
-            value={this.state.maxPlayers}
-            onChange={this.handleInputChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <DateRange />
-                </InputAdornment>
-              ),
-            }}
-          />
-
-          <TextField
-            style={{ margin: "10px 0px" }}
-            id="select"
-            name="format"
-            value={this.state.format}
-            select
-            onChange={this.handleOption}
-            required
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <DateRange />
-                </InputAdornment>
-              ),
-            }}
-          >
-            <MenuItem value="Legacy">Legacy</MenuItem>
-            <MenuItem value="Modern">Modern</MenuItem>
-            <MenuItem value="Pioner">Pioner</MenuItem>
-            <MenuItem value="Standard">Standard</MenuItem>
-          </TextField>
-          {/* <InputLabel required shrink htmlFor="standard-adornment-password">
+            <TextField
+              style={{ margin: "10px 0px", textAlign: "left" }}
+              id="select"
+              name="format"
+              value={this.state.format}
+              select
+              onChange={this.handleOption}
+              required
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <DateRange />
+                  </InputAdornment>
+                ),
+              }}
+            >
+              <MenuItem style={{}} value="Legacy">
+                Legacy
+              </MenuItem>
+              <MenuItem value="Modern">Modern</MenuItem>
+              <MenuItem value="Pioner">Pioner</MenuItem>
+              <MenuItem value="Standard">Standard</MenuItem>
+            </TextField>
+            {/* <InputLabel required shrink htmlFor="standard-adornment-password">
             Password
           </InputLabel> */}
-          {/* <Input
+            {/* <Input
             style={{ margin: "10px 0px" }}
             placeholder="Password"
             required
@@ -193,16 +189,17 @@ class NewEvent extends React.Component {
             }
           /> */}
 
-          {this.state.error && (
-            <div className="error-block">
-              <p>{this.state.error}</p>
-            </div>
-          )}
+            {this.state.error && (
+              <div className="error-block">
+                <p>{this.state.error}</p>
+              </div>
+            )}
 
-          <button className="submitButton" type="submit">
-            ADD EVENT
-          </button>
-        </form>
+            <button className="submitButton" type="submit">
+              ADD EVENT
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
