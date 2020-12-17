@@ -7,7 +7,7 @@ import * as PATHS from "../../utils/paths";
 import "./SignUp.css";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { AccountCircle, Email, LockOpen } from "@material-ui/icons";
+import { AccountCircle, Email, LockOpen, LocationOn } from "@material-ui/icons";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import IconButton from "@material-ui/core/IconButton";
@@ -22,6 +22,7 @@ export default class Signup extends Component {
     usertype: "Player",
     error: null,
     showPassword: false,
+    location: "",
   };
 
   handleClick = (event) => {
@@ -154,6 +155,24 @@ export default class Signup extends Component {
                 startAdornment: (
                   <InputAdornment position="start">
                     <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              style={{ margin: "10px 0px" }}
+              id="filled-multiline-flexible"
+              name="location"
+              placeholder="Location"
+              multiline
+              required
+              value={this.state.location}
+              onChange={this.handleInputChange}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LocationOn />
                   </InputAdornment>
                 ),
               }}

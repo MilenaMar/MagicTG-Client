@@ -45,22 +45,6 @@
     0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
 
-.userControllerButton {
-  box-sizing: border-box;
-  margin: 0px;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  background: linear-gradient(60deg, #ff6000, #e95900);
-  border-radius: 3px;
-  color: white;
-}
-
-.userControllerButton:hover {
-  cursor: pointer;
-}
-
 .bodyForm {
   width: 90%;
   margin: auto;
@@ -97,18 +81,6 @@
   margin: 3px;
   display: inline-block;
   font-size: 0.7em;
-}
-
-.submitButton {
-  font-weight: 600;
-  margin: 20px auto 0px;
-  border: none;
-  color: orangered;
-  outline: none;
-}
-
-.submitButton:hover {
-  cursor: pointer;
 }
 
 /* .profileForm > input:focus {

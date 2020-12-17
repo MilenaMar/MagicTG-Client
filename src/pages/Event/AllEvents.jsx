@@ -110,7 +110,7 @@ const AllEvents = (props) => {
                         .toISOString()
                         .substring(12, 16)}
                       DateDay={new Date(el.date).toISOString().substring(0, 10)}
-                      Image="https://res.cloudinary.com/xikz/image/upload/v1608110708/eventtest_pnijsm.jpg"
+                      Image={el.image}
                     />
                   </Link>
                 ))}
@@ -131,7 +131,7 @@ const AllEvents = (props) => {
                         .toISOString()
                         .substring(12, 16)}
                       DateDay={new Date(el.date).toISOString().substring(0, 10)}
-                      Image="https://res.cloudinary.com/xikz/image/upload/v1608110708/eventtest_pnijsm.jpg"
+                      Image={el.image}
                     />
                   </Link>
                 ))}
