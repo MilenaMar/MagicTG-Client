@@ -7,22 +7,17 @@ import {
   getOrganizerProfile,
   getAllOrganizerEvents,
 } from "../../services/userOrganizer";
-import {getCards} from "../../services/cardsService";
-import LoadingComponent from "../../components/Loading";
 
 
 class OrganizerProfile extends React.Component {
   state = {
     profile: {},
     events: [],
-    cards:[],
     loading:true,
   };
   
-
  
   componentDidMount = () => {
-    getCards().then((response)=> {this.setState({ cards: response.data , loading:false })})
     getOrganizerProfile(this.props.match.params.username).then((resp) => {
       !resp.user
         ? this.props.history.push(`/page-no-found`)
@@ -66,7 +61,7 @@ class OrganizerProfile extends React.Component {
 
             {this.state.events.map((event, i) => (
               <div key={i} className="eventRow">
-              <div>
+              <div style={{maxWidth:"500px"}}>
                 <h3>{event.name}</h3>
                 <p>Location: {event.location}</p>
                 <p>Format: {event.format}</p>
@@ -88,10 +83,6 @@ class OrganizerProfile extends React.Component {
               </div>
               </div>
             ))} 
-            <h2>My Deck</h2>
-  <div className="Deck">
-{this.state.loading ? <LoadingComponent /> :this.state.cards.map((e)=><img src={e.imageUrl} key={e.number} alt={e.name}></img>)}
-</div>
           </div>
           </div>
     );

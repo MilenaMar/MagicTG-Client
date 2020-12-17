@@ -1,4 +1,3 @@
-
 .Home {
   padding-top: 240px;
   margin: 0;
@@ -27,8 +26,8 @@ Link {
   margin-left: 80px;
 }
 
-.homebutton{
-  padding: 2px 5px;
+.homebutton {
+  padding: 4px 8px;
   margin-left: 10px;
   font-size: 1.2rem;
 }
@@ -42,7 +41,6 @@ Link {
   margin-bottom: 50px;
 }
 
-
 .home {
   -webkit-animation-duration: 1.5s;
   animation-duration: 1s;
@@ -54,36 +52,35 @@ Link {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
+}
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
   }
-  @-webkit-keyframes fadeInRight {
-    from {
-      opacity: 0;
-      -webkit-transform: translate3d(100%, 0, 0);
-      transform: translate3d(100%, 0, 0);
-    }
-  
-    to {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
-    }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
   }
-  @keyframes fadeInRight {
-    from {
-      opacity: 0;
-      -webkit-transform: translate3d(100%, 0, 0);
-      transform: translate3d(100%, 0, 0);
-    }
-  
-    to {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
-    }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
   }
-  
-  .fadeInRight {
-    -webkit-animation-name: fadeInRight;
-    animation-name: fadeInRight;
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
   }
-  
+}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
