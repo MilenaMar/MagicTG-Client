@@ -38,6 +38,7 @@ const AllEvents = (props) => {
         setUserPosition(userPosition);
 
         const eventsWithDistance = events.map((event) => {
+          console.log("hello");
           const arrayPlayersId = event.players.map((player) => player._id);
 
           let from = {
