@@ -77,6 +77,7 @@ const AllEvents = (props) => {
                 .map((el) => (
                   <Link key={el._id} to={`/event/${el._id}`}>
                     <EventCard
+                      UserGoing={el.arrayPlayersId.includes(props.user._id)}
                       Distance={el.distance}
                       Id={el._id}
                       Name={el.name}
