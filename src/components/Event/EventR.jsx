@@ -5,7 +5,7 @@ import "./EventR.css"
 const EventR = (props) => {
 const event = props.event
   return <div className="EventR">
-  <Link to={`/event/${event._id}`}><button>More Details</button></Link>
+  <Link to={`/event/${event._id}`}><button>Event details</button></Link>
   <div className="event-details">
   <strong><p>{props.event.name}</p></strong>
   <p>Date: {props.event.date.toString().slice(0,10)}</p>

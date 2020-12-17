@@ -76,12 +76,12 @@ export default class SingleEvent extends Component {
         <div className="event-description" >
          <div className="event-detailsEvent">
         <h1>{event.name}</h1>
-        <h3>Organizer of the event: {event.organizer[0].username}</h3>
-        <h4>Location: {event.location}</h4>
+        <h3>Organized by: {event.organizer[0].username}</h3>
+        <h4>{event.location}</h4>
         <h4>Format: {event.format}</h4>
         <h4>Date: {event.date.toString().slice(0,10)}</h4>
         <h4>Time: {event.date.toString().slice(12,16)}</h4>
-        <p>Maximum number of Players: {event.maxPlayers} players</p>
+        <p className="maxplayers">Maximum number of Players: {event.maxPlayers} players</p>
         <p>Description: see you there guys</p>
         {event.organizer[0]._id === this.props.user._id ? (
           <Link to={`/event/edit/${event._id}`}> <button clasName="editEv">Edit Event</button> </Link>

@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
 
 .Home {
-  padding-top: 270px;
+  padding-top: 240px;
   margin: 0;
   box-sizing: border-box;
   background-image: url("https://res.cloudinary.com/dwttlckdr/image/upload/v1607774656/anotherweb_witaab.jpg");
@@ -13,7 +12,7 @@
   z-index: 1;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #e4f9ff;
+  color: white;
 }
 
 Link {
@@ -21,12 +20,29 @@ Link {
 }
 
 .Home p {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: bolder;
   line-height: 1rem;
   text-align: justify;
   margin-left: 80px;
 }
+
+.homebutton{
+  padding: 2px 5px;
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+.Home .about-us {
+  text-align: justify;
+  margin-left: 80px;
+  font-size: 1.5rem;
+}
+
+.home {
+  margin-bottom: 50px;
+}
+
+
 .home {
   -webkit-animation-duration: 1.5s;
   animation-duration: 1s;

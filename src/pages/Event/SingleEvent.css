@@ -10,7 +10,7 @@
   z-index: 1;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #e4f9ff;
+  color: white;
 }
 
 .event-description {
@@ -18,63 +18,65 @@
   justify-content: center;
 }
 .SingleEvent h1 {
-  color: #e4f9ff;
+  color: white;
 }
 
 .event-detailsEvent {
   margin-right: 100px;
-  padding-top: 100px;
+  padding-top: 50px;
   max-width: 450px;
   min-width: 450px;
   min-height: 418px;
   border-radius: 10px;
+  line-height: 5px;
   background-color: rgba(0, 0, 0, 0.7);
 }
-.event-details h1 {
+.event-detailsEvent h1 {
   display: block;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 10px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
-.event-details h3 {
+.event-detailsEvent h3 {
   display: block;
   margin: 0 auto;
   margin-top: 20px;
 }
-.event-details h4 {
+.event-detailsEvent h4 {
   display: block;
   margin: 0 auto;
   margin-top: 20px;
 }
-.event-details p {
+.maxplayers { padding-top:20px}
+.event-detailsEvent p {
   display: block;
   margin: 0 auto;
   margin-top: 25px;
   min-height: 20px;
 }
 
-.event-details a {
+.event-detailsEvent a {
   display: block;
   margin: 0 auto;
   margin-top: 25px;
   min-height: 20px;
 }
 
-.event-details a button {
+.event-detailsEvent a button {
   background-color: #ff6000;
   padding: 5px;
-  color: #e3f2ff;
+  color: white;
   margin-top: 10px;
   border: none;
   transition: all 0.1s ease-in-out;
   border-radius: 2px;
 }
 
-.event-details a button:hover {
+.event-detailsEvent a button:hover {
   transform: scale(1.1);
-  background-color: #e3f2ff;
+  background-color: white;
   color: #ff6000;
   cursor: pointer;
   align-items: center;
@@ -98,7 +100,7 @@
 }
 
 .links-to-userprofile:hover {
-  border-bottom: solid 3px #019fb6;
+  border-bottom: solid 3px #ff6000;
 }
 .players-list {
   border-radius: 10px;
@@ -149,13 +151,14 @@
       .event-detailsEvent {
         display: block;
         margin: 0 auto;
-        margin-bottom:50px ;
+        margin-bottom: 15px;
+        padding: 20px;
       }
   
       .players-list {
         display: block;
         margin: 0 auto;
-        padding-top: 100px;
+        padding-top: 50px;
         max-width: auto;
         min-width: 500px;
       }

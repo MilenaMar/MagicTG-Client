@@ -52,7 +52,7 @@ export default class PlayerProfile extends Component {
       </div>
       </div>
       
-        <h2>Uncomming events</h2>
+        <h2>My uncomming events</h2>
         {this.state.events.map((e)=> <Event event={e} key={e._id}/>)}
         </div>
         </div>
