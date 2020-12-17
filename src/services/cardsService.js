@@ -3,7 +3,7 @@ const mtg = require('mtgsdk')
 
 
 export function getCards() {
-return mtg.card.where({ page: 1, pageSize: 5})
+return mtg.card.where({ page: 1, pageSize: 4})
 .then((response) => {
     return {
       status: true,
