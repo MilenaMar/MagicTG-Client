@@ -17,9 +17,9 @@ const AllEvents = (props) => {
   const [viewport, setViewport] = useState({
     latitude: 41.1496,
     longitude: -8.61099,
-    zoom: 5,
+    zoom: 0,
     bearing: 0,
-    pitch: 30,
+    pitch: 0,
   });
 
   const mapRef = useRef();
@@ -94,7 +94,7 @@ const AllEvents = (props) => {
               {events
                 .sort((a, b) => b.going - a.going)
                 .map((el) => (
-                  <Link key={el._id}  to={`/event/${el._id}`}>
+                  <Link key={el._id} to={`/event/${el._id}`}>
                     <EventCard
                       Distance={el.distance}
                       Id={el._id}
@@ -115,7 +115,7 @@ const AllEvents = (props) => {
               {events
                 .sort((a, b) => new Date(a.date) - new Date(b.date))
                 .map((el) => (
-                  <Link key={el._id}  to={`/event/${el._id}`}>
+                  <Link key={el._id} to={`/event/${el._id}`}>
                     <EventCard
                       Distance={el.distance}
                       Id={el._id}
@@ -170,7 +170,7 @@ const AllEvents = (props) => {
             {events &&
               events.map((event) => (
                 <Marker
-                key={event._id} 
+                  key={event._id}
                   latitude={Number(event.lat)}
                   longitude={Number(event.long)}
                   offsetLeft={-20}
