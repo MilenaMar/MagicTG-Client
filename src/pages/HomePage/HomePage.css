@@ -1,25 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
 .Home {
-  padding: 150px;
+  padding-top: 270px;
   margin: 0;
   box-sizing: border-box;
   background-image: url("https://res.cloudinary.com/dwttlckdr/image/upload/v1607774656/anotherweb_witaab.jpg");
-  background-position:center;
-  position:absolute;
-  width:100%;
-  top:0;
-  z-index:-1;
+  background-position: center;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100vh;
+  top: 0;
+  z-index: 1;
   background-size: cover;
   background-repeat: no-repeat;
-  color: white;
-  height: 100vh;
+  color: #e4f9ff;
 }
 
 Link {
   text-decoration: none;
 }
 
-.body-home{
-  padding-top: 900px;
+.Home p {
+  font-size: 6rem;
+  font-weight: bolder;
+  line-height: 1rem;
+  text-align: justify;
+  margin-left: 80px;
+}
+.home {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
-
+.home {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+  }
+  @-webkit-keyframes fadeInRight {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  .fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+  }
+  

@@ -7,10 +7,12 @@ export default class HomePage extends Component {
   return (
     <div>
     <div className="Home">
-    <h1>Here We can Add buttons and events Cards</h1>
+    <div className="home fadeInRight">
+    <p>Welcome </p>
+    <p>To</p>
+    <p>Magic the real gathering</p>
+    <p>Experience</p>
     </div>
-    <div className="body-home">
-     <h1>We Can have filters for events here </h1> 
     </div>
     </div>
   );
