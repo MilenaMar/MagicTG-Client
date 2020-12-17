@@ -35,12 +35,8 @@ const AllEvents = (props) => {
         setUserPosition(userPosition);
 
         const eventsWithDistance = events.map((event) => {
-<<<<<<< HEAD
-=======
-          console.log("hello");
           const arrayPlayersId = event.players.map((player) => player._id);
 
->>>>>>> xikz
           let from = {
             type: "Feature",
             properties: {},
@@ -193,5 +189,4 @@ const AllEvents = (props) => {
     </div>
   );
 };
-
 export default AllEvents;
