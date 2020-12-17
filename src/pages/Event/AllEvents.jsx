@@ -139,7 +139,7 @@ const AllEvents = (props) => {
       </div>
 
       <div className="rightPannel">
-        <h2>The Magic Map</h2>
+        <h2>The Real Gathering Sights</h2>
         <div className="mapbox">
           <div
             ref={geocoderContainerRef}
