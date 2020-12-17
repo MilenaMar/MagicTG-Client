@@ -3,12 +3,10 @@ import {
   getOrganizerProfile,
   updateOrganizerProfile,
 } from "../../services/userOrganizer";
-import "./EditProfileOrganizer.css";
+import "../SignUp/SignUp.css";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { AccountCircle, Email, LocationOn } from "@material-ui/icons";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
 
 export default class EditProfileOrganizer extends React.Component {
   state = {
@@ -55,14 +53,12 @@ export default class EditProfileOrganizer extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
-      <div className="editOrganizerPage">
-        <form className="profileForm" onSubmit={this.handleSubmit}>
-          <div className="titleForm">
-            <p>Edit Profile</p>
-          </div>
-          <div className="bodyForm">
+      <div className="Signup">
+        <div className="auth__form">
+          <form className="other" onSubmit={this.handleSubmit}>
+            <h2>Profile</h2>
+
             <TextField
               id="filled-multiline-flexible"
               label="Username"
@@ -114,8 +110,8 @@ export default class EditProfileOrganizer extends React.Component {
             <button className="submitButton" type="submit">
               SUBMIT
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     );
   }

@@ -8,7 +8,13 @@ import {
 import MapboxAutocomplete from "react-mapbox-autocomplete";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { AccountCircle, DateRange } from "@material-ui/icons";
+import {
+  ViewCarousel,
+  Group,
+  AccountCircle,
+  DateRange,
+  EmojiEvents,
+} from "@material-ui/icons";
 import MenuItem from "@material-ui/core/MenuItem";
 import "../SignUp/SignUp.css";
 
@@ -84,7 +90,12 @@ export default class EditEvent extends React.Component {
         <div className="auth__form">
           <form onSubmit={this.handleSubmit} className="other">
             <h2 style={{ margin: "0px" }}>Edit Event</h2>
-
+            <div>
+              <img
+                style={{ height: "100px", marginTop: "10px" }}
+                src="../../../images/papyrusandfeather.png"
+              />
+            </div>
             {this.state.location && (
               <MapboxAutocomplete
                 publicKey="pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
@@ -118,7 +129,7 @@ export default class EditEvent extends React.Component {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircle />
+                    <EmojiEvents />
                   </InputAdornment>
                 ),
               }}
@@ -152,7 +163,7 @@ export default class EditEvent extends React.Component {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <DateRange />
+                    <Group />
                   </InputAdornment>
                 ),
               }}
@@ -169,7 +180,7 @@ export default class EditEvent extends React.Component {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <DateRange />
+                    <ViewCarousel />
                   </InputAdornment>
                 ),
               }}
@@ -227,7 +238,9 @@ export default class EditEvent extends React.Component {
               SUBMIT
             </button>
           </form>
-          <button onClick={this.deleteEvent}>DELETE EVENT</button>
+          <button className="deleteButton" onClick={this.deleteEvent}>
+            DELETE
+          </button>
         </div>
       </div>
     );

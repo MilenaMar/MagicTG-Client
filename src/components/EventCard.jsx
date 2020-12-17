@@ -16,8 +16,16 @@ const EventCard = (props) => {
       "https://res.cloudinary.com/xikz/image/upload/v1608114256/Modern_reomkb.png",
   };
 
+  let eventCardClass = "eventCard";
+  let seeEventLink = "seeEventLink";
+
+  if (props.UserGoing) {
+    eventCardClass += " rotate";
+    seeEventLink += " rotateo";
+  }
+
   return (
-    <div className="eventCard">
+    <div className={eventCardClass}>
       <div
         className="cardImage"
         style={{
@@ -50,8 +58,8 @@ const EventCard = (props) => {
             <p className="going">{props.DateDay}</p>
           </div>
         </div>
-        <Link className="seeEventLink" to={`/event/${props.Id}`}>
-          See
+        <Link className={seeEventLink} to={`/event/${props.Id}`}>
+          {props.UserGoing ? "Going" : "See"}
         </Link>
       </div>
     </div>
