@@ -3,7 +3,13 @@ import { addNewEvent } from "../../services/events.js";
 import MapboxAutocomplete from "react-mapbox-autocomplete";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { AccountCircle, DateRange } from "@material-ui/icons";
+import {
+  ViewCarousel,
+  Group,
+  AccountCircle,
+  DateRange,
+  EmojiEvents,
+} from "@material-ui/icons";
 import MenuItem from "@material-ui/core/MenuItem";
 import "../SignUp/SignUp.css";
 
@@ -62,6 +68,12 @@ class NewEvent extends React.Component {
         <div className="auth__form">
           <form onSubmit={this.handleOnSubmit} className="other">
             <h2 style={{ margin: "0px" }}>New Event</h2>
+            <div>
+              <img
+                style={{ height: "100px", marginTop: "10px" }}
+                src="../../../images/papyrusandfeather.png"
+              />
+            </div>
 
             <MapboxAutocomplete
               publicKey="pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
@@ -95,7 +107,7 @@ class NewEvent extends React.Component {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <AccountCircle />
+                    <EmojiEvents />
                   </InputAdornment>
                 ),
               }}
@@ -129,7 +141,7 @@ class NewEvent extends React.Component {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <DateRange />
+                    <Group />
                   </InputAdornment>
                 ),
               }}
@@ -146,7 +158,7 @@ class NewEvent extends React.Component {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <DateRange />
+                    <ViewCarousel />
                   </InputAdornment>
                 ),
               }}

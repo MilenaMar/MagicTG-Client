@@ -17,9 +17,9 @@ const AllEvents = (props) => {
   const [viewport, setViewport] = useState({
     latitude: 41.1496,
     longitude: -8.61099,
-    zoom: 5,
+    zoom: 0,
     bearing: 0,
-    pitch: 30,
+    pitch: 0,
   });
   const [sticky, setSticky] = useState(false);
 
@@ -38,7 +38,8 @@ const AllEvents = (props) => {
         setUserPosition(userPosition);
 
         const eventsWithDistance = events.map((event) => {
-          console.log(event);
+          const arrayPlayersId = event.players.map((player) => player._id);
+
           let from = {
             type: "Feature",
             properties: {},
@@ -57,7 +58,12 @@ const AllEvents = (props) => {
           };
           console.log("hello");
           let distance = turf.distance(from, to, "kilometers");
-          return { ...event, distance: distance, going: event.players.length };
+          return {
+            ...event,
+            distance: distance,
+            going: event.players.length,
+            arrayPlayersId: arrayPlayersId,
+          };
         });
         setEvents(eventsWithDistance);
 
@@ -80,6 +86,7 @@ const AllEvents = (props) => {
                 .map((el) => (
                   <Link to={`/event/${el._id}`}>
                     <EventCard
+                      UserGoing={el.arrayPlayersId.includes(props.user._id)}
                       Distance={el.distance}
                       Id={el._id}
                       Name={el.name}
@@ -101,6 +108,7 @@ const AllEvents = (props) => {
                 .map((el) => (
                   <Link to={`/event/${el._id}`}>
                     <EventCard
+                      UserGoing={el.arrayPlayersId.includes(props.user._id)}
                       Distance={el.distance}
                       Id={el._id}
                       Name={el.name}
@@ -122,6 +130,7 @@ const AllEvents = (props) => {
                 .map((el) => (
                   <Link to={`/event/${el._id}`}>
                     <EventCard
+                      UserGoing={el.arrayPlayersId.includes(props.user._id)}
                       Distance={el.distance}
                       Id={el._id}
                       Name={el.name}
@@ -141,7 +150,7 @@ const AllEvents = (props) => {
       </div>
 
       <div className="rightPannel">
-        <h2>The Magic Map</h2>
+        <h2>The Real Gathering Sights</h2>
         <div className="mapbox">
           <div
             ref={geocoderContainerRef}

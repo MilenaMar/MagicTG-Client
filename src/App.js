@@ -105,77 +105,82 @@ class App extends React.Component {
     }
 
     return (
-        <div className="App">
-          <Navbar handleLogout={this.handleLogout} user={this.state.user} />
-          <Switch>
-            <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
-            <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
-            <NormalRoute
-              exact
-              path={PATHS.SIGNUPPAGE}
-              authenticate={this.authenticate}
-              component={Signup}
-            />
-            <NormalRoute
-              exact
-              path={PATHS.LOGINPAGE}
-              authenticate={this.authenticate}
-              component={LogIn}
-            />
-            <ProtectedRoute
-              exact
-              path={PATHS.PROTECTEDPAGE}
-              component={ProtectedPage}
-              user={this.state.user}
-            />
-            <ProtectedRoute
-              exact
-              path={PATHS.PROFILEPAGEPLAYER}
-              component={PlayerProfile}
-              user={this.state.user}
-            />
-            <ProtectedRoute
-              exact
-              path={PATHS.EDITPAGEPLAYER}
-              component={EditPlayer}
-              user={this.state.user}
-              authenticate={this.authenticate}
-            />
-            <ProtectedRoute
-              exact
-              path="/user/organizer/:username"
-              component={OrganizerProfile}
-              user={this.state.user}
-            />
-            <ProtectedRoute
-              exact
-              path={"/user/organizer/:username/edit-profile"}
-              component={EditProfileOrganizer}
-              user={this.state.user}
-              authenticate={this.authenticate}
-            />
-            <ProtectedRoute
-              exact
-              path={"/event/new"}
-              component={NewEvent}
-              user={this.state.user}
-            />
-            <ProtectedRoute
-              exact
-              path={"/event/edit/:_id/"}
-              component={EditEvent}
-              user={this.state.user}
-            />
-            <ProtectedRoute
-              exact
-              path={PATHS.EVENTPAGE}
-              component={SingleEvent}
-              user={this.state.user}
-            />
-            <NormalRoute exact path={"/events"} component={AllEvents} />
-            AllEvents
-          </Switch>
-        </div>
+      <div className="App">
+        <Navbar handleLogout={this.handleLogout} user={this.state.user} />
+        <Switch>
+          <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+          <NormalRoute exact path={PATHS.PAGENOFOUND} component={NotFound} />
+          <NormalRoute
+            exact
+            path={PATHS.SIGNUPPAGE}
+            authenticate={this.authenticate}
+            component={Signup}
+          />
+          <NormalRoute
+            exact
+            path={PATHS.LOGINPAGE}
+            authenticate={this.authenticate}
+            component={LogIn}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROTECTEDPAGE}
+            component={ProtectedPage}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROFILEPAGEPLAYER}
+            component={PlayerProfile}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.EDITPAGEPLAYER}
+            component={EditPlayer}
+            user={this.state.user}
+            authenticate={this.authenticate}
+          />
+          <ProtectedRoute
+            exact
+            path="/user/organizer/:username"
+            component={OrganizerProfile}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={"/user/organizer/:username/edit-profile"}
+            component={EditProfileOrganizer}
+            user={this.state.user}
+            authenticate={this.authenticate}
+          />
+          <ProtectedRoute
+            exact
+            path={"/event/new"}
+            component={NewEvent}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={"/event/edit/:_id/"}
+            component={EditEvent}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.EVENTPAGE}
+            component={SingleEvent}
+            user={this.state.user}
+          />
+          <NormalRoute
+            exact
+            path={"/events"}
+            user={this.state.user}
+            component={AllEvents}
+          />
+          AllEvents
+        </Switch>
+      </div>
     );
   }
 }
