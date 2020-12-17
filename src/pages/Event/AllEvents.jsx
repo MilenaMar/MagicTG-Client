@@ -54,7 +54,12 @@ const AllEvents = (props) => {
             },
           };
           let distance = turf.distance(from, to, "kilometers");
-          return { ...event, distance: distance, going: event.players.length };
+          return {
+            ...event,
+            distance: distance,
+            going: event.players.length,
+            arrayPlayersId: arrayPlayersId,
+          };
         });
         setEvents(eventsWithDistance);
 
