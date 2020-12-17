@@ -6,7 +6,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import {
   ViewCarousel,
   Group,
-  AccountCircle,
   DateRange,
   EmojiEvents,
 } from "@material-ui/icons";
@@ -72,7 +71,7 @@ class NewEvent extends React.Component {
               <img
                 style={{ height: "100px", marginTop: "10px" }}
                 src="../../../images/papyrusandfeather.png"
-              />
+              alt="new event"/>
             </div>
 
             <MapboxAutocomplete
@@ -170,37 +169,6 @@ class NewEvent extends React.Component {
               <MenuItem value="Pioner">Pioner</MenuItem>
               <MenuItem value="Standard">Standard</MenuItem>
             </TextField>
-            {/* <InputLabel required shrink htmlFor="standard-adornment-password">
-            Password
-          </InputLabel> */}
-            {/* <Input
-            style={{ margin: "10px 0px" }}
-            placeholder="Password"
-            required
-            name="password"
-            label="With normal TextField"
-            id="standard-adornment-password"
-            type={this.state.showPassword ? "text" : "password"}
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            startAdornment={
-              <InputAdornment position="start">
-                <LockOpen />
-              </InputAdornment>
-            }
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={this.handleClickShowPassword}
-                  onMouseDown={this.handleMouseDownPassword}
-                >
-                  {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-          /> */}
-
             {this.state.error && (
               <div className="error-block">
                 <p>{this.state.error}</p>

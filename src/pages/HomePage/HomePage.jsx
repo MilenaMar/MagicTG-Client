@@ -14,7 +14,7 @@ export default class HomePage extends Component {
     <p>The real gathering</p>
     <p>Experience</p>
     <div className="about-us">Build a community with players around the world,
-     <br/> Check out the latest Magic TG events <br/>
+     <br/> Check out the latest Magic TG events. <br/>
       Join us today ! <Link to="/auth/signup" className="nav-logoutbtn homebutton">
               Signup
             </Link> </div>

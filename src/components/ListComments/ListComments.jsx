@@ -1,4 +1,4 @@
-import React, { Component,  useEffect, useRef  } from 'react';
+import React, { Component } from 'react';
 import { getComments } from '../../services/comments';
 import { addComment } from '../../services/comments';
 import LoadingComponent from '../Loading';

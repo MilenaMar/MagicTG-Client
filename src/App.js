@@ -4,7 +4,6 @@ import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import LogIn from "./pages/LogIn";
-import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/SignUp/Signup";
 import PlayerProfile from "./pages/User/PlayerProfile";
 import EditPlayer from "./pages/User/EditPlayer";
@@ -46,7 +45,6 @@ class App extends React.Component {
     getLoggedIn(userType).then((res) => {
       if (!res.status) {
         console.log("RES IN CASE OF FAILURE", res);
-        // deal with failed backend call
         return this.setState({
           isLoading: false,
         });
@@ -73,7 +71,6 @@ class App extends React.Component {
       () => {
         logout(accessToken).then((res) => {
           if (!res.status) {
-            // deal with error here
             console.log("SOMETHING HAPPENED", res);
           }
           localStorage.removeItem("accessToken");
@@ -121,12 +118,6 @@ class App extends React.Component {
             path={PATHS.LOGINPAGE}
             authenticate={this.authenticate}
             component={LogIn}
-          />
-          <ProtectedRoute
-            exact
-            path={PATHS.PROTECTEDPAGE}
-            component={ProtectedPage}
-            user={this.state.user}
           />
           <ProtectedRoute
             exact

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   getSingleEvent,
   updateSingleEvent,
@@ -11,7 +10,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import {
   ViewCarousel,
   Group,
-  AccountCircle,
   DateRange,
   EmojiEvents,
 } from "@material-ui/icons";
@@ -72,7 +70,6 @@ export default class EditEvent extends React.Component {
     event.preventDefault();
     updateSingleEvent(this.props.match.params._id, this.state).then((res) => {
       if (!res.status) {
-        //  deal with the error
         return;
       }
 
@@ -94,7 +91,7 @@ export default class EditEvent extends React.Component {
               <img
                 style={{ height: "100px", marginTop: "10px" }}
                 src="../../../images/papyrusandfeather.png"
-              />
+               alt= "edit event"/>
             </div>
             {this.state.location && (
               <MapboxAutocomplete
@@ -192,48 +189,6 @@ export default class EditEvent extends React.Component {
               <MenuItem value="Pioner">Pioner</MenuItem>
               <MenuItem value="Standard">Standard</MenuItem>
             </TextField>
-            {/* <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleInputChange}
-              required
-            />
-            <label htmlFor="date">date</label>
-            <input
-              id="date"
-              type="datetime-local"
-              name="date"
-              value={this.state.date}
-              onChange={this.handleInputChange}
-              required
-            />
-            <label htmlFor="maxPlayers">Max Players</label>
-            <input
-              id="maxPlayers"
-              type="Number"
-              name="maxPlayers"
-              value={this.state.maxPlayers}
-              onChange={this.handleInputChange}
-              required
-            />
-            <label htmlFor="format">Format</label>
-            <select
-              onChange={this.handleOption}
-              value={this.state.format}
-              name="fomat"
-              id="format"
-              form="carform"
-              required
-            >
-              <option value="Legacy">Legacy</option>
-              <option value="Modern">Modern</option>
-              <option value="Pioner">Pioner</option>
-              <option value="Standard">Standard</option>
-            </select> */}
-
             <button className="submitButton" type="submit">
               SUBMIT
             </button>

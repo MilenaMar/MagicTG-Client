@@ -17,18 +17,15 @@ const AllEvents = (props) => {
   const [viewport, setViewport] = useState({
     latitude: 41.1496,
     longitude: -8.61099,
-    zoom: 0,
+    zoom: 5,
     bearing: 0,
-    pitch: 0,
+    pitch: 30,
   });
-  const [sticky, setSticky] = useState(false);
 
   const mapRef = useRef();
   const geocoderContainerRef = useRef();
 
   useEffect(() => {
-    console.log("mount");
-
     getAllEvents().then((events) => {
       navigator.geolocation.getCurrentPosition((position) => {
         const userPosition = [
@@ -38,8 +35,6 @@ const AllEvents = (props) => {
         setUserPosition(userPosition);
 
         const eventsWithDistance = events.map((event) => {
-          const arrayPlayersId = event.players.map((player) => player._id);
-
           let from = {
             type: "Feature",
             properties: {},
@@ -56,14 +51,8 @@ const AllEvents = (props) => {
               coordinates: [event.lat, event.long],
             },
           };
-          console.log("hello");
           let distance = turf.distance(from, to, "kilometers");
-          return {
-            ...event,
-            distance: distance,
-            going: event.players.length,
-            arrayPlayersId: arrayPlayersId,
-          };
+          return { ...event, distance: distance, going: event.players.length };
         });
         setEvents(eventsWithDistance);
 
@@ -84,9 +73,8 @@ const AllEvents = (props) => {
               {events
                 .sort((a, b) => a.distance - b.distance)
                 .map((el) => (
-                  <Link to={`/event/${el._id}`}>
+                  <Link key={el._id} to={`/event/${el._id}`}>
                     <EventCard
-                      UserGoing={el.arrayPlayersId.includes(props.user._id)}
                       Distance={el.distance}
                       Id={el._id}
                       Name={el.name}
@@ -106,9 +94,8 @@ const AllEvents = (props) => {
               {events
                 .sort((a, b) => b.going - a.going)
                 .map((el) => (
-                  <Link to={`/event/${el._id}`}>
+                  <Link key={el._id}  to={`/event/${el._id}`}>
                     <EventCard
-                      UserGoing={el.arrayPlayersId.includes(props.user._id)}
                       Distance={el.distance}
                       Id={el._id}
                       Name={el.name}
@@ -128,9 +115,8 @@ const AllEvents = (props) => {
               {events
                 .sort((a, b) => new Date(a.date) - new Date(b.date))
                 .map((el) => (
-                  <Link to={`/event/${el._id}`}>
+                  <Link key={el._id}  to={`/event/${el._id}`}>
                     <EventCard
-                      UserGoing={el.arrayPlayersId.includes(props.user._id)}
                       Distance={el.distance}
                       Id={el._id}
                       Name={el.name}
@@ -150,7 +136,7 @@ const AllEvents = (props) => {
       </div>
 
       <div className="rightPannel">
-        <h2>The Real Gathering Sights</h2>
+        <h2>The Magic Map</h2>
         <div className="mapbox">
           <div
             ref={geocoderContainerRef}
@@ -174,7 +160,6 @@ const AllEvents = (props) => {
           >
             <Geocoder
               mapRef={mapRef}
-              // containerRef={geocoderContainerRef}
               onViewportChange={(nextViewport) => setViewport(nextViewport)}
               mapboxApiAccessToken={
                 "pk.eyJ1IjoieGlreiIsImEiOiJja2luMWxod3owa2VrMnhxczF3cHo0Y2FpIn0.6EG6l8fbS8yp3vNXmZBJlA"
@@ -185,6 +170,7 @@ const AllEvents = (props) => {
             {events &&
               events.map((event) => (
                 <Marker
+                key={event._id} 
                   latitude={Number(event.lat)}
                   longitude={Number(event.long)}
                   offsetLeft={-20}

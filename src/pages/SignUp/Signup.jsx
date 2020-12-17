@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { signup } from "../../services/authPlayer";
 import { signupOrg } from "../../services/authOrganizer";
-//import "./SignUp.css";
 import { Redirect } from "react-router-dom";
 import * as PATHS from "../../utils/paths";
 import "./SignUp.css";
@@ -12,7 +11,6 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import IconButton from "@material-ui/core/IconButton";
 import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
 
 export default class Signup extends Component {
   state = {
@@ -48,9 +46,7 @@ export default class Signup extends Component {
       password: this.state.password,
     };
     signup(credentials).then((res) => {
-      console.log(res);
       if (!res.status) {
-        //set state for the error message from the server
         this.setState({ error: res.errorMessage });
         return <Redirect to={PATHS.SIGNUPPAGE} />;
       }
@@ -71,9 +67,7 @@ export default class Signup extends Component {
       password: this.state.password,
     };
     signupOrg(credentials).then((res) => {
-      console.log(res);
       if (!res.status) {
-        //set state for the error message from the server
         this.setState({ error: res.errorMessage });
         return <Redirect to={PATHS.SIGNUPPAGE} />;
       }
@@ -104,7 +98,7 @@ export default class Signup extends Component {
             <img
               src="../../../images/goblin2.png"
               style={{ height: "100px" }}
-            />
+            alt="goblin" />
           </div>
           <button className="userControllerButton" onClick={this.handleClick}>
             Join as an Organizer?
@@ -119,7 +113,7 @@ export default class Signup extends Component {
             <img
               src="../../../images/goblin3.png"
               style={{ height: "100px" }}
-            />
+           alt="goblin" />
           </div>
           <button className="userControllerButton" onClick={this.handleClick}>
             Join as a Player?
@@ -145,7 +139,7 @@ export default class Signup extends Component {
               style={{ margin: "10px 0px" }}
               id="filled-multiline-flexible"
               name="username"
-              placeholder="Userame"
+              placeholder="Username"
               multiline
               required
               value={this.state.username}
@@ -195,9 +189,6 @@ export default class Signup extends Component {
                 ),
               }}
             />
-            {/* <InputLabel required shrink htmlFor="standard-adornment-password">
-            Password
-          </InputLabel> */}
             <Input
               style={{ margin: "10px 0px" }}
               placeholder="Password"

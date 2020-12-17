@@ -7,10 +7,9 @@ import "./SignUp/Signup";
 import "./auth.css";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { AccountCircle, Email, LockOpen } from "@material-ui/icons";
+import { AccountCircle, LockOpen } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
@@ -48,7 +47,6 @@ export default class Login extends Component {
     };
     login(credentials).then((res) => {
       if (!res.status) {
-        //set state for the error message from the server
         this.setState({ error: res.errorMessage });
         return <Redirect to={PATHS.LOGINPAGE} />;
       }
@@ -92,7 +90,7 @@ export default class Login extends Component {
             <img
               src="../../../images/goblin2.png"
               style={{ height: "100px" }}
-            />
+            alt="goblin"/>
           </div>
           <button className="userControllerButton" onClick={this.handleClick}>
             Log In as an Organizer?
@@ -107,7 +105,7 @@ export default class Login extends Component {
             <img
               src="../../../images/goblin3.png"
               style={{ height: "100px" }}
-            />
+           alt="goblin" />
           </div>
           <button className="userControllerButton" onClick={this.handleClick}>
             Login as a Player?

@@ -1,7 +1,6 @@
 import React from "react";
 import "./EventCard.css";
 import { PeopleAlt, Schedule } from "@material-ui/icons";
-import Attend from "./attendButton/Attend";
 import { Link } from "react-router-dom";
 
 const EventCard = (props) => {
@@ -33,7 +32,7 @@ const EventCard = (props) => {
         }}
       >
         <div className="format">
-          <img src={`${formatImages[props.Format]}`} />
+          <img src={`${formatImages[props.Format]}`} alt="avatar event"/>
           <p>{props.Format}</p>
           <p>{Math.round(props.Distance)} Km </p>
         </div>

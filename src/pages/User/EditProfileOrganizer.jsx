@@ -40,7 +40,6 @@ export default class EditProfileOrganizer extends React.Component {
       this.state.user
     ).then((res) => {
       if (!res.status) {
-        //  deal with the error
         return;
       }
 
