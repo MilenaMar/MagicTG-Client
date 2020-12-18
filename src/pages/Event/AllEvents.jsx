@@ -82,11 +82,7 @@ const AllEvents = (props) => {
                 .map((el) => (
                   <Link key={el._id} to={`/event/${el._id}`}>
                     <EventCard
-                        UserGoing={
-                        props.user
-                          ? el.arrayPlayersId.includes(props.user._id)
-                          : false
-                      }
+                      UserGoing={
                         props.user
                           ? el.arrayPlayersId.includes(props.user._id)
                           : false
@@ -112,7 +108,7 @@ const AllEvents = (props) => {
                 .map((el) => (
                   <Link key={el._id} to={`/event/${el._id}`}>
                     <EventCard
-                       UserGoing={
+                      UserGoing={
                         props.user
                           ? el.arrayPlayersId.includes(props.user._id)
                           : false
@@ -138,7 +134,7 @@ const AllEvents = (props) => {
                 .map((el) => (
                   <Link key={el._id} to={`/event/${el._id}`}>
                     <EventCard
-                       UserGoing={
+                      UserGoing={
                         props.user
                           ? el.arrayPlayersId.includes(props.user._id)
                           : false
