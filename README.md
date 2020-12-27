@@ -144,8 +144,8 @@ Session model
 - /event/:id/attend - (POST) - Player attends an event
 - /event/:id/unattend - (POST) - Player unattends an event
 
--/event/allcomments/:id - (GET) - comments for a specific event
--/event/addcomment -(POST) - an User can add a comment/ post to the event
+- /event/allcomments/:id - (GET) - comments for a specific event
+- /event/addcomment -(POST) - an User can add a comment/ post to the event
 
 
 ## Links
